@@ -124,7 +124,7 @@
   environment.variables = {
     EDITOR = "nvim";
     # todo: probably unnecessary
-    NIXPKGS_ALLOW_UNFREE = 1;
+    # NIXPKGS_ALLOW_UNFREE = 1;
   };
 
   # Some programs need SUID wrappers, can be configured further or are

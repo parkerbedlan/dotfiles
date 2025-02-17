@@ -59,6 +59,7 @@
   programs.bash = {
     enable = true;
     bashrcExtra = ''
+      echo hello world 1
       alias vim='nvim'
       alias v='vim .'
       alias gp='git pull'
@@ -124,8 +125,9 @@
 
       settings = {
         "browser.startup.couldRestoreSession.count" = 2;
-	"browser.newtabpage.enabled" = false;
+	# "browser.newtabpage.enabled" = false;
 	"browser.startup.homepage" = "chrome://browser/content/blanktab.html";
+	"extensions.autoDisableScopes" = 0;
       };
 
       search.engines = {
