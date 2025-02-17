@@ -59,7 +59,6 @@
   programs.bash = {
     enable = true;
     bashrcExtra = ''
-      echo hello world 2
       alias vim='nvim'
       alias v='vim .'
       alias gp='git pull'
