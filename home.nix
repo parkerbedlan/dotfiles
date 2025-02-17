@@ -59,12 +59,12 @@
   programs.bash = {
     enable = true;
     bashrcExtra = ''
-      echo hello world 1
+      echo hello world 2
       alias vim='nvim'
       alias v='vim .'
       alias gp='git pull'
       alias x='git acp a'
-      alias nrsf='sudo -E nixos-rebuild --impure switch --flake /home/pk/nixos#default'
+      alias nrsf='sudo -H -E nixos-rebuild --impure switch --flake /home/pk/nixos#default'
     '';
   };
 
