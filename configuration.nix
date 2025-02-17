@@ -119,6 +119,7 @@
       "pk" = import ./home.nix;
     };
     backupFileExtension = "backup";
+    useGlobalPkgs = true;
   };
 
   environment.variables = {

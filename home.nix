@@ -105,10 +105,21 @@
     # "lastpass-password-manager"
   # ];
   # todo: idk if this does anything
-  nixpkgs.config.allowUnfreePredicate = _: true;
+  # nixpkgs.config.allowUnfreePredicate = _: true;
+  # delete ~/.mozilla and reboot if stuff doesn't work
   programs.firefox = {
     enable = true;
-    profiles.default = {
+    profiles.pk = {
+      isDefault = true;
+
+      settings = {
+        "browser.startup.couldRestoreSession.count" = 2;
+	"browser.newtabpage.enabled" = false;
+	"browser.startup.homepage" = "chrome://browser/content/blanktab.html";
+	"extensions.autoDisableScopes" = 0;
+	# "extensions.enabledScopes" = 15;
+      };
+
       extensions = with inputs.firefox-addons.packages."x86_64-linux"; [
         ublock-origin
         darkreader
@@ -121,14 +132,8 @@
 	df-youtube
 	# maybe this?: remove-youtube-s-suggestions
 	# maybe look into this?: tournesol
+	dearrow
       ];
-
-      settings = {
-        "browser.startup.couldRestoreSession.count" = 2;
-	# "browser.newtabpage.enabled" = false;
-	# "browser.startup.homepage" = "chrome://browser/content/blanktab.html";
-	"extensions.autoDisableScopes" = 0;
-      };
 
       search.engines = {
         "Nix Packages" = {
