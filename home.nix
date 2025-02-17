@@ -56,14 +56,47 @@
     '';
   };
 
-  programs.bash.enable = true;
-  programs.bash.bashrcExtra = ''
-    echo hello world
-    alias vim='nvim'
-    alias v='vim .'
-    alias gp='git pull'
-    alias nrsf='sudo nixos-rebuild switch --flake /home/pk/nixos#default'
-  '';
+  programs.bash = {
+    enable = true;
+    bashrcExtra = ''
+      alias vim='nvim'
+      alias v='vim .'
+      alias gp='git pull'
+      alias nrsf='sudo nixos-rebuild switch --flake /home/pk/nixos#default'
+    '';
+  };
+
+  programs.git = {
+    enable = true;
+    aliases = {
+      acp = "!f() { git add -A && git commit -m \"$1\" && git push; }; f";
+      prune-gone = "!git branch -vv | awk '/: gone]/{print $1}' | xargs git branch -d";
+      cane = "commit --amend --no-edit";
+      as = "!f() { git add -A && git status; }; f";
+      pfwl = "push --force-with-lease";
+      ds = "diff --staged";
+    };
+    extraConfig = {
+      init = {
+        defaultBranch = "main";
+      };
+      core = {
+        editor = "nvim";
+	autocrlf = "input";
+      };
+      user = {
+	email = "parkerbedlan@gmail.com";
+        name = "Parker Bedlan";
+      };
+    };
+  };
+  # programs.git.extraConfig
+    # programs.git.includes.*.contents = {
+      # user = {
+        # email = "parkerbedlan@gmail.com";
+        # name = "Parker Bedlan";
+      # };
+    # };
 
   # Home Manager can also manage your environment variables through
   # 'home.sessionVariables'. These will be explicitly sourced when using a
