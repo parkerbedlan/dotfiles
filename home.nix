@@ -116,7 +116,62 @@
 	"browser.newtabpage.enabled" = false;
 	"browser.startup.homepage" = "chrome://browser/content/blanktab.html";
 	"extensions.autoDisableScopes" = 0;
+	# uhh no need for this one probably
 	# "extensions.enabledScopes" = 15;
+
+	# https://github.com/Misterio77/nix-config/blob/main/home/gabriel/features/desktop/common/firefox.nix
+	# Disable fx accounts
+        "identity.fxaccounts.enabled" = false;
+        # Disable "save password" prompt
+        "signon.rememberSignons" = false;
+        # Harden
+        "privacy.trackingprotection.enabled" = true;
+        "dom.security.https_only_mode" = true;
+	# Disable irritating first-run stuff
+        "browser.disableResetPrompt" = true;
+        "browser.download.panel.shown" = true;
+        "browser.feeds.showFirstRunUI" = false;
+        "browser.messaging-system.whatsNewPanel.enabled" = false;
+        "browser.rights.3.shown" = true;
+        "browser.shell.checkDefaultBrowser" = false;
+        "browser.shell.defaultBrowserCheckCount" = 1;
+        "browser.startup.homepage_override.mstone" = "ignore";
+        "browser.uitour.enabled" = false;
+        "startup.homepage_override_url" = "";
+        "trailhead.firstrun.didSeeAboutWelcome" = true;
+        "browser.bookmarks.restore_default_bookmarks" = false;
+        "browser.bookmarks.addedImportButton" = true;
+	# Disable some telemetry
+        "app.shield.optoutstudies.enabled" = false;
+        "browser.discovery.enabled" = false;
+        "browser.newtabpage.activity-stream.feeds.telemetry" = false;
+        "browser.newtabpage.activity-stream.telemetry" = false;
+        "browser.ping-centre.telemetry" = false;
+        "datareporting.healthreport.service.enabled" = false;
+        "datareporting.healthreport.uploadEnabled" = false;
+        "datareporting.policy.dataSubmissionEnabled" = false;
+        "datareporting.sessions.current.clean" = true;
+        "devtools.onboarding.telemetry.logged" = false;
+        "toolkit.telemetry.archive.enabled" = false;
+        "toolkit.telemetry.bhrPing.enabled" = false;
+        "toolkit.telemetry.enabled" = false;
+        "toolkit.telemetry.firstShutdownPing.enabled" = false;
+        "toolkit.telemetry.hybridContent.enabled" = false;
+        "toolkit.telemetry.newProfilePing.enabled" = false;
+        "toolkit.telemetry.prompted" = 2;
+        "toolkit.telemetry.rejected" = true;
+        "toolkit.telemetry.reportingpolicy.firstRun" = false;
+        "toolkit.telemetry.server" = "";
+        "toolkit.telemetry.shutdownPingSender.enabled" = false;
+        "toolkit.telemetry.unified" = false;
+        "toolkit.telemetry.unifiedIsOptIn" = false;
+        "toolkit.telemetry.updatePing.enabled" = false;
+
+	# https://github.com/gvolpe/nix-config/blob/6feb7e4f47e74a8e3befd2efb423d9232f522ccd/home/programs/browsers/firefox.nix
+	"browser.urlbar.quickactions.enabled" = false;
+        "browser.urlbar.quickactions.showPrefs" = false;
+        "browser.urlbar.shortcuts.quickactions" = false;
+        "browser.urlbar.suggest.quickactions" = false;
       };
 
       extensions = with inputs.firefox-addons.packages."x86_64-linux"; [
@@ -157,6 +212,12 @@
         }
       ];
     };
+  };
+  xdg.mimeApps.defaultApplications = {
+    "text/html" = ["firefox.desktop"];
+    "text/xml" = ["firefox.desktop"];
+    "x-scheme-handler/http" = ["firefox.desktop"];
+    "x-scheme-handler/https" = ["firefox.desktop"];
   };
 
   # Home Manager can also manage your environment variables through
