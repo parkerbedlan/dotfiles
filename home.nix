@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
 
 {
   # Home Manager needs a bit of information about you and the paths it should
@@ -98,6 +98,58 @@
         # name = "Parker Bedlan";
       # };
     # };
+
+  # nixpkgs.config.allowUnfree = true;
+  # nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
+    # "lastpass-password-manager"
+  # ];
+  programs.firefox = {
+    enable = true;
+    profiles.default = {
+      extensions = with inputs.firefox-addons.packages."x86_64-linux"; [
+        ublock-origin
+        darkreader
+	lastpass-password-manager
+	return-youtube-dislikes
+	# worth a try
+	sponsorblock
+	# todo: youtube unhooked
+	# this seems close?
+	df-youtube
+	# maybe this?: remove-youtube-s-suggestions
+	# maybe look into this?: tournesol
+      ];
+
+      settings = {
+        "browser.startup.couldRestoreSession.count" = 2;
+	"browser.newtabpage.enabled" = false;
+	"browser.startup.homepage" = "chrome://browser/content/blanktab.html";
+      };
+
+      search.engines = {
+        "Nix Packages" = {
+          urls = [{
+            template = "https://search.nixos.org/packages";
+            params = [
+              { name = "type"; value = "packages"; }
+              { name = "query"; value = "{searchTerms}"; }
+            ];
+          }];
+
+          icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
+          definedAliases = [ "@np" ];
+        };
+      };
+      search.force = true;
+
+      bookmarks = [
+        {
+          name = "skibidi";
+          url = "https://en.wikipedia.org/wiki/Skibidi_Toilet";
+        }
+      ];
+    };
+  };
 
   # Home Manager can also manage your environment variables through
   # 'home.sessionVariables'. These will be explicitly sourced when using a

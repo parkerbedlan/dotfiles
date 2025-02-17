@@ -97,6 +97,7 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
+
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
@@ -105,6 +106,8 @@
     neovim
     git
     xclip
+    fzf
+    yt-dlp
   ];
   services.xserver.xkb.options = "caps:swapescape";
 
@@ -119,6 +122,7 @@
 
   environment.variables = {
     EDITOR = "nvim";
+    NIXPKGS_ALLOW_UNFREE = 1;
   };
 
   # Some programs need SUID wrappers, can be configured further or are
