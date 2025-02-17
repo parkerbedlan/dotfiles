@@ -54,6 +54,20 @@
       set bell-style none
       "\C-H": backward-kill-word
     '';
+
+    ".config/xfce4/terminal/accels.scm".text = ''
+      (gtk_accel_path "<Actions>/terminal-window/paste" "<Primary>v")
+      (gtk_accel_path "<Actions>/terminal-window/next-tab" "<Primary>Tab")
+      (gtk_accel_path "<Actions>/terminal-window/prev-tab" "<Primary><Shift>ISO_Left_Tab")
+    '';
+
+    ".config/xfce4/xfconf/xfce-perchannel-xml/xfce4-terminal.xml".text = ''
+      <?xml version="1.1" encoding="UTF-8"?>
+
+      <channel name="xfce4-terminal" version="1.0">
+        <property name="misc-show-unsafe-paste-dialog" type="bool" value="false"/>
+      </channel>
+    '';
   };
 
   programs.bash = {
