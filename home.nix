@@ -62,6 +62,7 @@
       alias vim='nvim'
       alias v='vim .'
       alias gp='git pull'
+      alias x='git acp a'
       alias nrsf='sudo nixos-rebuild switch --flake /home/pk/nixos#default'
     '';
   };
