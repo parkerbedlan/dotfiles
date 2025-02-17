@@ -112,12 +112,13 @@
       isDefault = true;
 
       settings = {
-        "browser.startup.couldRestoreSession.count" = 2;
+	# this doesn't seem to do anything?
+        # "browser.startup.couldRestoreSession.count" = 2;
 	"browser.newtabpage.enabled" = false;
 	"browser.startup.homepage" = "chrome://browser/content/blanktab.html";
 	"extensions.autoDisableScopes" = 0;
 	"browser.toolbars.bookmarks.visibility" = "never";
-	"browser.sessionstore.resume_from_crash" = true;
+	"browser.startup.page" = 3;
 	# uhh no need for this one probably
 	# "extensions.enabledScopes" = 15;
 
