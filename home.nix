@@ -89,6 +89,7 @@
 	email = "parkerbedlan@gmail.com";
         name = "Parker Bedlan";
       };
+      push.autoSetupRemote = true;
     };
   };
   # programs.git.extraConfig

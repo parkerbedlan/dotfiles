@@ -80,6 +80,7 @@
   # Enable touchpad support (enabled default in most desktopManager).
   services.libinput.enable = true;
   services.libinput.touchpad.naturalScrolling = true;
+  # use this to change touchpad scroll speed services.libinput.touchpad.accelPointsScroll
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.pk = {
