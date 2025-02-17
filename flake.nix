@@ -14,12 +14,6 @@
       url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    # https://discourse.nixos.org/t/allow-unfree-packages-in-repo-from-nur/41732
-    # nur = {
-      # url = "github:nix-community/NUR";
-      # inputs.nixpkgs.follows = "nixpkgs";
-    # };
   };
 
   outputs = { self, nixpkgs, ... }@inputs: {

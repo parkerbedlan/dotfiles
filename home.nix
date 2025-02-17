@@ -63,7 +63,7 @@
       alias v='vim .'
       alias gp='git pull'
       alias x='git acp a'
-      alias nrsf='sudo nixos-rebuild switch --flake /home/pk/nixos#default'
+      alias nrsf='sudo -E nixos-rebuild --impure switch --flake /home/pk/nixos#default'
     '';
   };
 
@@ -103,6 +103,8 @@
   # nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
     # "lastpass-password-manager"
   # ];
+  # todo: idk if this does anything
+  nixpkgs.config.allowUnfreePredicate = _: true;
   programs.firefox = {
     enable = true;
     profiles.default = {

@@ -118,10 +118,12 @@
     users = {
       "pk" = import ./home.nix;
     };
+    backupFileExtension = "backup";
   };
 
   environment.variables = {
     EDITOR = "nvim";
+    # todo: probably unnecessary
     NIXPKGS_ALLOW_UNFREE = 1;
   };
 
