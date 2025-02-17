@@ -77,7 +77,8 @@
       alias v='vim .'
       alias gp='git pull'
       alias x='git acp a'
-      alias nrsf='sudo -H -E nixos-rebuild --impure switch --flake /home/pk/nixos#default'
+      alias switch='sudo -H -E nixos-rebuild --impure switch --flake /home/pk/nixos#default'
+      alias nrsf='switch'
     '';
   };
 
