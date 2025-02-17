@@ -126,7 +126,7 @@
       settings = {
         "browser.startup.couldRestoreSession.count" = 2;
 	# "browser.newtabpage.enabled" = false;
-	"browser.startup.homepage" = "chrome://browser/content/blanktab.html";
+	# "browser.startup.homepage" = "chrome://browser/content/blanktab.html";
 	"extensions.autoDisableScopes" = 0;
       };
 
