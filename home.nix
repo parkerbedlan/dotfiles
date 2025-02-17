@@ -116,6 +116,8 @@
 	"browser.newtabpage.enabled" = false;
 	"browser.startup.homepage" = "chrome://browser/content/blanktab.html";
 	"extensions.autoDisableScopes" = 0;
+	"browser.toolbars.bookmarks.visibility" = "never";
+	"browser.sessionstore.resume_from_crash" = true;
 	# uhh no need for this one probably
 	# "extensions.enabledScopes" = 15;
 
