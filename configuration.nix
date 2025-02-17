@@ -109,7 +109,6 @@
     xclip
     fzf
     yt-dlp
-    _4d-minesweeper
   ];
   services.xserver.xkb.options = "caps:swapescape";
 
