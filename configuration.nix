@@ -55,9 +55,13 @@
     layout = "us";
     variant = "";
   };
+  services.xserver.xkb.options = "caps:swapescape";
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
+  
+  # gaming mouse
+  services.ratbagd.enable = true;
 
   # Enable sound with pipewire.
   services.pulseaudio.enable = false;
@@ -117,8 +121,8 @@
     zoxide
     alarm-clock-applet
     piper
+    libratbag
   ];
-  services.xserver.xkb.options = "caps:swapescape";
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
