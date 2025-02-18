@@ -127,6 +127,7 @@
     backupFileExtension = "backup";
   };
 
+  # https://www.youtube.com/watch?v=ljHkWgBaQWU
   stylix = {
     enable = true;
     base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
