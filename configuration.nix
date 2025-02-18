@@ -115,6 +115,8 @@
     base16-schemes
     fd
     zoxide
+    alarm-clock-applet
+    piper
   ];
   services.xserver.xkb.options = "caps:swapescape";
 
