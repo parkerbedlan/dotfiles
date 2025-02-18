@@ -112,6 +112,8 @@
     yt-dlp
     bluez
     blueman
+    base16-schemes
+    fd
   ];
   services.xserver.xkb.options = "caps:swapescape";
 
@@ -123,7 +125,13 @@
       "pk" = import ./home.nix;
     };
     backupFileExtension = "backup";
-    useGlobalPkgs = true;
+  };
+
+  stylix = {
+    enable = true;
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
+    image = /home/pk/Pictures/black-small.png;
+    polarity = "dark";
   };
 
   environment.variables = {
