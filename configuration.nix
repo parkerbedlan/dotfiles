@@ -142,8 +142,10 @@
       vim = {
         theme = {
           enable = true;
-          name = "gruvbox";
-          style = "dark";
+          name = "catppuccin";
+          style = "mocha";
+          # name = "gruvbox";
+          # style = "dark";
         };
 
         languages = {
