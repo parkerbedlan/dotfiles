@@ -109,19 +109,7 @@
       push.autoSetupRemote = true;
     };
   };
-  # programs.git.extraConfig
-    # programs.git.includes.*.contents = {
-      # user = {
-        # email = "parkerbedlan@gmail.com";
-        # name = "Parker Bedlan";
-      # };
-    # };
 
-  # nixpkgs.config.allowUnfree = true;
-  # nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
-    # "lastpass-password-manager"
-  # ];
-  # todo: idk if this does anything
   # nixpkgs.config.allowUnfreePredicate = _: true;
   # delete ~/.mozilla and reboot if stuff doesn't work
   programs.firefox = {
@@ -241,6 +229,7 @@
     "x-scheme-handler/https" = ["firefox.desktop"];
   };
 
+  # https://wiki.nixos.org/wiki/Zoxide
   programs.zoxide = {
     enable = true;
     enableBashIntegration = true;

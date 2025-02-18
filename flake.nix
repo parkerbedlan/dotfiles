@@ -16,14 +16,17 @@
     };
 
     stylix.url = "github:danth/stylix";
+
+    nvf.url = "github:notashelf/nvf";
   };
 
-  outputs = { self, nixpkgs, ... }@inputs: {
+  outputs = { self, nixpkgs, nvf, ... }@inputs: {
     nixosConfigurations.default = nixpkgs.lib.nixosSystem {
       specialArgs = {inherit inputs;};
       modules = [
         ./configuration.nix
 	inputs.stylix.nixosModules.stylix
+	nvf.nixosModules.default
       ];
     };
   };
