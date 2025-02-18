@@ -79,6 +79,8 @@
       alias x='git acp a'
       alias switch='sudo -H -E nixos-rebuild --impure switch --flake /home/pk/nixos#default'
       alias nrsf='switch'
+      alias bluetooth='blueman-manager'
+      alias blue='bluetooth'
     '';
   };
 
