@@ -243,17 +243,20 @@
       modifier = "Mod4";
       floating.modifier = "Mod4";
       window.border = 0;
+      
+      # Default to tabbed layout for all workspaces
       workspaceLayout = "tabbed";
-
+      
+      # Assign applications to specific workspaces
       assigns = {
         "1" = [{ class = "^Firefox$"; }];
         "2" = [{ class = "^Xfce4-terminal$"; }];
       };
 
       keybindings = {
-        # Use a shell command to check if the window exists before launching
-        "Mod4+1" = ''exec "if [ -z $(xdotool search --class 'Firefox') ]; then firefox; else i3-msg '[class=Firefox] focus'; fi"'';
-        "Mod4+2" = ''exec "if [ -z $(xdotool search --class 'Xfce4-terminal') ]; then xfce4-terminal; else i3-msg '[class=Xfce4-terminal] focus'; fi"'';
+        # Switch to workspace and launch app if needed
+        "Mod4+1" = ''exec "i3-msg 'workspace number 1; [class=Firefox] focus || exec firefox'"'';
+        "Mod4+2" = ''exec "i3-msg 'workspace number 2; [class=Xfce4-terminal] focus || exec xfce4-terminal'"'';
         
         # Basic controls
         "Mod4+Shift+q" = "kill";
@@ -269,6 +272,15 @@
         workspaceButtons = true;
       }];
     };
+
+    extraConfig = ''
+      # Force focus to follow when switching workspaces
+      force_focus_wrapping no
+      
+      # Make sure new windows in the workspace are full screen
+      for_window [class="Firefox"] focus
+      for_window [class="Xfce4-terminal"] focus
+    '';
   };
 
   # Home Manager can also manage your environment variables through
