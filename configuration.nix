@@ -60,12 +60,9 @@
       extraPackages = with pkgs; [
         i3status
         i3lock
+        i3blocks
+        dmenu
       ];
-      extraSessionCommands = ''
-        set $mod Mod4
-        bindsym $mod+1 exec firefox
-        bindsym $mod+2 exec xfce4-terminal
-      '';
     };
 
     xkb = {
@@ -74,7 +71,7 @@
       options = "caps:swapescape";
     };
   };
-  services.displayManager.defaultSession = "xfce";
+  services.displayManager.defaultSession = "xfce+i3";
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
@@ -121,7 +118,6 @@
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
-
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget

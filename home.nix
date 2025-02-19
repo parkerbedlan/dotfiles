@@ -236,6 +236,24 @@
     options = ["--cmd cd"];
   };
 
+
+  xsession.windowManager.i3 = {
+    enable = true;
+    config = {
+      modifier = "Mod4";  # Windows key
+      keybindings = {
+        "Mod4+1" = "exec firefox";
+        "Mod4+2" = "exec xfce4-terminal";
+        # Add other keybindings as needed
+      };
+      # Basic i3 configuration
+      bars = [{
+        position = "bottom";
+        statusCommand = "i3status";
+      }];
+    };
+  };
+
   # Home Manager can also manage your environment variables through
   # 'home.sessionVariables'. These will be explicitly sourced when using a
   # shell provided by Home Manager. If you don't want to manage your shell
