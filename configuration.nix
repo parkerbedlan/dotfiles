@@ -44,18 +44,37 @@
   };
 
   # Enable the X11 windowing system.
-  services.xserver.enable = true;
+  services.xserver = {
+    enable = true;
+    displayManager.lightdm.enable = true;
+    desktopManager = {
+      xterm.enable = false;
+      xfce = {
+        enable = true;
+        noDesktop = true;
+        enableXfwm = false;
+      };
+    };
+    windowManager.i3 = {
+      enable = true;
+      extraPackages = with pkgs; [
+        i3status
+        i3lock
+      ];
+      extraSessionCommands = ''
+        set $mod Mod4
+        bindsym $mod+1 exec firefox
+        bindsym $mod+2 exec xfce4-terminal
+      '';
+    };
 
-  # Enable the XFCE Desktop Environment.
-  services.xserver.displayManager.lightdm.enable = true;
-  services.xserver.desktopManager.xfce.enable = true;
-
-  # Configure keymap in X11
-  services.xserver.xkb = {
-    layout = "us";
-    variant = "";
+    xkb = {
+      layout = "us";
+      variant = "";
+      options = "caps:swapescape";
+    };
   };
-  services.xserver.xkb.options = "caps:swapescape";
+  services.displayManager.defaultSession = "xfce";
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
@@ -140,32 +159,6 @@
     base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
     image = /home/pk/Pictures/black-small.png;
     polarity = "dark";
-  };
-
-  programs.nvf = {
-    enable = true;
-    settings = {
-      vim = {
-        theme = {
-          enable = true;
-          name = "catppuccin";
-          style = "mocha";
-          # name = "gruvbox";
-          # style = "dark";
-        };
-
-        languages = {
-          enableLSP = true;
-	  enableTreesitter = true;
-          nix.enable = true;
-	  ts.enable = true;
-	  rust.enable = true;
-	};
-
-	telescope.enable = true;
-	autocomplete.nvim-cmp.enable = true;
-      };
-    };
   };
 
   environment.variables = {
