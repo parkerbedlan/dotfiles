@@ -60,7 +60,6 @@
       (gtk_accel_path "<Actions>/terminal-window/next-tab" "<Primary>Tab")
       (gtk_accel_path "<Actions>/terminal-window/prev-tab" "<Primary><Shift>ISO_Left_Tab")
     '';
-
     ".config/xfce4/xfconf/xfce-perchannel-xml/xfce4-terminal.xml".text = ''
       <?xml version="1.1" encoding="UTF-8"?>
 

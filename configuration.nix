@@ -144,7 +144,6 @@
 
   environment.variables = {
     EDITOR = "nvim";
-    # todo: probably unnecessary
     NIXPKGS_ALLOW_UNFREE = 1;
   };
 
