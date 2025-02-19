@@ -240,16 +240,50 @@
   xsession.windowManager.i3 = {
     enable = true;
     config = {
-      modifier = "Mod4";  # Windows key
-      keybindings = {
-        "Mod4+1" = "exec firefox";
-        "Mod4+2" = "exec xfce4-terminal";
-        # Add other keybindings as needed
+      modifier = "Mod4";
+      # Make new windows take up the full workspace by default
+      floating.modifier = "Mod4";
+      window.border = 0;
+      
+      # Assign applications to specific workspaces
+      assigns = {
+        "1" = [{ class = "^Firefox$"; }];
+        "2" = [{ class = "^Xfce4-terminal$"; }];
       };
-      # Basic i3 configuration
+
+      # Configure workspaces to be in tabbed layout by default
+      workspaceLayout = "tabbed";
+      
+      keybindings = {
+        # Workspace switching and application launching combined
+        "Mod4+1" = "workspace number 1; exec firefox";
+        "Mod4+2" = "workspace number 2; exec xfce4-terminal";
+        
+        # Additional basic controls you might want
+        "Mod4+Shift+q" = "kill";
+        "Mod4+Shift+c" = "reload";
+        "Mod4+Shift+r" = "restart";
+        "Mod4+Shift+e" = "exit";
+      };
+
+      # Start in fullscreen mode
+      startup = [
+        {
+          command = "firefox";
+          workspace = "1";
+        }
+        {
+          command = "xfce4-terminal";
+          workspace = "2";
+        }
+      ];
+
+      # Configure a minimal bar
       bars = [{
         position = "bottom";
         statusCommand = "i3status";
+        mode = "dock";
+        workspaceButtons = true;
       }];
     };
   };
