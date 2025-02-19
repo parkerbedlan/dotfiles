@@ -60,19 +60,39 @@
       (gtk_accel_path "<Actions>/terminal-window/next-tab" "<Primary>Tab")
       (gtk_accel_path "<Actions>/terminal-window/prev-tab" "<Primary><Shift>ISO_Left_Tab")
     '';
-    ".config/xfce4/xfconf/xfce-perchannel-xml/xfce4-terminal.xml".text = ''
-      <?xml version="1.1" encoding="UTF-8"?>
+  };
 
-      <channel name="xfce4-terminal" version="1.0">
-        <property name="misc-show-unsafe-paste-dialog" type="bool" value="false"/>
-      </channel>
-    '';
+  xfconf.settings = {
+    xfce4-terminal = {
+      "misc-show-unsafe-paste-dialog" = false;
+    };
+    xfce4-keyboard-shortcuts = {
+      "commands/custom/<Super>1" = "wmctrl -s 0";
+      "commands/custom/<Super>2" = "wmctrl -s 1";
+      "commands/custom/<Super>3" = "wmctrl -s 2";
+      "commands/custom/<Super>4" = "wmctrl -s 3";
+      "commands/custom/<Super>5" = "wmctrl -s 4";
+      "commands/custom/<Super>6" = "wmctrl -s 5";
+      "commands/custom/<Super>7" = "wmctrl -s 6";
+      "commands/custom/<Super>8" = "wmctrl -s 7";
+      "commands/custom/<Super>9" = "wmctrl -s 8";
+      "commands/custom/<Super>0" = "wmctrl -s 9";
+    };
+    xfwm4 = {
+      "general/workspace_count" = 10;
+      "general/workspace_names" = [
+        "Browser"
+        "Terminal"
+        "Messaging"
+      ];
+    };
+
   };
 
   programs.bash = {
     enable = true;
     bashrcExtra = ''
-      alias vim='nvim'
+      # alias vim='nvim'
       alias v='vim .'
       alias gp='git pull'
       alias x='git acp a'

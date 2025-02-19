@@ -49,13 +49,14 @@
   # Enable the XFCE Desktop Environment.
   services.xserver.displayManager.lightdm.enable = true;
   services.xserver.desktopManager.xfce.enable = true;
+  programs.xfconf.enable = true;
 
   # Configure keymap in X11
   services.xserver.xkb = {
     layout = "us";
     variant = "";
+    options = "caps:swapescape";
   };
-  services.xserver.xkb.options = "caps:swapescape";
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
@@ -122,6 +123,7 @@
     alarm-clock-applet
     piper
     libratbag
+    wmctrl
   ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
