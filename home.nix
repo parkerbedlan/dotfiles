@@ -241,44 +241,27 @@
     enable = true;
     config = {
       modifier = "Mod4";
-      # Make new windows take up the full workspace by default
       floating.modifier = "Mod4";
       window.border = 0;
-      
-      # Assign applications to specific workspaces
+      workspaceLayout = "tabbed";
+
       assigns = {
         "1" = [{ class = "^Firefox$"; }];
         "2" = [{ class = "^Xfce4-terminal$"; }];
       };
 
-      # Configure workspaces to be in tabbed layout by default
-      workspaceLayout = "tabbed";
-      
       keybindings = {
-        # Workspace switching and application launching combined
-        "Mod4+1" = "workspace number 1; exec firefox";
-        "Mod4+2" = "workspace number 2; exec xfce4-terminal";
+        # Use a shell command to check if the window exists before launching
+        "Mod4+1" = ''exec "if [ -z $(xdotool search --class 'Firefox') ]; then firefox; else i3-msg '[class=Firefox] focus'; fi"'';
+        "Mod4+2" = ''exec "if [ -z $(xdotool search --class 'Xfce4-terminal') ]; then xfce4-terminal; else i3-msg '[class=Xfce4-terminal] focus'; fi"'';
         
-        # Additional basic controls you might want
+        # Basic controls
         "Mod4+Shift+q" = "kill";
         "Mod4+Shift+c" = "reload";
         "Mod4+Shift+r" = "restart";
         "Mod4+Shift+e" = "exit";
       };
 
-      # Start in fullscreen mode
-      startup = [
-        {
-          command = "firefox";
-          workspace = "1";
-        }
-        {
-          command = "xfce4-terminal";
-          workspace = "2";
-        }
-      ];
-
-      # Configure a minimal bar
       bars = [{
         position = "bottom";
         statusCommand = "i3status";

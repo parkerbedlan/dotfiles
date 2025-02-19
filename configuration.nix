@@ -137,6 +137,7 @@
     alarm-clock-applet
     piper
     libratbag
+    xdotool
   ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
