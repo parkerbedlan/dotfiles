@@ -142,32 +142,6 @@
     polarity = "dark";
   };
 
-  programs.nvf = {
-    enable = true;
-    settings = {
-      vim = {
-        theme = {
-          enable = true;
-          name = "catppuccin";
-          style = "mocha";
-          # name = "gruvbox";
-          # style = "dark";
-        };
-
-        languages = {
-          enableLSP = true;
-	  enableTreesitter = true;
-          nix.enable = true;
-	  ts.enable = true;
-	  rust.enable = true;
-	};
-
-	telescope.enable = true;
-	autocomplete.nvim-cmp.enable = true;
-      };
-    };
-  };
-
   environment.variables = {
     EDITOR = "nvim";
     # todo: probably unnecessary
