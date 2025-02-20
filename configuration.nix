@@ -125,6 +125,7 @@
     libratbag
     wmctrl
     discord
+    tmux
   ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
