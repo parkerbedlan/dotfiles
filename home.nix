@@ -102,7 +102,7 @@
     v="vim .";
     gp="git pull";
     x="git acp a";
-    switch="git add -A && git commit -m \"...\" && sudo -H -E nixos-rebuild --impure switch --flake /home/pk/nixos#default && git ds && git commit --amend && git push";
+    switch="git add -A && git commit -m \"...\" && sudo -H -E nixos-rebuild --impure switch --flake /home/pk/nixos#default && git diff --staged && read -n1 -r -p \"Press any key to commit and push\" key && git commit --amend && git push";
     bluetooth="blueman-manager";
   };
 
