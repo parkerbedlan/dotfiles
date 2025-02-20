@@ -1,7 +1,6 @@
 { config, pkgs, inputs, ... }:
 
 {
-    oijafweoifwaeoji
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "pk";
@@ -103,7 +102,7 @@
     v="vim .";
     gp="git pull";
     x="git acp a";
-    switch="git add -A && git commit -m \"...\" && sudo -H -E nixos-rebuild --impure switch --flake /home/pk/nixos#default && git diff --staged && read -n1 -r -p \"Press any key to commit and push\" key && git commit --amend && git push";
+    switch="git add -A && sudo -H -E nixos-rebuild --impure switch --flake /home/pk/nixos#default";
     bluetooth="blueman-manager";
   };
 
