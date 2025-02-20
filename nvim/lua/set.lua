@@ -10,7 +10,6 @@ vim.opt.expandtab = true
 
 vim.opt.smartindent = true
 
-
 -- -- Define function for setting JavaScript and TypeScript indentation
 -- function SetJsTsIndent()
 --     if vim.bo.filetype == 'javascript' or vim.bo.filetype == 'typescript' then

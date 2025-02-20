@@ -82,6 +82,7 @@
             nvim-lspconfig
             vim-fugitive
             nvim-surround
+            harpoon2
         ];
         extra = [
           oil-nvim
