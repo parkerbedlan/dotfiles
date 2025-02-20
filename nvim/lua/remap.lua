@@ -1,7 +1,4 @@
 vim.g.mapleader = " "
--- vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
-vim.keymap.set("n", "<leader>pv", vim.cmd.Oil)
-vim.keymap.set("n", "-", vim.cmd.Oil)
 
 -- pog (bruh why didn't I do this sooner, this is as much of a game changer as the caps-esc swap and Oil.nvim
 vim.keymap.set("n", "s", ":w<CR>")

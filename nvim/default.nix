@@ -51,18 +51,85 @@
   categoryDefinitions = { pkgs, settings, categories, extra, name, mkNvimPlugin, ... }@packageDef: {
 
     lspsAndRuntimeDeps = {
+      format = with pkgs; [
+        nixfmt-rfc-style
+      ];
+      lint = with pkgs; [
+        eslint
+        csslint
+      ];
       general = with pkgs; [
+        rust-analyzer
+        svelte-language-server
+        nixd
+        nixdoc
+        lua-language-server
+        htmx-lsp
+        docker-ls
+        marksman
+        lemminx
+        phpactor
+        tailwindcss-language-server
+        typescript-language-server
       ];
     };
 
     startupPlugins = {
-      general = [
-      ];
+      general = with pkgs.vimPlugins; {
+        always = [
+          vim-repeat
+          plenary-nvim
+            nvim-lspconfig
+            vim-fugitive
+            nvim-surround
+        ];
+        extra = [
+          oil-nvim
+            comment-nvim
+            undotree
+            # If it was included in your flake inputs as plugins-hlargs,
+            # this would be how to add that plugin in your config.
+            # pkgs.neovimPlugins.hlargs
+        ];
+        themes = [
+          catppuccin-nvim
+        ];
+              lint = with pkgs.vimPlugins; [
+                nvim-lint
+              ];
+              format = with pkgs.vimPlugins; [
+                conform-nvim
+              ];
+               cmp = with pkgs.vimPlugins; [
+                    # cmp stuff
+                    nvim-cmp
+                    luasnip
+                    friendly-snippets
+                    cmp_luasnip
+                    cmp-buffer
+                    cmp-path
+                    cmp-nvim-lua
+                    cmp-nvim-lsp
+                    cmp-cmdline
+                    cmp-nvim-lsp-signature-help
+                    cmp-cmdline-history
+                    lspkind-nvim
+               ];
+                 treesitter = with pkgs.vimPlugins; [
+                    nvim-treesitter-textobjects
+                    nvim-treesitter.withAllGrammars
+                    ];
+                telescope = with pkgs.vimPlugins; [
+                    telescope-fzf-native-nvim
+                    telescope-ui-select-nvim
+                    telescope-nvim
+                ];
+      };
     };
 
     optionalPlugins = {
-      gitPlugins = with pkgs.neovimPlugins; [ ];
-      general = with pkgs.vimPlugins; [ ];
+      general = [
+      ];
     };
 
     # shared libraries to be added to LD_LIBRARY_PATH
@@ -118,7 +185,8 @@
       # (and other information to pass to lua)
       categories = {
         general = true;
-        test = true;
+        format = true;
+        lint = true;
         example = {
           youCan = "add more than just booleans";
           toThisSet = [
