@@ -29,7 +29,7 @@
   # will not apply to module imports
   # as that will have your system values
   extra_pkg_config = {
-    # allowUnfree = true;
+    allowUnfree = true;
   };
   dependencyOverlays = /* (import ./overlays inputs) ++ */ [
     # see :help nixCats.flake.outputs.overlays

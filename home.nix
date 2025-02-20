@@ -98,7 +98,6 @@
 
   programs.bash.enable = true;
   home.shellAliases = {
-    vim="nixCats";
     v="vim .";
     gp="git pull";
     x="git acp a";
@@ -121,7 +120,7 @@
         defaultBranch = "main";
       };
       core = {
-        editor = "nvim";
+        editor = "nixCats";
 	autocrlf = "input";
       };
       user = {
@@ -296,7 +295,7 @@
   #  /etc/profiles/per-user/pk/etc/profile.d/hm-session-vars.sh
   #
   home.sessionVariables = {
-    EDITOR = "nvim";
+    EDITOR = "nixCats";
   };
 
   # Let Home Manager install and manage itself.
