@@ -113,7 +113,6 @@
     neovim
     git
     xclip
-    # apparently helps prevent the clipboard contents from going away when you close nvim?
     parcellite
     fzf
     yt-dlp
