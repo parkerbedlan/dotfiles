@@ -96,18 +96,14 @@
 
   };
 
-  programs.bash = {
-    enable = true;
-    bashrcExtra = ''
-      # alias vim='nvim'
-      alias v='vim .'
-      alias gp='git pull'
-      alias x='git acp a'
-      alias switch='sudo -H -E nixos-rebuild --impure switch --flake /home/pk/nixos#default'
-      alias nrsf='switch'
-      alias bluetooth='blueman-manager'
-      alias blue='bluetooth'
-    '';
+  programs.bash.enable = true;
+  home.shellAliases = {
+    vim="nix run /home/pk/nixos";
+    v="vim .";
+    gp="git pull";
+    x="git acp a";
+    switch="sudo -H -E nixos-rebuild --impure switch --flake /home/pk/nixos#default";
+    bluetooth="blueman-manager";
   };
 
   programs.git = {
