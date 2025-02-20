@@ -98,7 +98,7 @@
 
   programs.bash.enable = true;
   home.shellAliases = {
-    vim="nix run /home/pk/nixos";
+    vim="nixCats";
     v="vim .";
     gp="git pull";
     x="git acp a";

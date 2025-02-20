@@ -4,9 +4,12 @@
 
 { config, pkgs, inputs, ... }:
 
+let
+  myFlake = builtins.getFlake (toString /home/pk/nixos);
+in 
 {
   imports =
-    [ # Include the results of the hardware scan.
+    [
       ./hardware-configuration.nix
       inputs.home-manager.nixosModules.default
     ];
@@ -127,6 +130,7 @@
     wmctrl
     discord
     tmux
+    myFlake.packages.x86_64-linux.default
   ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
