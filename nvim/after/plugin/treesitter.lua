@@ -9,3 +9,8 @@ require 'nvim-treesitter.configs'.setup {
         additional_vim_regex_highlighting = false,
     },
 }
+require('treesitter-context').setup({
+    -- enable = false,
+    -- max_lines = 4,
+    multiline_threshold = 1
+})
