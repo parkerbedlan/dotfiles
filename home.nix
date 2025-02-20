@@ -84,6 +84,13 @@
         "Browser"
         "Terminal"
         "Messaging"
+        "Dev Tools"
+        "Video Call"
+        "Workspace 6"
+        "Music"
+        "Workspace 8"
+        "Workspace 9"
+        "Gamer"
       ];
     };
 
@@ -237,6 +244,10 @@
         {
           name = "skibidi";
           url = "https://en.wikipedia.org/wiki/Skibidi_Toilet";
+        }
+        {
+          name = "lofi";
+          url = "https://www.youtube.com/watch?v=jfKfPfyJRdk";
         }
       ];
     };

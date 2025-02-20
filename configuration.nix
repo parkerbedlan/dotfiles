@@ -124,6 +124,7 @@
     piper
     libratbag
     wmctrl
+    discord
   ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
