@@ -83,6 +83,7 @@
             vim-fugitive
             nvim-surround
             harpoon2
+            nvim-ufo
         ];
         extra = [
           oil-nvim
