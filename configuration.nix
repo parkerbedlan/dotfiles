@@ -2,17 +2,21 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, inputs, ... }:
+{
+  config,
+  pkgs,
+  inputs,
+  ...
+}:
 
 let
   myFlake = builtins.getFlake (toString /home/pk/nixos);
-in 
+in
 {
-  imports =
-    [
-      ./hardware-configuration.nix
-      inputs.home-manager.nixosModules.default
-    ];
+  imports = [
+    ./hardware-configuration.nix
+    inputs.home-manager.nixosModules.default
+  ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -63,7 +67,7 @@ in
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
-  
+
   # gaming mouse
   services.ratbagd.enable = true;
 
@@ -95,9 +99,12 @@ in
   users.users.pk = {
     isNormalUser = true;
     description = "Parker B";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+    ];
     packages = with pkgs; [
-    #  thunderbird
+      #  thunderbird
     ];
   };
 
@@ -106,7 +113,6 @@ in
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
-
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -132,7 +138,10 @@ in
     myFlake.packages.x86_64-linux.default
   ];
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
 
   home-manager = {
     extraSpecialArgs = { inherit inputs; };
