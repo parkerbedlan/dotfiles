@@ -102,7 +102,7 @@
     v="vim .";
     gp="git pull";
     x="git acp a";
-    switch="sudo -H -E nixos-rebuild --impure switch --flake /home/pk/nixos#default";
+    switch="git add -A && git commit -m \"...\" && sudo -H -E nixos-rebuild --impure switch --flake /home/pk/nixos#default && git ds && git commit --amend && git push";
     bluetooth="blueman-manager";
   };
 
