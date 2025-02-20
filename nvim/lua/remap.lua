@@ -48,4 +48,6 @@ vim.keymap.set("n", "<leader>s", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left>
 -- The only other one is ZQ, and I'll just do :q! if I want to do that
 vim.keymap.set("n", "Z", "ZZ")
 -- I don't do fancy window splitting adjustment stuff, I just jump between what pops up from quickfix and stuff (I'm a single monitor andy, harpoon ftw)
-vim.keymap.set("n", "<C-w>", "<C-w><C-w>")
+-- for some reason it's not working so I'm using tab for now, which also isn't quite working but it's working better so it'll do for now
+-- vim.keymap.set("n", "<C-w>", "<C-w><C-w>", {noremap = true, silent = true})
+vim.keymap.set("n", "<Tab>", "<C-w><C-w>")
