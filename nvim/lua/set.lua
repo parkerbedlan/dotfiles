@@ -7,27 +7,18 @@ vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
-
 vim.opt.smartindent = true
 
--- -- Define function for setting JavaScript and TypeScript indentation
--- function SetJsTsIndent()
---     if vim.bo.filetype == 'javascript' or vim.bo.filetype == 'typescript' then
---         vim.bo.tabstop = 2
---         vim.bo.softtabstop = 2
---         vim.bo.shiftwidth = 2
---         vim.bo.expandtab = true
---     end
--- end
-
--- -- Define autocmd for FileType
--- vim.api.nvim_exec([[
---   augroup SetJsTsIndent
---     autocmd!
---     autocmd FileType javascript,typescript lua SetJsTsIndent()
---   augroup END
--- ]], false)
-
+-- Set indentation to 2 spaces for Nix files
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = "nix",
+    -- pattern = { "nix", "typescript", "javascript" },
+    callback = function()
+        vim.opt_local.tabstop = 2
+        vim.opt_local.softtabstop = 2
+        vim.opt_local.shiftwidth = 2
+    end,
+})
 
 vim.opt.wrap = true
 

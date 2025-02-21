@@ -99,14 +99,9 @@ let
             nvim-surround
             harpoon2
             nvim-ufo
-          ];
-          extra = [
             oil-nvim
             comment-nvim
             undotree
-            # If it was included in your flake inputs as plugins-hlargs,
-            # this would be how to add that plugin in your config.
-            # pkgs.neovimPlugins.hlargs
           ];
           themes = [
             catppuccin-nvim
