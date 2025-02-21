@@ -135,6 +135,7 @@ in
     wmctrl
     discord
     tmux
+    # nixCats neovim config, aliased as vim
     myFlake.packages.x86_64-linux.default
   ];
 

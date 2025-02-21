@@ -50,4 +50,4 @@ vim.keymap.set("n", "Z", "ZZ")
 -- I don't do fancy window splitting adjustment stuff, I just jump between what pops up from quickfix and stuff (I'm a single monitor andy, harpoon ftw)
 -- for some reason it's not working so I'm using tab for now, which also isn't quite working but it's working better so it'll do for now
 -- vim.keymap.set("n", "<C-w>", "<C-w><C-w>", {noremap = true, silent = true})
-vim.keymap.set("n", "<Tab>", "<C-w><C-w>")
+vim.keymap.set("n", "<C-w>", "<C-w><C-w>", { nowait = true })
