@@ -71,6 +71,7 @@ let
           # csslint
         ];
         general = with pkgs; [
+          xclip
           ripgrep
           efm-langserver
           rust-analyzer
