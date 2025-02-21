@@ -140,18 +140,6 @@ in
     openvpn
   ];
 
-  services.openvpn.servers = {
-    nordvpn = {
-      config = "config /home/pk/nord/us11680.nordvpn.com.tcp.ovpn";
-      autoStart = false;
-    };
-  };
-  networking.firewall = {
-    allowedUDPPorts = [ 1194 ];
-    allowedTCPPorts = [ 443 ];
-    checkReversePath = false;
-  };
-
   nix.settings.experimental-features = [
     "nix-command"
     "flakes"
