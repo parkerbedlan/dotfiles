@@ -86,22 +86,7 @@
     xfce4-terminal = {
       "misc-show-unsafe-paste-dialog" = false;
       # stylix didn't work for some reason so did it manually with https://github.com/catppuccin/xfce4-terminal
-      "color-foreground" = "#cdd6f4";
-      "color-background" = "#1e1e2e";
-      "color-background-vary" = "false";
-      "color-cursor-foreground" = "#11111b";
-      "color-cursor" = "#f5e0dc";
-      "color-cursor-use-default" = "false";
-      "color-selection" = "#cdd6f4";
-      "color-selection-background" = "#585b70";
-      "color-selection-use-default" = "false";
-      "color-bold" = "";
-      "color-bold-use-default" = "true";
-      "color-palette" =
-        "#45475a;#f38ba8;#a6e3a1;#f9e2af;#89b4fa;#f5c2e7;#94e2d5;#bac2de;#585b70;#f38ba8;#a6e3a1;#f9e2af;#89b4fa;#f5c2e7;#94e2d5;#a6adc8";
-      "color-bold-is-bright" = "true";
-      "color-use-theme" = "false";
-      "tab-activity-color" = "#fab387";
+      "color-use-theme" = "Catppuccin-Mocha";
     };
     xfce4-keyboard-shortcuts = {
       "commands/custom/<Super>1" = "wmctrl -s 0";
@@ -140,6 +125,8 @@
     x = "git acp a";
     switch = "git add -A && sudo -H -E nixos-rebuild --impure switch --flake /home/pk/nixos#default";
     bluetooth = "blueman-manager";
+    # https://my.nordaccount.com/dashboard/nordvpn/manual-configuration/service-credentials/
+    vpn = "tmux new-session -d -s vpn \"sudo openvpn --config /home/pk/nord/us11680.nordvpn.com.tcp.ovpn --auth-user-pass /home/pk/nord/nord-creds.txt\" \\; attach-session -t vpn";
   };
 
   programs.git = {
