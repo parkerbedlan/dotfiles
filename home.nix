@@ -1,4 +1,9 @@
-{ config, pkgs, inputs, ... }:
+{
+  config,
+  pkgs,
+  inputs,
+  ...
+}:
 
 {
   # Home Manager needs a bit of information about you and the paths it should
@@ -60,6 +65,8 @@
       (gtk_accel_path "<Actions>/terminal-window/next-tab" "<Primary>Tab")
       (gtk_accel_path "<Actions>/terminal-window/prev-tab" "<Primary><Shift>ISO_Left_Tab")
     '';
+    # ".local/share/xfce4/terminal/colorschemes/catppuccin-mocha.theme".text = ''
+    # '';
   };
 
   xfconf.settings = {
@@ -98,11 +105,11 @@
 
   programs.bash.enable = true;
   home.shellAliases = {
-    v="vim .";
-    gp="git pull";
-    x="git acp a";
-    switch="git add -A && sudo -H -E nixos-rebuild --impure switch --flake /home/pk/nixos#default";
-    bluetooth="blueman-manager";
+    v = "vim .";
+    gp = "git pull";
+    x = "git acp a";
+    switch = "git add -A && sudo -H -E nixos-rebuild --impure switch --flake /home/pk/nixos#default";
+    bluetooth = "blueman-manager";
   };
 
   programs.git = {
@@ -121,10 +128,10 @@
       };
       core = {
         editor = "nixCats";
-	autocrlf = "input";
+        autocrlf = "input";
       };
       user = {
-	email = "parkerbedlan@gmail.com";
+        email = "parkerbedlan@gmail.com";
         name = "Parker Bedlan";
       };
       push.autoSetupRemote = true;
@@ -139,25 +146,25 @@
       isDefault = true;
 
       settings = {
-	# this doesn't seem to do anything?
+        # this doesn't seem to do anything?
         # "browser.startup.couldRestoreSession.count" = 2;
-	"browser.newtabpage.enabled" = false;
-	"browser.startup.homepage" = "chrome://browser/content/blanktab.html";
-	"extensions.autoDisableScopes" = 0;
-	"browser.toolbars.bookmarks.visibility" = "never";
-	"browser.startup.page" = 3;
-	# uhh no need for this one probably
-	# "extensions.enabledScopes" = 15;
+        "browser.newtabpage.enabled" = false;
+        "browser.startup.homepage" = "chrome://browser/content/blanktab.html";
+        "extensions.autoDisableScopes" = 0;
+        "browser.toolbars.bookmarks.visibility" = "never";
+        "browser.startup.page" = 3;
+        # uhh no need for this one probably
+        # "extensions.enabledScopes" = 15;
 
-	# https://github.com/Misterio77/nix-config/blob/main/home/gabriel/features/desktop/common/firefox.nix
-	# Disable fx accounts
+        # https://github.com/Misterio77/nix-config/blob/main/home/gabriel/features/desktop/common/firefox.nix
+        # Disable fx accounts
         "identity.fxaccounts.enabled" = false;
         # Disable "save password" prompt
         "signon.rememberSignons" = false;
         # Harden
         "privacy.trackingprotection.enabled" = true;
         "dom.security.https_only_mode" = true;
-	# Disable irritating first-run stuff
+        # Disable irritating first-run stuff
         "browser.disableResetPrompt" = true;
         "browser.download.panel.shown" = true;
         "browser.feeds.showFirstRunUI" = false;
@@ -171,7 +178,7 @@
         "trailhead.firstrun.didSeeAboutWelcome" = true;
         "browser.bookmarks.restore_default_bookmarks" = false;
         "browser.bookmarks.addedImportButton" = true;
-	# Disable some telemetry
+        # Disable some telemetry
         "app.shield.optoutstudies.enabled" = false;
         "browser.discovery.enabled" = false;
         "browser.newtabpage.activity-stream.feeds.telemetry" = false;
@@ -197,8 +204,8 @@
         "toolkit.telemetry.unifiedIsOptIn" = false;
         "toolkit.telemetry.updatePing.enabled" = false;
 
-	# https://github.com/gvolpe/nix-config/blob/6feb7e4f47e74a8e3befd2efb423d9232f522ccd/home/programs/browsers/firefox.nix
-	"browser.urlbar.quickactions.enabled" = false;
+        # https://github.com/gvolpe/nix-config/blob/6feb7e4f47e74a8e3befd2efb423d9232f522ccd/home/programs/browsers/firefox.nix
+        "browser.urlbar.quickactions.enabled" = false;
         "browser.urlbar.quickactions.showPrefs" = false;
         "browser.urlbar.shortcuts.quickactions" = false;
         "browser.urlbar.suggest.quickactions" = false;
@@ -207,28 +214,39 @@
       extensions = with inputs.firefox-addons.packages."x86_64-linux"; [
         ublock-origin
         darkreader
-	lastpass-password-manager
-	return-youtube-dislikes
-	# worth a try
-	sponsorblock
-	# todo: youtube unhooked
-	# this seems close?
-	df-youtube
-	# maybe this?: remove-youtube-s-suggestions
-	# maybe look into this?: tournesol
-	dearrow
+        lastpass-password-manager
+        return-youtube-dislikes
+        # worth a try
+        sponsorblock
+        # todo: youtube unhooked
+        # this seems close?
+        df-youtube
+        # maybe this?: remove-youtube-s-suggestions
+        # maybe look into this?: tournesol
+        dearrow
       ];
 
       search.engines = {
         "Nix Packages" = {
-          urls = [{
-            template = "https://search.nixos.org/packages";
-            params = [
-              { name = "channel"; value = "unstable"; }
-              { name = "type"; value = "packages"; }
-              { name = "query"; value = "{searchTerms}"; }
-            ];
-          }];
+          urls = [
+            {
+              template = "https://search.nixos.org/packages";
+              params = [
+                {
+                  name = "channel";
+                  value = "unstable";
+                }
+                {
+                  name = "type";
+                  value = "packages";
+                }
+                {
+                  name = "query";
+                  value = "{searchTerms}";
+                }
+              ];
+            }
+          ];
 
           icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
           definedAliases = [ "@np" ];
@@ -249,17 +267,17 @@
     };
   };
   xdg.mimeApps.defaultApplications = {
-    "text/html" = ["firefox.desktop"];
-    "text/xml" = ["firefox.desktop"];
-    "x-scheme-handler/http" = ["firefox.desktop"];
-    "x-scheme-handler/https" = ["firefox.desktop"];
+    "text/html" = [ "firefox.desktop" ];
+    "text/xml" = [ "firefox.desktop" ];
+    "x-scheme-handler/http" = [ "firefox.desktop" ];
+    "x-scheme-handler/https" = [ "firefox.desktop" ];
   };
 
   # https://wiki.nixos.org/wiki/Zoxide
   programs.zoxide = {
     enable = true;
     enableBashIntegration = true;
-    options = ["--cmd cd"];
+    options = [ "--cmd cd" ];
   };
 
   programs.tmux = {
@@ -277,7 +295,12 @@
     '';
   };
 
-  services.parcellite.enable = true;
+  services.parcellite = {
+    enable = true;
+    extraOptions = [
+      "--no-icon"
+    ];
+  };
 
   # Home Manager can also manage your environment variables through
   # 'home.sessionVariables'. These will be explicitly sourced when using a

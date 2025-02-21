@@ -156,7 +156,7 @@ in
   stylix = {
     enable = true;
     base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
-    image = /home/pk/Pictures/black-small.png;
+    image = config.lib.stylix.pixel "base00";
     polarity = "dark";
   };
 
