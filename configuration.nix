@@ -57,6 +57,7 @@ in
   services.xserver.displayManager.lightdm.enable = true;
   services.xserver.displayManager.sessionCommands = ''
     (sleep 2 && ((sleep 5 && wmctrl -r "Firefox" -t 0) & (firefox & wmctrl -s 1 && xfce4-terminal -e "bash -c 'just home; exec bash'"))) &
+    xfconf-query -c xfce4-panel -p /plugins/plugin-6/hidden-legacy-items --create -t string -s "parcellite" -a
   '';
   services.xserver.desktopManager.xfce.enable = true;
   programs.xfconf.enable = true;

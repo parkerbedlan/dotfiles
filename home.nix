@@ -124,10 +124,10 @@
         "Gamer"
       ];
     };
-    # sadly this doesn't work
-    xfce4-panel = {
-      "/plugins/plugin-6/hidden-legacy-items" = [ "parcellite" ];
-    };
+    # sadly this doesn't work for some reason, so I'm doing it through the cli in my startup script
+    # xfce4-panel = {
+    #   "/plugins/plugin-6/hidden-legacy-items" = [ "parcellite" ];
+    # };
   };
 
   programs.bash = {
