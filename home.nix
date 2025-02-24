@@ -92,6 +92,7 @@
       "misc-show-unsafe-paste-dialog" = false;
       # stylix didn't work for some reason so did it manually with https://github.com/catppuccin/xfce4-terminal
       "color-use-theme" = "Catppuccin-Mocha";
+      "misc-maximize-default" = true;
     };
     xfce4-keyboard-shortcuts = {
       "commands/custom/<Super>1" = "wmctrl -s 0";
