@@ -80,6 +80,11 @@
       TabActivityColor=#fab387
       ColorPalette=#45475a;#f38ba8;#a6e3a1;#f9e2af;#89b4fa;#f5c2e7;#94e2d5;#bac2de;#585b70;#f38ba8;#a6e3a1;#f9e2af;#89b4fa;#f5c2e7;#94e2d5;#a6adc8
     '';
+
+    "justfile".text = ''
+      home:
+        tmux new-session -d -s home \; send-keys 'cd notes' Enter 'gp' Enter 'v' Enter \; new-window \; send-keys 'cd nixos' Enter 'gp' Enter 'v' Enter \; attach-session -t home
+    '';
   };
 
   xfconf.settings = {
@@ -99,6 +104,10 @@
       "commands/custom/<Super>8" = "wmctrl -s 7";
       "commands/custom/<Super>9" = "wmctrl -s 8";
       "commands/custom/<Super>0" = "wmctrl -s 9";
+      "commands/custom/<Super><Alt>1" = "firefox";
+      "commands/custom/<Super><Alt>2" = "xfce4-terminal";
+      "commands/custom/<Super><Alt>3" = "discord";
+      "commands/custom/<Super><Alt><Shift>3" = "whatsie";
     };
     xfwm4 = {
       "general/workspace_count" = 10;
@@ -115,10 +124,17 @@
         "Gamer"
       ];
     };
-
+    # sadly this doesn't work
+    xfce4-panel = {
+      "/plugins/plugin-6/hidden-legacy-items" = [ "parcellite" ];
+    };
   };
 
-  programs.bash.enable = true;
+  programs.bash = {
+    enable = true;
+    # bashrcExtra = ''
+    # '';
+  };
   home.shellAliases = {
     v = "vim .";
     gp = "git pull";

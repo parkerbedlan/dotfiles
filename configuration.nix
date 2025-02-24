@@ -55,6 +55,9 @@ in
 
   # Enable the XFCE Desktop Environment.
   services.xserver.displayManager.lightdm.enable = true;
+  services.xserver.displayManager.sessionCommands = ''
+    (sleep 2 && ((sleep 5 && wmctrl -r "Firefox" -t 0) & (firefox & wmctrl -s 1 && xfce4-terminal -e "bash -c 'just home; exec bash'"))) &
+  '';
   services.xserver.desktopManager.xfce.enable = true;
   programs.xfconf.enable = true;
 
@@ -121,7 +124,6 @@ in
     neovim
     git
     xclip
-    parcellite
     fzf
     yt-dlp
     bluez
@@ -139,6 +141,7 @@ in
     myFlake.packages.x86_64-linux.default
     openvpn
     whatsie
+    just
   ];
 
   nix.settings.experimental-features = [
