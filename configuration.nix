@@ -138,6 +138,7 @@ in
     # nixCats neovim config, aliased as vim
     myFlake.packages.x86_64-linux.default
     openvpn
+    whatsie
   ];
 
   nix.settings.experimental-features = [
