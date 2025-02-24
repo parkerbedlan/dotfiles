@@ -180,13 +180,12 @@
     profiles.pk = {
       isDefault = true;
 
+      # use about:config in firefox to try to find the ones you want
       settings = {
-        # this doesn't seem to do anything?
-        # "browser.startup.couldRestoreSession.count" = 2;
         "browser.newtabpage.enabled" = false;
         "browser.startup.homepage" = "chrome://browser/content/blanktab.html";
         "extensions.autoDisableScopes" = 0;
-        "browser.toolbars.bookmarks.visibility" = "never";
+        "browser.toolbars.bookmarks.visibility" = "newtab";
         "browser.startup.page" = 3;
         # uhh no need for this one probably
         # "extensions.enabledScopes" = 15;
@@ -251,14 +250,10 @@
         darkreader
         lastpass-password-manager
         return-youtube-dislikes
-        # worth a try
         sponsorblock
-        # todo: youtube unhooked
-        # this seems close?
         df-youtube
-        # maybe this?: remove-youtube-s-suggestions
-        # maybe look into this?: tournesol
         dearrow
+        # maybe look into this?: tournesol
       ];
 
       search.engines = {
@@ -291,12 +286,18 @@
 
       bookmarks = [
         {
-          name = "skibidi";
-          url = "https://en.wikipedia.org/wiki/Skibidi_Toilet";
+          name = "NixOS bookmarks toolbar";
+          toolbar = true;
+          bookmarks = [
+            {
+              name = "lofi";
+              url = "https://music.youtube.com/watch?v=jfKfPfyJRdk";
+            }
+          ];
         }
         {
-          name = "lofi";
-          url = "https://www.youtube.com/watch?v=jfKfPfyJRdk";
+          name = "super secret link, do not click";
+          url = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
         }
       ];
     };
