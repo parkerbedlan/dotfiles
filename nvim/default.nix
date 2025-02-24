@@ -75,6 +75,8 @@ let
           ripgrep
           efm-langserver
           rust-analyzer
+          rustfmt
+          cargo
           svelte-language-server
           nixd
           nixdoc
