@@ -141,7 +141,7 @@
     v = "vim .";
     gp = "git pull";
     x = "git acp a";
-    switch = "git add -A && sudo -H -E nixos-rebuild --impure switch --flake /home/pk/nixos#default";
+    switch = "pushd ~/nixos && git add -A && sudo -H -E nixos-rebuild --impure switch --flake /home/pk/nixos#default && popd";
     bluetooth = "blueman-manager";
     # https://my.nordaccount.com/dashboard/nordvpn/manual-configuration/service-credentials/
     # https://support.nordvpn.com/hc/en-us/articles/19926132780689-Manual-OpenVPN-setup-on-Android
