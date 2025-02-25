@@ -83,7 +83,13 @@
 
     "justfile".text = ''
       home:
-        tmux new-session -d -s home \; send-keys 'cd notes' Enter 'gp' Enter 'v' Enter \; new-window \; send-keys 'cd nixos' Enter 'gp' Enter 'v' Enter \; attach-session -t home
+        tmux new-session -d -s home -n notes \; \
+          send-keys 'cd notes' Enter 'gp' Enter 'v' Enter \; \
+          new-window -n nixos \; \
+          send-keys 'cd nixos' Enter 'gp' Enter 'v' Enter \; \
+          select-window -t home:1 \; \
+          attach-session -t home
+
     '';
   };
 
