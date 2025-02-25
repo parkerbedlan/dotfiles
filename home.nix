@@ -148,6 +148,8 @@
     vpn = "tmux new-session -d -s vpn \"sudo openvpn --config /home/pk/nord/us11680.nordvpn.com.tcp.ovpn --auth-user-pass /home/pk/nord/nord-creds.txt\" \\; attach-session -t vpn";
     nd = "nix develop";
     j = "just";
+    # works fine but could be refined
+    cdpkg = "cd \"$(fd -H -t d . /nix/store | fzf)\"";
   };
 
   programs.git = {
@@ -317,6 +319,10 @@
         {
           name = "super secret link, do not click";
           url = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
+        }
+        {
+          name = "audio sync test";
+          url = "https://www.youtube.com/watch?v=ucZl6vQ_8Uo";
         }
       ];
     };
