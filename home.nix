@@ -110,6 +110,7 @@
       "commands/custom/<Super><Alt>3" = "discord";
       "commands/custom/<Super><Alt><Shift>3" = "whatsie";
       "commands/custom/<Super><Alt>5" = "obs";
+      "commands/custom/<Super><Alt>7" = "spotify";
     };
     xfwm4 = {
       "general/workspace_count" = 10;

@@ -152,6 +152,7 @@ in
     whatsie
     just
     obs-studio
+    spotify
   ];
 
   nix.settings.experimental-features = [
