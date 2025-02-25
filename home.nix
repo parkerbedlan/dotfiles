@@ -109,6 +109,7 @@
       "commands/custom/<Super><Alt>2" = "xfce4-terminal";
       "commands/custom/<Super><Alt>3" = "discord";
       "commands/custom/<Super><Alt><Shift>3" = "whatsie";
+      "commands/custom/<Super><Alt>5" = "obs";
     };
     xfwm4 = {
       "general/workspace_count" = 10;
@@ -304,6 +305,14 @@
         {
           name = "https://dateful.com/";
           url = "https://dateful.com/";
+        }
+        {
+          name = "https://it-tools.tech/";
+          url = "https://it-tools.tech/";
+        }
+        {
+          name = "https://dashboard.twitch.tv/u/parkourbee/content/video-producer";
+          url = "https://dashboard.twitch.tv/u/parkourbee/content/video-producer";
         }
         {
           name = "super secret link, do not click";

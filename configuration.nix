@@ -106,6 +106,7 @@ in
     extraGroups = [
       "networkmanager"
       "wheel"
+      "vboxusers"
     ];
     packages = with pkgs; [
       #  thunderbird
@@ -143,6 +144,7 @@ in
     openvpn
     whatsie
     just
+    obs-studio
   ];
 
   nix.settings.experimental-features = [
