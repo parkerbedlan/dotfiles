@@ -120,9 +120,6 @@ in
     ];
   };
 
-  # Install firefox.
-  programs.firefox.enable = true;
-
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
@@ -153,6 +150,7 @@ in
     just
     obs-studio
     spotify
+    librewolf
   ];
 
   nix.settings.experimental-features = [

@@ -189,6 +189,7 @@
   # delete ~/.mozilla and reboot if stuff doesn't work
   programs.firefox = {
     enable = true;
+    package = pkgs.librewolf;
     profiles.pk = {
       isDefault = true;
 
