@@ -16,7 +16,6 @@ in
   imports = [
     ./hardware-configuration.nix
     inputs.home-manager.nixosModules.default
-    ./librewolf-overlay.nix
   ];
 
   # Bootloader.

@@ -185,14 +185,12 @@
     };
   };
 
-  # nixpkgs.config.allowUnfreePredicate = _: true;
-  # delete ~/.mozilla and reboot if stuff doesn't work
   programs.librewolf = {
     enable = true;
     profiles.pk = {
       isDefault = true;
 
-      # use about:config in firefox to try to find the ones you want
+      # use about:config to try to find the ones you want
       settings = {
         # librewolf-specific
         # https://nixos.wiki/wiki/Librewolf
