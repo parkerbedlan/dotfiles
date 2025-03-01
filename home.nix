@@ -194,6 +194,17 @@
 
       # use about:config in firefox to try to find the ones you want
       settings = {
+        # librewolf-specific
+        # https://nixos.wiki/wiki/Librewolf
+        "webgl.disabled" = false;
+        "privacy.resistFingerprinting" = false;
+        "privacy.clearOnShutdown.history" = false;
+        "privacy.clearOnShutdown.cookies" = false;
+        "network.cookie.lifetimePolicy" = 0;
+        # set by me
+        "privacy.clearOnShutdown_v2.cache" = false;
+        "privacy.clearOnShutdown_v2.cookiesAndStorage" = false;
+
         "browser.newtabpage.enabled" = false;
         "browser.startup.homepage" = "chrome://browser/content/blanktab.html";
         "extensions.autoDisableScopes" = 0;
@@ -201,13 +212,6 @@
         "browser.startup.page" = 3;
         # uhh no need for this one probably
         # "extensions.enabledScopes" = 15;
-
-        # https://nixos.wiki/wiki/Librewolf
-        "webgl.disabled" = false;
-        "privacy.resistFingerprinting" = false;
-        "privacy.clearOnShutdown.history" = false;
-        "privacy.clearOnShutdown.cookies" = false;
-        "network.cookie.lifetimePolicy" = 0;
 
         # https://github.com/Misterio77/nix-config/blob/main/home/gabriel/features/desktop/common/firefox.nix
         # Disable fx accounts
@@ -303,6 +307,7 @@
       };
       search.force = true;
 
+      # enableBookmarks = true;
       bookmarks = [
         {
           name = "NixOS bookmarks toolbar";
