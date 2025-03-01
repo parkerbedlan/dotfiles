@@ -111,7 +111,7 @@
       "commands/custom/<Super>8" = "wmctrl -s 7";
       "commands/custom/<Super>9" = "wmctrl -s 8";
       "commands/custom/<Super>0" = "wmctrl -s 9";
-      "commands/custom/<Super><Alt>1" = "firefox";
+      "commands/custom/<Super><Alt>1" = "librewolf";
       "commands/custom/<Super><Alt>2" = "xfce4-terminal";
       "commands/custom/<Super><Alt>3" = "discord";
       "commands/custom/<Super><Alt><Shift>3" = "whatsie";
@@ -187,9 +187,8 @@
 
   # nixpkgs.config.allowUnfreePredicate = _: true;
   # delete ~/.mozilla and reboot if stuff doesn't work
-  programs.firefox = {
+  programs.librewolf = {
     enable = true;
-    package = pkgs.librewolf;
     profiles.pk = {
       isDefault = true;
 
@@ -202,6 +201,13 @@
         "browser.startup.page" = 3;
         # uhh no need for this one probably
         # "extensions.enabledScopes" = 15;
+
+        # https://nixos.wiki/wiki/Librewolf
+        "webgl.disabled" = false;
+        "privacy.resistFingerprinting" = false;
+        "privacy.clearOnShutdown.history" = false;
+        "privacy.clearOnShutdown.cookies" = false;
+        "network.cookie.lifetimePolicy" = 0;
 
         # https://github.com/Misterio77/nix-config/blob/main/home/gabriel/features/desktop/common/firefox.nix
         # Disable fx accounts
@@ -335,11 +341,12 @@
       ];
     };
   };
+  # not sure if this actually does anything
   xdg.mimeApps.defaultApplications = {
-    "text/html" = [ "firefox.desktop" ];
-    "text/xml" = [ "firefox.desktop" ];
-    "x-scheme-handler/http" = [ "firefox.desktop" ];
-    "x-scheme-handler/https" = [ "firefox.desktop" ];
+    "text/html" = [ "librewolf.desktop" ];
+    "text/xml" = [ "librewolf.desktop" ];
+    "x-scheme-handler/http" = [ "librewolf.desktop" ];
+    "x-scheme-handler/https" = [ "librewolf.desktop" ];
   };
 
   # https://wiki.nixos.org/wiki/Zoxide
