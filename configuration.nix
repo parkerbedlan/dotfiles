@@ -56,7 +56,7 @@ in
   # Enable the XFCE Desktop Environment.
   services.xserver.displayManager.lightdm.enable = true;
   services.xserver.displayManager.sessionCommands = ''
-    (sleep 2 && ((sleep 5 && wmctrl -r "Firefox" -t 0) & (firefox & wmctrl -s 1 && xfce4-terminal -e "bash -c 'just home; exec bash'"))) &
+    (sleep 2 && ((sleep 5 && wmctrl -r "LibreWolf" -t 0) & (librewolf & wmctrl -s 1 && xfce4-terminal -e "bash -c 'just home; exec bash'"))) &
     xfconf-query -c xfce4-panel -p /plugins/plugin-6/hidden-legacy-items -t string -s "parcellite" -a -n
     xfconf-query -c xfce4-desktop -p /backdrop/single-workspace-number -t int -s 0 -n
     xfconf-query -c xfce4-desktop -p /backdrop/single-workspace-mode -t bool -s true -n
@@ -120,9 +120,6 @@ in
     ];
   };
 
-  # Install firefox.
-  programs.firefox.enable = true;
-
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
@@ -153,6 +150,7 @@ in
     just
     obs-studio
     spotify
+    librewolf
   ];
 
   nix.settings.experimental-features = [
