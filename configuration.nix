@@ -151,6 +151,9 @@ in
     obs-studio
     spotify
     librewolf
+    libreoffice
+    unzip
+    imagemagick
   ];
 
   nix.settings.experimental-features = [
