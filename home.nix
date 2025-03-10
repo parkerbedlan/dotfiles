@@ -266,7 +266,7 @@
         "browser.urlbar.suggest.quickactions" = false;
       };
 
-      extensions = with inputs.firefox-addons.packages."x86_64-linux"; [
+      extensions.packages = with inputs.firefox-addons.packages."x86_64-linux"; [
         ublock-origin
         darkreader
         lastpass-password-manager
@@ -383,6 +383,8 @@
   };
 
   stylix.enable = true;
+  # idk if this is how I'm supposed to do it
+  stylix.targets.librewolf.profileNames = [ "pk" ];
 
   home.sessionVariables = {
     EDITOR = "nixCats";
