@@ -275,6 +275,7 @@
         df-youtube
         dearrow
         # maybe look into this?: tournesol
+        startpage-private-search
       ];
 
       search.engines = {

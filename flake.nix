@@ -9,6 +9,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # https://github.com/nix-community/nur-combined/blob/main/repos/rycee/pkgs/firefox-addons/generated-firefox-addons.nix
     # nix flake show "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons"
     firefox-addons = {
       url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
@@ -22,19 +23,21 @@
     nixCats.url = "github:BirdeeHub/nixCats-nvim";
   };
 
-  outputs = { nixpkgs, ... }@inputs: 
-  let
-    myNixCats = import ./nvim { inherit inputs; };
-  in {
-    nixosConfigurations.default = nixpkgs.lib.nixosSystem {
-      specialArgs = {inherit inputs;};
-      modules = [
-        ./configuration.nix
-        inputs.stylix.nixosModules.stylix
-      ];
-    };
+  outputs =
+    { nixpkgs, ... }@inputs:
+    let
+      myNixCats = import ./nvim { inherit inputs; };
+    in
+    {
+      nixosConfigurations.default = nixpkgs.lib.nixosSystem {
+        specialArgs = { inherit inputs; };
+        modules = [
+          ./configuration.nix
+          inputs.stylix.nixosModules.stylix
+        ];
+      };
 
-    # todo: potentially use ${pkgs.system} for both instead of hard coding the system?
-    packages.x86_64-linux.default = myNixCats.packages.x86_64-linux.nixCats;
-  };
+      # todo: potentially use ${pkgs.system} for both instead of hard coding the system?
+      packages.x86_64-linux.default = myNixCats.packages.x86_64-linux.nixCats;
+    };
 }
