@@ -1,3 +1,7 @@
+require('mini.icons').setup()
+require('nvim-web-devicons').setup()
+
+-- https://github.com/stevearc/oil.nvim?tab=readme-ov-file#options
 require("oil").setup({
     keymaps = {
         ["g?"] = "actions.show_help",
@@ -19,7 +23,14 @@ require("oil").setup({
     },
     view_options = {
         show_hidden = true
-    }
+    },
+    columns = {
+        "icon",
+        -- "permissions",
+        -- "size",
+        -- "mtime",
+    },
+
 })
 vim.keymap.set("n", "<leader>pv", vim.cmd.Oil)
 vim.keymap.set("n", "-", vim.cmd.Oil)

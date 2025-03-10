@@ -103,6 +103,8 @@ let
             harpoon2
             nvim-ufo
             oil-nvim
+            mini-icons
+            nvim-web-devicons
             comment-nvim
             undotree
           ];

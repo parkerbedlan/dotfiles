@@ -180,6 +180,7 @@ in
   environment.variables = {
     EDITOR = "nixCats";
     NIXPKGS_ALLOW_UNFREE = 1;
+    LANG = "en_US.UTF-8";
   };
 
   # Some programs need SUID wrappers, can be configured further or are
