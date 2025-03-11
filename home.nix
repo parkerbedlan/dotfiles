@@ -264,6 +264,8 @@
         "browser.urlbar.quickactions.showPrefs" = false;
         "browser.urlbar.shortcuts.quickactions" = false;
         "browser.urlbar.suggest.quickactions" = false;
+
+        "browser.search.defaultenginename" = "Startpage";
       };
 
       extensions.packages = with inputs.firefox-addons.packages."x86_64-linux"; [
@@ -275,7 +277,6 @@
         df-youtube
         dearrow
         # maybe look into this?: tournesol
-        startpage-private-search
       ];
 
       search.engines = {
@@ -303,8 +304,23 @@
           icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
           definedAliases = [ "@np" ];
         };
+        "Startpage" = {
+          urls = [
+            {
+              template = "https://www.startpage.com/do/dsearch";
+              params = [
+                {
+                  name = "q";
+                  value = "{searchTerms}";
+                }
+              ];
+            }
+          ];
+        };
       };
       search.force = true;
+      search.default = "Startpage";
+      search.privateDefault = "Startpage";
 
       # enableBookmarks = true;
       bookmarks = [
