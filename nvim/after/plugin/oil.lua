@@ -1,6 +1,3 @@
-require('mini.icons').setup()
-require('nvim-web-devicons').setup()
-
 -- https://github.com/stevearc/oil.nvim?tab=readme-ov-file#options
 require("oil").setup({
     keymaps = {
@@ -25,7 +22,7 @@ require("oil").setup({
         show_hidden = true
     },
     columns = {
-        "icon",
+        -- "icon",
         -- "permissions",
         -- "size",
         -- "mtime",
