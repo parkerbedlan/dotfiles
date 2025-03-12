@@ -154,6 +154,8 @@ in
     libreoffice
     unzip
     imagemagick
+    qbittorrent
+    vlc
   ];
 
   nix.settings.experimental-features = [
