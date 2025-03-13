@@ -1,12 +1,16 @@
 local telescope = require('telescope')
 telescope.setup {
     defaults = {
-        layout_strategy = "vertical"
+        layout_strategy = "vertical",
         -- layout_config = { height=0.95 }
     },
     pickers = {
         find_files = {
             hidden = true,
+            disable_devicons = true,
+        },
+        git_files = {
+            disable_devicons = true,
         },
     },
 }
