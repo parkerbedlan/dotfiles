@@ -402,6 +402,13 @@
   # idk if this is how I'm supposed to do it
   stylix.targets.librewolf.profileNames = [ "pk" ];
 
+  programs.obs-studio = {
+    enable = true;
+    plugins = with pkgs.obs-studio-plugins; [
+      obs-backgroundremoval
+    ];
+  };
+
   home.sessionVariables = {
     EDITOR = "nixCats";
   };
