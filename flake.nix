@@ -29,10 +29,19 @@
       myNixCats = import ./nvim { inherit inputs; };
     in
     {
-      nixosConfigurations.default = nixpkgs.lib.nixosSystem {
+      nixosConfigurations.desktop = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs; };
         modules = [
-          ./configuration.nix
+          ./hosts/desktop/configuration.nix
+          ./modules
+          inputs.stylix.nixosModules.stylix
+        ];
+      };
+      nixosConfigurations.laptop = nixpkgs.lib.nixosSystem {
+        specialArgs = { inherit inputs; };
+        modules = [
+          ./hosts/laptop/configuration.nix
+          ./modules
           inputs.stylix.nixosModules.stylix
         ];
       };
