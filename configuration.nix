@@ -163,9 +163,14 @@ in
     unzip
     imagemagick
     qbittorrent
+    tor-browser
     vlc
     # haven't been able to get this to run yet (command: `fah-client`
-    fahclient
+    # fahclient
+    # clinfo
+    # rocmPackages.clr
+    # ocl-icd
+    # gpu-viewer
   ];
 
   nix.settings.experimental-features = [
