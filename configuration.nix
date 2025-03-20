@@ -123,6 +123,14 @@ in
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
+  # formerly hardware.opengl
+  hardware.graphics = {
+    enable = true;
+    enable32Bit = true;
+  };
+  # desktop only?
+  services.xserver.videoDrivers = [ "amdgpu" ];
+
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
@@ -156,6 +164,8 @@ in
     imagemagick
     qbittorrent
     vlc
+    # haven't been able to get this to run yet (command: `fah-client`
+    fahclient
   ];
 
   nix.settings.experimental-features = [
