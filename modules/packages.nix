@@ -38,5 +38,7 @@ in
     qbittorrent
     tor-browser
     vlc
+    audacity
+    anki
   ];
 }
