@@ -40,5 +40,6 @@ in
     vlc
     audacity
     anki
+    neofetch
   ];
 }

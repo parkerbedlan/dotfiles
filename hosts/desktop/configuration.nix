@@ -19,6 +19,9 @@
 
   environment.systemPackages = with pkgs; [
     ollama-rocm
+    davinci-resolve
+    virtualbox
+    distrobox
     # haven't been able to get this to run yet (command: `fah-client`
     # fahclient
     # clinfo
