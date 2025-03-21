@@ -47,6 +47,8 @@
       "commands/custom/<Super><Alt><Shift>3" = "whatsie";
       "commands/custom/<Super><Alt>5" = "obs";
       "commands/custom/<Super><Alt>7" = "spotify";
+      "commands/custom/<Super>F" = "xfce4-appfinder";
+      "commands/custom/<Super>" = "xfce4-appfinder";
     };
     xfwm4 = {
       "general/workspace_count" = 10;
@@ -63,6 +65,7 @@
         "Gamer"
       ];
       "general/activate_action" = "switch";
+      "general/easy_click" = "none";
     };
     # sadly this doesn't work for some reason, so I'm doing it through the cli in my startup script
     # xfce4-panel = {

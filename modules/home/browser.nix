@@ -96,6 +96,7 @@
         df-youtube
         dearrow
         # maybe look into this?: tournesol
+        tab-reloader
       ];
 
       search.engines = {

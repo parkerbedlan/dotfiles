@@ -41,5 +41,6 @@ in
     audacity
     anki
     neofetch
+    zoom-us
   ];
 }
