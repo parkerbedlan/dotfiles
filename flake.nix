@@ -26,7 +26,7 @@
   outputs =
     { nixpkgs, ... }@inputs:
     let
-      myNixCats = import ./nvim { inherit inputs; };
+      myNixCats = import ./modules/nvim { inherit inputs; };
     in
     {
       nixosConfigurations.desktop = nixpkgs.lib.nixosSystem {

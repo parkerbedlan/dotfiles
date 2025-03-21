@@ -18,5 +18,11 @@
 
   environment.systemPackages = with pkgs; [
     ollama
+    # haven't been able to get this to run yet (command: `fah-client`
+    # fahclient
+    # clinfo
+    # rocmPackages.clr
+    # ocl-icd
+    # gpu-viewer
   ];
 }
