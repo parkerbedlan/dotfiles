@@ -62,6 +62,7 @@
         "Workspace 9"
         "Gamer"
       ];
+      "general/activate_action" = "switch";
     };
     # sadly this doesn't work for some reason, so I'm doing it through the cli in my startup script
     # xfce4-panel = {
