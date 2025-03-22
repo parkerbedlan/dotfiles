@@ -42,5 +42,6 @@ in
     anki
     neofetch
     zoom-us
+    code-cursor
   ];
 }

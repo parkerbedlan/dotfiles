@@ -1,24 +1,11 @@
 { pkgs, ... }:
 {
-  # Enable sound with pipewire.
-  services.pulseaudio.enable = false;
-  security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
     alsa = {
       enable = true;
       support32Bit = true;
     };
-    pulse.enable = true;
-    # If you want to use JACK applications, uncomment this
-    # (idk if I need this but enabling it just in case)
-    jack.enable = true;
-
-    # use the example session manager (no others are packaged yet so this is enabled by default,
-    # no need to redefine it in your config for now)
-    #media-session.enable = true;
-
-    # idk https://github.com/sioodmy/dotfiles/blob/main/system/audio/default.nix https://discourse.nixos.org/t/bluetooth-audio-cutting-out/52180 https://wiki.nixos.org/wiki/PipeWire
     wireplumber = {
       enable = true;
       extraConfig = {
@@ -27,6 +14,10 @@
             "bluez5.enable-sbc-xq" = true;
             "bluez5.enable-msbc" = true;
             "bluez5.enable-hw-volume" = true;
+            "bluez5.headset-roles" = "[]";
+            "bluez5.hfphsp-backend" = "none";
+            "bluez5.autoswitch-profile" = false;
+            "bluez5.default-profile" = "a2dp-sink";
             "bluez5.codecs" = [
               "sbc"
               "sbc_xq"
@@ -34,47 +25,56 @@
               "ldac"
               "aptx"
               "aptx_hd"
-            ];
-            "bluez5.roles" = [
-              "hsp_hs"
-              "hsp_ag"
-              "hfp_hf"
-              "hfp_ag"
-            ];
-          };
-        };
-        bluetoothEnhancements = {
-          "monitor.bluez.properties" = {
-            "bluez5.enable-sbc-xq" = true;
-            "bluez5.enable-msbc" = true;
-            "bluez5.enable-hw-volume" = true;
-            "bluez5.codecs" = [
-              "sbc"
-              "sbc_xq"
-              "aac"
-              "ldac"
-              "aptx"
-              "aptx_hd"
-            ];
-            "bluez5.roles" = [
-              "hsp_hs"
-              "hsp_ag"
-              "hfp_hf"
-              "hfp_ag"
             ];
           };
         };
       };
     };
+    pulse.enable = true;
+    jack.enable = true;
+    
+    extraConfig = {
+      pipewire = {
+        "context.properties" = {
+          "bluez5.enable-sbc-xq" = true;
+          "bluez5.enable-msbc" = true;
+          "bluez5.default-profile" = "a2dp-sink";
+        };
+      };
+    };
   };
-  services.blueman.enable = true;
+
   hardware = {
-    enableAllFirmware = true;
     pulseaudio.support32Bit = true;
+
     bluetooth = {
       enable = true;
       powerOnBoot = false;
       package = pkgs.bluez5-experimental;
+      settings = {
+        General = {
+          Enable = "Source,Sink,Media,Socket";
+          Disable = "Headset,Gateway";
+          AutoConnect = "true";
+          FastConnectable = "true";
+        };
+        Policy = {
+          AutoEnable = "false";
+        };
+      };
     };
+
+    # idk
+    enableAllFirmware = true;
   };
+  
+  services.udev.extraRules = ''
+    ACTION=="add", SUBSYSTEM=="bluetooth", ATTR{name}=="*", RUN+="${pkgs.bluez}/bin/bluetoothctl connect %k && ${pkgs.bluez}/bin/bluetoothctl connect %k && ${pkgs.bluez}/bin/bluetoothctl connect %k"
+  '';
+  
+  services.blueman.enable = true;
+
+  # idk
+  services.pulseaudio.enable = false;
+  security.rtkit.enable = true;
 }
