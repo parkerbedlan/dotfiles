@@ -44,12 +44,11 @@
       "commands/custom/<Super><Alt>1" = "librewolf";
       "commands/custom/<Super><Alt>2" = "xfce4-terminal";
       "commands/custom/<Super><Alt>3" = "discord";
-      "commands/custom/<Super><Alt>4" = "wmctrl -s 3 && cursor";
+      "commands/custom/<Super><Alt>4" = "cursor";
       "commands/custom/<Super><Alt><Shift>3" = "whatsie";
       "commands/custom/<Super><Alt>5" = "obs";
       "commands/custom/<Super><Alt>7" = "spotify";
       "commands/custom/<Super>F" = "xfce4-appfinder";
-      "commands/custom/<Super>" = "xfce4-appfinder";
     };
     xfwm4 = {
       "general/workspace_count" = 10;
