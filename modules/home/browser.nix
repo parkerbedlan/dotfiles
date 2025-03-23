@@ -170,43 +170,45 @@
       search.default = "Startpage";
       search.privateDefault = "Startpage";
 
-      # enableBookmarks = true;
-      bookmarks = [
-        {
-          name = "NixOS bookmarks toolbar";
-          toolbar = true;
-          bookmarks = [
-            {
-              name = "lofi";
-              url = "https://music.youtube.com/watch?v=jfKfPfyJRdk";
-            }
-          ];
-        }
-        {
-          name = "https://www.epochconverter.com/";
-          url = "https://www.epochconverter.com/";
-        }
-        {
-          name = "https://dateful.com/";
-          url = "https://dateful.com/";
-        }
-        {
-          name = "https://it-tools.tech/";
-          url = "https://it-tools.tech/";
-        }
-        {
-          name = "https://dashboard.twitch.tv/u/parkourbee/content/video-producer";
-          url = "https://dashboard.twitch.tv/u/parkourbee/content/video-producer";
-        }
-        {
-          name = "super secret link, do not click";
-          url = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
-        }
-        {
-          name = "audio sync test";
-          url = "https://www.youtube.com/watch?v=ucZl6vQ_8Uo";
-        }
-      ];
+      bookmarks = {
+        force = true;
+        settings = [
+          {
+            name = "NixOS bookmarks toolbar";
+            toolbar = true;
+            bookmarks = [
+              {
+                name = "lofi";
+                url = "https://music.youtube.com/watch?v=jfKfPfyJRdk";
+              }
+            ];
+          }
+          {
+            name = "https://www.epochconverter.com/";
+            url = "https://www.epochconverter.com/";
+          }
+          {
+            name = "https://dateful.com/";
+            url = "https://dateful.com/";
+          }
+          {
+            name = "https://it-tools.tech/";
+            url = "https://it-tools.tech/";
+          }
+          {
+            name = "https://dashboard.twitch.tv/u/parkourbee/content/video-producer";
+            url = "https://dashboard.twitch.tv/u/parkourbee/content/video-producer";
+          }
+          {
+            name = "super secret link, do not click";
+            url = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
+          }
+          {
+            name = "audio sync test";
+            url = "https://www.youtube.com/watch?v=ucZl6vQ_8Uo";
+          }
+        ];
+      };
     };
   };
   # not sure if this actually does anything
