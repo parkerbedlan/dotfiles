@@ -138,6 +138,20 @@
           ];
           definedAliases = [ "@no" ];
         };
+        "Perplexity" = {
+          urls = [
+            {
+              template = "https://perplexity.ai/";
+              params = [
+                {
+                  name = "q";
+                  value = "{searchTerms}";
+                }
+              ];
+            }
+          ];
+          definedAliases = [ "@p" ];
+        };
         "Startpage" = {
           urls = [
             {

@@ -1,6 +1,9 @@
 { pkgs, ... }:
 {
-  services.pulseaudio.enable = false;
+  services.pulseaudio = {
+    enable = false;
+    support32Bit = true;
+  };
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
@@ -38,6 +41,5 @@
       };
     };
     enableAllFirmware = true;
-    pulseaudio.support32Bit = true;
   };
 }
