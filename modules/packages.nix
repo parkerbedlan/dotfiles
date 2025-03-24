@@ -43,5 +43,6 @@ in
     neofetch
     zoom-us
     code-cursor
+    httpie-desktop
   ];
 }
