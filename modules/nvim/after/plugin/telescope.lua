@@ -12,6 +12,9 @@ telescope.setup {
         git_files = {
             disable_devicons = true,
         },
+        grep_string = {
+            disable_devicons = true,
+        }
     },
 }
 -- https://github.com/junegunn/fzf?tab=readme-ov-file#search-syntax
