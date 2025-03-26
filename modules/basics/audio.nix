@@ -12,11 +12,12 @@
     pulse.enable = true;
     wireplumber = {
       enable = true;
-      extraConfig = {
-        "10-bluez"."monitor.bluez.properties" = {
-          "bluez5.hfphsp-backend" = "none";
-        };
-      };
+      # uncomment this if dealing with headphones that constantly switch to hfp/hsp mode
+      # extraConfig = {
+      #   "10-bluez"."monitor.bluez.properties" = {
+      #     "bluez5.hfphsp-backend" = "none";
+      #   };
+      # };
     };
   };
   # hardware.bluetooth.enable = true;
@@ -30,8 +31,6 @@
       package = pkgs.bluez5-experimental;
       settings = {
         General = {
-          # Enable = "Source,Sink,Media,Socket";
-          # Disable = "Headset,Gateway";
           AutoConnect = "true";
           FastConnectable = "true";
         };
