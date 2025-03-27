@@ -45,4 +45,15 @@ in
     code-cursor
     httpie-desktop
   ];
+
+  # wasn't working (potentially because I was using librewolf as my browser which bans http usage)
+  # try firefox or chrome for this next time
+  # programs.captive-browser = {
+  #   enable = true;
+  #   # browser = ''
+  #   #   firefox http://neverssl.com
+  #   # '';
+  #   # interface = "wlo1";
+  #   # interface = "wlp3s0";
+  # };
 }
