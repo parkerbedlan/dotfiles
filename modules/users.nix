@@ -8,6 +8,7 @@
       "networkmanager"
       "wheel"
       "vboxusers"
+      "docker"
     ];
     # packages = with pkgs; [
     # ];

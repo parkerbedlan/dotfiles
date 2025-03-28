@@ -12,6 +12,7 @@
     ./graphics.nix
     ./startup.nix
     ./packages.nix
+    ./docker.nix
   ];
 
   home-manager = {
