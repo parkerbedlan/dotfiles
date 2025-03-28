@@ -47,5 +47,27 @@
       OLLAMA_API_BASE_URL = "http://127.0.0.1:11434/api";
       OLLAMA_BASE_URL = "http://127.0.0.1:11434";
     };
+    host = "0.0.0.0";
+    openFirewall = true;
   };
+  # hosting on lan
+  boot.kernel.sysctl."net.ipv4.ip_forward" = true;
+  networking = {
+    nat = {
+      enable = true;
+      internalInterfaces = [ "lo" ]; # Loopback interface
+      externalInterface = "wlp9s0"; # Replace with your LAN interface name
+      forwardPorts = [
+        {
+          sourcePort = 8080;
+          destination = "192.168.7.207:8080"; # Replace with your LAN IP and port
+          # destination = "0.0.0.0:8080"; # Replace with your LAN IP and port
+          proto = "tcp";
+        }
+      ];
+    };
+    nftables.enable = true; # Enables nftables for NAT
+  };
+  networking.firewall.allowedTCPPorts = [ 8080 ];
+
 }
