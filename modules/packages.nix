@@ -45,6 +45,7 @@ in
     code-cursor
     httpie-desktop
     firefox
+    google-chrome
   ];
 
   # wasn't working (potentially because I was using librewolf as my browser which bans http usage)
