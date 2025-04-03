@@ -13,11 +13,11 @@
     wireplumber = {
       enable = true;
       # uncomment this if dealing with headphones that constantly switch to hfp/hsp mode
-      # extraConfig = {
-      #   "10-bluez"."monitor.bluez.properties" = {
-      #     "bluez5.hfphsp-backend" = "none";
-      #   };
-      # };
+      extraConfig = {
+        "10-bluez"."monitor.bluez.properties" = {
+          "bluez5.hfphsp-backend" = "none";
+        };
+      };
     };
   };
   # hardware.bluetooth.enable = true;

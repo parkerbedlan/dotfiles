@@ -20,7 +20,6 @@
   environment.systemPackages = with pkgs; [
     ollama-rocm
     davinci-resolve
-    virtualbox
     distrobox
     # haven't been able to get this to run yet (command: `fah-client`
     # fahclient
@@ -69,5 +68,11 @@
     nftables.enable = true; # Enables nftables for NAT
   };
   networking.firewall.allowedTCPPorts = [ 8080 ];
+
+  # https://nixos.wiki/wiki/VirtualBox
+  virtualisation.virtualbox.host.enable = true;
+  users.extraGroups.vboxusers.members = [ "pk" ];
+  # virtualisation.virtualbox.host.enable = true;
+  # virtualisation.virtualbox.host.enableExtensionPack = true;
 
 }
