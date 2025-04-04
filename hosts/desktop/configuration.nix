@@ -59,7 +59,7 @@
       forwardPorts = [
         {
           sourcePort = 8080;
-          destination = "192.168.7.178:8080"; # Replace with your LAN IP and port
+          destination = "192.168.7.93:8080"; # Replace with your LAN IP and port
           # destination = "0.0.0.0:8080"; # Replace with your LAN IP and port
           proto = "tcp";
         }
