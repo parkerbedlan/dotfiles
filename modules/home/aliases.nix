@@ -14,5 +14,6 @@
     j = "just";
     # works fine but could be refined
     cdpkg = "cd \"$(fd -H -t d . /nix/store | fzf)\"";
+    to_mov = ''f() { fname="''${1%.*}"; ffmpeg -i "$1" -c:v dnxhd -profile:v dnxhr_hq -c:a pcm_s16le -pix_fmt yuv422p "''${fname}.mov"; }; f'';
   };
 }
