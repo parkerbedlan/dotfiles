@@ -2,6 +2,7 @@
 {
   # gaming mouse
   services.ratbagd.enable = true;
+  # used in conjunction with piper
 
   # Enable touchpad support
   services.libinput.enable = true;
