@@ -6,6 +6,11 @@ Run my neovim configuration (in any distro) with:
 ```shell
 nix run github:parkerbedlan/dotfiles .
 ```
+or:
+```shell
+nix shell github:parkerbedlan/dotfiles
+nixCats .
+```
 > [!TIP]
 > If you don't have the `nix` cli yet, get it with this [nix-installer](https://github.com/DeterminateSystems/nix-installer) command: 
 ```shell
