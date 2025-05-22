@@ -105,6 +105,7 @@ let
             oil-nvim
             comment-nvim
             undotree
+            obsidian-nvim
           ];
           themes = [
             catppuccin-nvim

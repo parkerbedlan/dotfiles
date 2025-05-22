@@ -43,3 +43,6 @@ vim.opt.updatetime = 50
 
 -- https://github.com/monkoose/matchparen.nvim
 vim.g.loaded_matchparen = 1
+
+-- https://github.com/epwalsh/obsidian.nvim#concealing-characters
+vim.opt.conceallevel = 1
