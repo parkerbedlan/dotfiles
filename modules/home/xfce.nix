@@ -44,24 +44,36 @@
       "commands/custom/<Super><Alt>1" = "librewolf";
       "commands/custom/<Super><Alt>2" = "xfce4-terminal";
       "commands/custom/<Super><Alt>3" = "discord";
-      "commands/custom/<Super><Alt>4" = "cursor";
       "commands/custom/<Super><Alt><Shift>3" = "whatsie";
+      "commands/custom/<Super><Alt>4" = "obsidian";
       "commands/custom/<Super><Alt>5" = "obs";
-      "commands/custom/<Super><Alt>7" = "spotify";
+      "commands/custom/<Super><Alt>6" = "spotify";
+      "commands/custom/<Super><Alt>7" = "cursor";
+      "commands/custom/<Super><Alt>0" = "steam";
       "commands/custom/<Super>F" = "xfce4-appfinder";
     };
     xfwm4 = {
       "general/workspace_count" = 10;
       "general/workspace_names" = [
+        # 1
         "Browser"
+        # 2
         "Terminal"
+        # 3
         "Messaging"
-        "Dev Tools"
+        # 4
+        "Notes"
+        # 5
         "Video Call"
-        "Workspace 6"
+        # 6
         "Music"
+        # 7
+        "Dev Tools"
+        # 8
         "Workspace 8"
+        # 9
         "Workspace 9"
+        # 0
         "Gamer"
       ];
       "general/activate_action" = "switch";
