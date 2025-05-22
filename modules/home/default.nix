@@ -47,7 +47,7 @@
       "justfile".text = ''
         home:
           tmux new-session -d -s home -n notes \; \
-            send-keys 'cd notes' Enter 'gp' Enter 'v' Enter \; \
+            send-keys 'cd ~/repos/obsidian-personal' Enter 'gp' Enter 'obsidian' Enter \; \
             new-window -n nixos \; \
             send-keys 'cd nixos' Enter 'gp' Enter 'v' Enter \; \
             new-window -n nixos \; \

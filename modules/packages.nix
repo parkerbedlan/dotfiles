@@ -50,6 +50,7 @@ in
     unrar-free
     imagemagick
     gthumb
+    obsidian
   ];
 
   # wasn't working (potentially because I was using librewolf as my browser which bans http usage)
