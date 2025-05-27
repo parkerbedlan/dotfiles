@@ -22,6 +22,7 @@
     davinci-resolve
     virtualbox
     distrobox
+    blender
     # haven't been able to get this to run yet (command: `fah-client`
     # fahclient
     # clinfo

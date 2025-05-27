@@ -185,6 +185,20 @@
             }
           ];
         };
+        "Letterboxd" = {
+          urls = [
+            {
+              template = "https://letterboxd.com/search";
+              params = [
+                {
+                  name = "q";
+                  value = "{searchTerms}";
+                }
+              ];
+            }
+          ];
+          definedAliases = [ "@l" ];
+        };
       };
       search.force = true;
       search.default = "Startpage";
