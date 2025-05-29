@@ -199,6 +199,20 @@
           ];
           definedAliases = [ "@l" ];
         };
+        "Emojis" = {
+          urls = [
+            {
+              template = "https://emojifinder.com";
+              params = [
+                {
+                  name = "q";
+                  value = "{searchTerms}";
+                }
+              ];
+            }
+          ];
+          definedAliases = [ "@e" ];
+        };
       };
       search.force = true;
       search.default = "Startpage";

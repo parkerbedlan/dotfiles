@@ -34,6 +34,7 @@ in
     librewolf
     libreoffice
     unzip
+    p7zip
     imagemagick
     qbittorrent
     tor-browser
