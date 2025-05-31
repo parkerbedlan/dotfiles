@@ -30,6 +30,7 @@
       "color-use-theme" = "Catppuccin-Mocha";
       "misc-maximize-default" = true;
     };
+    # vim ~/.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-keyboard-shortcuts.xml
     xfce4-keyboard-shortcuts = {
       "commands/custom/<Super>1" = "wmctrl -s 0";
       "commands/custom/<Super>2" = "wmctrl -s 1";
@@ -51,6 +52,11 @@
       "commands/custom/<Super><Alt>7" = "cursor";
       "commands/custom/<Super><Alt>0" = "steam";
       "commands/custom/<Super>F" = "xfce4-appfinder";
+      "xfwm4/custom/<Super>Up" = "maximize_window_key";
+      "xfwm4/custom/<Shift><Super>Left" = "move_window_to_monitor_left_key";
+      "xfwm4/custom/<Shift><Super>Down" = "move_window_to_monitor_down_key";
+      "xfwm4/custom/<Shift><Super>Right" = "move_window_to_monitor_right_key";
+      "xfwm4/custom/<Shift><Super>Up" = "move_window_to_monitor_up_key";
     };
     xfwm4 = {
       "general/workspace_count" = 10;
