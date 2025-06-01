@@ -47,13 +47,17 @@
       "justfile".text = ''
         home:
           tmux new-session -d -s home -n notes \; \
-            send-keys 'cd ~/repos/obsidian-personal' Enter 'gp' Enter \; \
+            send-keys 'cd ~/repos/obsidian-personal' Enter 'gp' Enter 'obsidian & (sleep 2 && wmctrl -r "Obsidian" -t 3)' Enter \; \
             new-window -n nixos \; \
             send-keys 'cd nixos' Enter 'gp' Enter 'v' Enter \; \
             new-window -n nixos \; \
             send-keys 'cd nixos' Enter \; \
             select-window -t home:1 \; \
             attach-session -t home
+      '';
+
+      ".config/neovide".text = ''
+        -- just putting a file here to prevent neovide from complaining
       '';
     };
 

@@ -18,5 +18,6 @@
     sa = "eval \"$(ssh-agent -s)\" && ssh-add ~/.ssh/id_hetzner_3";
     whatsie-reset = "rm -rf ~/.local/share/org.keshavnrj.ubuntu/WhatSie/QtWebEngine";
     vim-gui = "neovide --neovim-bin /run/current-system/sw/bin/nixCats";
+    vimg = "vim-gui";
   };
 }

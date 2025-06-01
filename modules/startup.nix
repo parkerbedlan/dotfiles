@@ -3,7 +3,7 @@
 }:
 {
   services.xserver.displayManager.sessionCommands = ''
-    (sleep 2 && ((sleep 5 && wmctrl -r "LibreWolf" -t 0) & (sleep 2 && wmctrl -r "Terminal" -t 1) & (librewolf & obsidian & wmctrl -s 3 && xfce4-terminal -e "bash -c 'just home; exec bash'"))) &
+    (sleep 2 && ((sleep 5 && wmctrl -r "LibreWolf" -t 0) & (sleep 2 && wmctrl -r "Terminal" -t 1) & (librewolf & wmctrl -s 3 && xfce4-terminal -e "bash -c 'just home; exec bash'"))) &
     xfconf-query -c xfce4-panel -p /plugins/plugin-6/hidden-legacy-items -t string -s "parcellite" -a -n
     xfconf-query -c xfce4-desktop -p /backdrop/single-workspace-number -t int -s 0 -n
     xfconf-query -c xfce4-desktop -p /backdrop/single-workspace-mode -t bool -s true -n
