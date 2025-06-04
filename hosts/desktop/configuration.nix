@@ -7,6 +7,7 @@
   imports = [
     ./hardware-configuration.nix
     ../../modules/steam.nix
+    ../../modules/graphics.nix
   ];
 
   home-manager.users.pk.host = "desktop";
@@ -23,6 +24,8 @@
     virtualbox
     distrobox
     blender
+    rocmPackages.rocminfo
+    rocmPackages.rocm-smi
     # haven't been able to get this to run yet (command: `fah-client`
     # fahclient
     # clinfo
