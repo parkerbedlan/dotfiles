@@ -9,6 +9,14 @@
       rocmPackages.rocm-runtime
       rocmPackages.rocm-device-libs
       rocmPackages.rocm-smi
+      rocmPackages.hipcc
+      rocmPackages.hipblas
+      rocmPackages.rocblas
     ];
+  };
+
+  environment.sessionVariables = {
+    HIP_PATH = "${pkgs.rocmPackages.hipcc}";
+    ROCM_PATH = "${pkgs.rocmPackages.rocm-runtime}";
   };
 }

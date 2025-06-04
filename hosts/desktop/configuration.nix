@@ -23,7 +23,7 @@
     davinci-resolve
     virtualbox
     distrobox
-    blender
+    blender-hip
     rocmPackages.rocminfo
     rocmPackages.rocm-smi
     # haven't been able to get this to run yet (command: `fah-client`
