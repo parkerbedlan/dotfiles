@@ -1,3 +1,4 @@
+# https://nixos.wiki/wiki/AMD_GPU
 { pkgs, ... }:
 {
   hardware.graphics = {
