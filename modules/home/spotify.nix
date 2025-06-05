@@ -6,6 +6,7 @@
   # };
 
   # https://github.com/aome510/spotify-player?tab=readme-ov-file#commands
+  # https://github.com/aome510/spotify-player/blob/master/docs/config.md#keymaps
   programs.spotify-player = {
     enable = true;
     keymaps = [
@@ -44,6 +45,10 @@
           };
         };
         key_sequence = "down";
+      }
+      {
+        command = "SearchPage";
+        key_sequence = "C-p";
       }
     ];
   };
