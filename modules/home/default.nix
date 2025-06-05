@@ -17,6 +17,7 @@
     ./tmux.nix
     ./xfce.nix
     ./zoxide.nix
+    ./ghostty.nix
   ];
 
   options = {

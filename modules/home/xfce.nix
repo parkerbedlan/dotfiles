@@ -43,7 +43,8 @@
       "commands/custom/<Super>9" = "wmctrl -s 8";
       "commands/custom/<Super>0" = "wmctrl -s 9";
       "commands/custom/<Super><Alt>1" = "librewolf";
-      "commands/custom/<Super><Alt>2" = "xfce4-terminal";
+      "commands/custom/<Super><Alt>2" = "ghostty";
+      "commands/custom/<Primary><Alt>t" = "ghostty";
       "commands/custom/<Super><Alt>3" = "discord";
       "commands/custom/<Super><Alt><Shift>3" = "whatsie";
       "commands/custom/<Super><Alt>4" = "obsidian";
@@ -84,6 +85,11 @@
       ];
       "general/activate_action" = "switch";
       "general/easy_click" = "none";
+    };
+    # vim ~/.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-panel.xml
+    xfce4-panel = {
+      # don't use the bottom panel, only the top one
+      "panels" = [ 1 ];
     };
     # sadly this doesn't work for some reason, so I'm doing it through the cli in my startup script
     # xfce4-panel = {

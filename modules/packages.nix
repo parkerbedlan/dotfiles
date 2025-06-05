@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 
 let
   myFlake = builtins.getFlake (toString /home/pk/nixos);
@@ -53,6 +53,14 @@ in
     gthumb
     obsidian
     neovide
+    # https://www.youtube.com/watch?v=rWMQ-g2QDsI
+    (lib.hiPrio uutils-coreutils-noprefix)
+    ripgrep
+    ripgrep-all
+    eza
+    xh
+    dust
+    # gitui
   ];
 
   # wasn't working (potentially because I was using librewolf as my browser which bans http usage)
