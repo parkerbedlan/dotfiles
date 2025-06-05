@@ -50,6 +50,10 @@
         command = "SearchPage";
         key_sequence = "C-p";
       }
+      {
+        command = "ClosePopup";
+        key_sequence = "q";
+      }
     ];
   };
 }
