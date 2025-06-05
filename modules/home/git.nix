@@ -25,5 +25,8 @@
       };
       push.autoSetupRemote = true;
     };
+    # https://mynixos.com/home-manager/option/programs.git.delta.enable
+    # https://github.com/dandavison/delta
+    delta.enable = true;
   };
 }

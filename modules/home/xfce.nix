@@ -49,7 +49,7 @@
       "commands/custom/<Super><Alt><Shift>3" = "whatsie";
       "commands/custom/<Super><Alt>4" = "obsidian";
       "commands/custom/<Super><Alt>5" = "obs";
-      "commands/custom/<Super><Alt>6" = "spotify";
+      "commands/custom/<Super><Alt>6" = "ghostty -e \"spotify_player\"";
       "commands/custom/<Super><Alt>7" = "cursor";
       "commands/custom/<Super><Alt>0" = "steam";
       "commands/custom/<Super>F" = "xfce4-appfinder";

@@ -64,6 +64,20 @@ in
     dust
     # I don't think I need a git ui; I'm really comfy with my aliases
     # gitui
+    hyperfine
+    # not needed on this list, just include in nix dev shell of whatever rust project (rather than using cargo-watch)
+    # bacon
+    cargo-info
+    rusty-man
+    # https://github.com/jhspetersson/fselect?tab=readme-ov-file#examples
+    fselect
+    delta
+    tokei
+    wiki-tui
+    mprocs
+    presenterm
+    kondo
+    # todo: try out espanso
   ];
 
   # wasn't working (potentially because I was using librewolf as my browser which bans http usage)

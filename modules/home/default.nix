@@ -19,6 +19,7 @@
     ./zoxide.nix
     ./ghostty.nix
     ./starship.nix
+    ./spotify.nix
   ];
 
   options = {
