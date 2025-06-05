@@ -59,7 +59,10 @@ in
     ripgrep-all
     eza
     xh
+    # https://yazi-rs.github.io/docs/quick-start
+    yazi
     dust
+    # I don't think I need a git ui; I'm really comfy with my aliases
     # gitui
   ];
 

@@ -10,6 +10,7 @@
         "ctrl+v=paste_from_clipboard"
       ];
       maximize = true;
+      title = "ghostty";
     };
   };
 }

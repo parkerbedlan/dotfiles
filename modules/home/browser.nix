@@ -144,6 +144,21 @@
           icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
           definedAliases = [ "@no" ];
         };
+        "MyNixOS" = {
+          urls = [
+            {
+              template = "https://mynixos.com/search";
+              params = [
+                {
+                  name = "q";
+                  value = "{searchTerms}";
+                }
+              ];
+            }
+          ];
+          icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
+          definedAliases = [ "@nm" ];
+        };
         "Noogle" = {
           urls = [
             {

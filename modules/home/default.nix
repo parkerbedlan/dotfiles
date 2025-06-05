@@ -18,6 +18,7 @@
     ./xfce.nix
     ./zoxide.nix
     ./ghostty.nix
+    ./starship.nix
   ];
 
   options = {
