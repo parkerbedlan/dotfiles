@@ -97,6 +97,7 @@
         dearrow
         # maybe look into this?: tournesol
         tab-reloader
+        tampermonkey
       ];
 
       search.engines = {
