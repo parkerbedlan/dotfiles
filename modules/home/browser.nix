@@ -281,4 +281,18 @@
     "x-scheme-handler/http" = [ "librewolf.desktop" ];
     "x-scheme-handler/https" = [ "librewolf.desktop" ];
   };
+
+  programs.chromium = {
+    enable = true;
+    package = pkgs.brave;
+    extensions = [
+      { id = "gebbhagfogifgggkldgodflihgfeippi"; }
+      { id = "mnjggcdmjocbbbhaepdhchncahnbgone"; }
+      { id = "mjdepdfccjgcndkmemponafgioodelna"; }
+      { id = "enamippconapkdmgfgjchkhakpfinmaj"; }
+    ];
+    # commandLineArgs = [
+    #   "--disable-features=WebRtcAllowInputVolumeAdjustment"
+    # ];
+  };
 }
