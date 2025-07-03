@@ -20,5 +20,6 @@
     vim-gui = "neovide --neovim-bin /run/current-system/sw/bin/nixCats";
     vimg = "vim-gui";
     ls = "eza";
+    o = "git as && git stash && gp && git stash pop && x && echo nooice";
   };
 }
