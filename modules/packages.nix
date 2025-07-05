@@ -53,6 +53,7 @@ in
     gthumb
     obsidian
     neovide
+    # start of random rust stuff
     # https://www.youtube.com/watch?v=rWMQ-g2QDsI
     (lib.hiPrio uutils-coreutils-noprefix)
     ripgrep
@@ -78,7 +79,11 @@ in
     presenterm
     kondo
     # todo: try out espanso
+    # end of random rust stuff
   ];
+
+  programs.bash.blesh.enable = true;
+  # try bash-completion if blesh ends up getting annoying
 
   # wasn't working (potentially because I was using librewolf as my browser which bans http usage)
   # try firefox or chrome for this next time
