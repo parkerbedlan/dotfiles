@@ -21,5 +21,6 @@
     vimg = "vim-gui";
     ls = "eza";
     o = "git as && git stash && gp && git stash pop && x && echo nooice";
+    q = ''q() { "$@" > /dev/null 2>&1; }; q'';
   };
 }
