@@ -1,46 +1,46 @@
 -- https://github.com/obsidian-nvim/obsidian.nvim/?tab=readme-ov-file#%EF%B8%8F-configuration
-require("obsidian").setup {
-    workspaces = {
-        {
-            name = "personal",
-            path = "~/repos/obsidian-personal",
-        },
-    },
-    ui = {
-        enable = true, -- set to false to disable all additional syntax features
-        checkboxes = {
-            [" "] = { char = "☐", hl_group = "ObsidianTodo" },
-            ["x"] = { char = "✔", hl_group = "ObsidianDone" },
-        },
-    },
-    mappings = {
-        -- Overrides the 'gf' mapping to work on markdown/wiki links within your vault.
-        ["gf"] = {
-            action = function()
-                return require("obsidian").util.gf_passthrough()
-            end,
-            opts = { noremap = false, expr = true, buffer = true },
-        },
-        -- Toggle check-boxes.
-        ["<leader>ch"] = {
-            action = function()
-                return require("obsidian").util.toggle_checkbox()
-            end,
-            opts = { buffer = true },
-        },
-        -- This is how I have <C-b> configured in regular Obsidian, so may as well make it match
-        ["<C-b>"] = {
-            action = function()
-                return require("obsidian").util.toggle_checkbox()
-            end,
-            opts = { buffer = true },
-        },
-        -- Smart action depending on context: follow link, show notes with tag, toggle checkbox, or toggle heading fold
-        ["<cr>"] = {
-            action = function()
-                return require("obsidian").util.smart_action()
-            end,
-            opts = { buffer = true, expr = true },
-        },
-    },
-}
+-- require("obsidian").setup {
+--     workspaces = {
+--         {
+--             name = "personal",
+--             path = "~/repos/obsidian-personal",
+--         },
+--     },
+--     ui = {
+--         enable = true, -- set to false to disable all additional syntax features
+--         checkboxes = {
+--             [" "] = { char = "☐", hl_group = "ObsidianTodo" },
+--             ["x"] = { char = "✔", hl_group = "ObsidianDone" },
+--         },
+--     },
+--     mappings = {
+--         -- Overrides the 'gf' mapping to work on markdown/wiki links within your vault.
+--         ["gf"] = {
+--             action = function()
+--                 return require("obsidian").util.gf_passthrough()
+--             end,
+--             opts = { noremap = false, expr = true, buffer = true },
+--         },
+--         -- Toggle check-boxes.
+--         ["<leader>ch"] = {
+--             action = function()
+--                 return require("obsidian").util.toggle_checkbox()
+--             end,
+--             opts = { buffer = true },
+--         },
+--         -- This is how I have <C-b> configured in regular Obsidian, so may as well make it match
+--         ["<C-b>"] = {
+--             action = function()
+--                 return require("obsidian").util.toggle_checkbox()
+--             end,
+--             opts = { buffer = true },
+--         },
+--         -- Smart action depending on context: follow link, show notes with tag, toggle checkbox, or toggle heading fold
+--         ["<cr>"] = {
+--             action = function()
+--                 return require("obsidian").util.smart_action()
+--             end,
+--             opts = { buffer = true, expr = true },
+--         },
+--     },
+-- }

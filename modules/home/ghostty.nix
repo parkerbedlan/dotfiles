@@ -15,6 +15,7 @@
       title = "ghostty";
       # default already?
       copy-on-select = "clipboard";
+      app-notifications = "no-clipboard-copy";
     };
   };
 }
