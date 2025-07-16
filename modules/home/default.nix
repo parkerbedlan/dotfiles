@@ -50,7 +50,7 @@
       "justfile".text = ''
         home:
           tmux new-session -d -s home -n notes \; \
-            send-keys 'cd ~/repos/obsidian-personal' Enter 'gp' Enter 'obsidian & (sleep 2 && wmctrl -r "Obsidian" -t 3)' Enter \; \
+            send-keys 'cd ~/repos/obsidian-personal' Enter 'gp' Enter 'q obsidian & (sleep 2 && wmctrl -r "Obsidian" -t 3)' Enter \; \
             new-window -n nixos \; \
             send-keys 'cd nixos' Enter 'gp' Enter 'v' Enter \; \
             new-window -n nixos \; \
