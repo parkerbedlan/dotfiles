@@ -90,7 +90,8 @@
       extensions.packages = with inputs.firefox-addons.packages."x86_64-linux"; [
         ublock-origin
         darkreader
-        lastpass-password-manager
+        # lastpass-password-manager
+        proton-pass
         return-youtube-dislikes
         sponsorblock
         df-youtube
