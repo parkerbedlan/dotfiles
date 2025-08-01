@@ -1,5 +1,6 @@
 {
   inputs,
+  lib,
   ...
 }:
 
@@ -13,7 +14,7 @@
     ./packages.nix
     ./docker.nix
     ./hosts_file.nix
-  ];
+  ] ++ lib.optional (builtins.pathExists ./foo.nix) ./foo.nix;
 
   home-manager = {
     extraSpecialArgs = { inherit inputs; };

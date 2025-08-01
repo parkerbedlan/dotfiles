@@ -5,7 +5,7 @@
     gp = "git pull";
     x = "git acp a";
     foo = "echo ${config.host}";
-    switch = "pushd ~/nixos && git add -A && sudo -H -E nixos-rebuild --impure switch --flake /home/pk/nixos#${config.host} && popd";
+    switch = "pushd ~/nixos && git add -A && git add -N modules/foo.nix -f && sudo -H -E nixos-rebuild --impure switch --flake /home/pk/nixos#${config.host} && git reset && popd";
     bluetooth = "blueman-manager";
     # https://my.nordaccount.com/dashboard/nordvpn/manual-configuration/service-credentials/
     # https://support.nordvpn.com/hc/en-us/articles/19926132780689-Manual-OpenVPN-setup-on-Android
