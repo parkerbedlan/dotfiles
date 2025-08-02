@@ -88,6 +88,7 @@ let
           phpactor
           tailwindcss-language-server
           typescript-language-server
+          vscode-json-languageserver
         ];
       };
 
@@ -127,7 +128,7 @@ let
             cmp-nvim-lsp
             cmp-cmdline
             cmp-nvim-lsp-signature-help
-            cmp-cmdline-history
+            # cmp-cmdline-history
             lspkind-nvim
           ];
           treesitter = with pkgs.vimPlugins; [

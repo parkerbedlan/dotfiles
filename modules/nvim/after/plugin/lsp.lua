@@ -18,7 +18,7 @@ lsp_zero.on_attach(function(_client, bufnr)
 
     -- format on save https://github.com/VonHeikemen/lsp-zero.nvim/blob/v3.x/doc/md/lsp.md#always-use-the-active-servers
     -- instead atm I'm explicitly setting with format_on_save at the bottom of the file (this is because I sometimes use these editor settings at work, and formatting on save messes up the version control of legacy codebases unless you can get everyone on board with using a code formatter that formats on save.
-    -- lsp_zero.buffer_autoformat()
+    lsp_zero.buffer_autoformat()
 end)
 
 local cmp = require('cmp')
@@ -53,6 +53,7 @@ lspconfig.dockerls.setup {}
 lspconfig.marksman.setup {}
 lspconfig.lemminx.setup {}
 lspconfig.phpactor.setup {}
+lspconfig.jsonls.setup {}
 
 lspconfig.lua_ls.setup {
     on_init = function(client)
@@ -180,18 +181,18 @@ lsp_zero.format_mapping('gq', {
     },
 })
 
-lsp_zero.format_on_save({
-    format_opts = {
-        async = false,
-        timeout_ms = 10000,
-    },
-    servers = {
-        ['efm'] = { 'javascript', 'typescript', 'javascriptreact', 'typescriptreact', 'svelte', 'css' },
-        ['rust_analyzer'] = { 'rust' },
-        ['lua_ls'] = { 'lua' },
-        ['nixd'] = { 'nix' }
-    }
-})
+-- lsp_zero.format_on_save({
+--     format_opts = {
+--         async = false,
+--         timeout_ms = 10000,
+--     },
+--     servers = {
+--         ['efm'] = { 'javascript', 'typescript', 'javascriptreact', 'typescriptreact', 'svelte', 'css' },
+--         ['rust_analyzer'] = { 'rust' },
+--         ['lua_ls'] = { 'lua' },
+--         ['nixd'] = { 'nix' }
+--     }
+-- })
 
 
 lsp_zero.set_server_config({

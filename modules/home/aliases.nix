@@ -23,17 +23,14 @@
     ls = "eza";
     o = "git as && git stash && gp && git stash pop && x && echo nooice";
     q = ''q() { "$@" > /dev/null 2>&1; }; q'';
-    sparse = ''f() { 
-      url="$1"
-      repo_url="''${url%/tree/*}.git"
-      path="''${url#*/tree/*/}"
-      repo_name="$(basename "''${repo_url%.git}")"
-      git clone --filter=blob:none --no-checkout "$repo_url"
-      cd "$repo_name"
-      git sparse-checkout init --cone
-      git sparse-checkout set "$path"
-      git checkout
-    }; f'';
+    sparse = ''
+      f() { 
+            url="$1"
+            repo_url="''${url%/tree/*}.git"
+            path="''${url#*/tree/*/}"
+            repo_name="$(basename "''${repo_url%.git}")"
+            git clone --filter=blob:none --no-checkout "$repo_url" && cd "$repo_name" && git sparse-checkout init --cone && git sparse-checkout set "$path" && git checkout
+          }; f'';
     fixgit = "find .git/objects/ -type f -empty -delete";
   };
 }
