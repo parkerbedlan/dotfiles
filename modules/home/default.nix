@@ -59,6 +59,8 @@
             attach-session -t home
       '';
 
+      ".ssh/config".source = ./.ssh-config;
+
       ".config/neovide".text = ''
         -- just putting a file here to prevent neovide from complaining
       '';
