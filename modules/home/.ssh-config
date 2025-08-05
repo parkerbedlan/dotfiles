@@ -1,11 +1,12 @@
 Host forgejo.parkerbedlan.com
     HostName forgejo.parkerbedlan.com
-    Port 22222
     User git
     IdentityFile ~/.ssh/id_forgejo
+    Port 22222
 
 Host github.com
     HostName github.com
+    User git
     IdentityFile ~/.ssh/id_github
 
 Host hetzner1
