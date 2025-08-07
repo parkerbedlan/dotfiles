@@ -36,6 +36,8 @@
     enable32Bit = true;
   };
 
+  # todo: figure out how to actually use this by looking through https://github.com/nix-community/nix-ld
+  # until then, it seems like `nix-shell -p steam-run --run "steam-run ./hello-world"` works fine
   programs.nix-ld = {
     enable = true;
     # libraries = with pkgs; [
