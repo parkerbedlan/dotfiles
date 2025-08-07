@@ -32,5 +32,6 @@
             git clone --filter=blob:none --no-checkout "$repo_url" && cd "$repo_name" && git sparse-checkout init --cone && git sparse-checkout set "$path" && git checkout
           }; f'';
     fixgit = "find .git/objects/ -type f -empty -delete";
+    sr = ''f() { nix-shell -p steam-run --run "steam-run $*"; }; f'';
   };
 }

@@ -80,6 +80,7 @@ in
     kondo
     # todo: try out espanso
     # end of random rust stuff
+    # doesn't work
     # degit
   ];
 
