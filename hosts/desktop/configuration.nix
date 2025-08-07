@@ -37,12 +37,6 @@
     # gpu-viewer
   ];
 
-  # programs.nix-ld = {
-  #   enable = true;
-  #   libraries = with pkgs; [
-  #   ];
-  # };
-
   # hosted on localhost:8080
   # services.open-webui = {
   #   package = pkgs.open-webui; # pkgs must be from stable, for example nixos-24.11

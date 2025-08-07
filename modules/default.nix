@@ -14,7 +14,8 @@
     ./packages.nix
     ./docker.nix
     ./hosts_file.nix
-  ] ++ lib.optional (builtins.pathExists ./foo.nix) ./foo.nix;
+  ]
+  ++ lib.optional (builtins.pathExists ./foo.nix) ./foo.nix;
 
   home-manager = {
     extraSpecialArgs = { inherit inputs; };
@@ -33,6 +34,12 @@
   hardware.graphics = {
     enable = true;
     enable32Bit = true;
+  };
+
+  programs.nix-ld = {
+    enable = true;
+    # libraries = with pkgs; [
+    # ];
   };
 
   system.stateVersion = "24.11"; # do not change
