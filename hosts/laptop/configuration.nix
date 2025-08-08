@@ -9,6 +9,7 @@
   ];
 
   home-manager.users.pk.host = "laptop";
+  networking.hostName = "nixos-laptop";
 
   environment.variables = {
     HOST = "laptop";
