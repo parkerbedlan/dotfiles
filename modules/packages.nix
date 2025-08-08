@@ -80,7 +80,7 @@ in
     kondo
     # todo: try out espanso
     # end of random rust stuff
-    # doesn't work, needs different version of nixpkgs
+    # TODO: doesn't work, needs stable nixpkgs
     # degit
   ];
 

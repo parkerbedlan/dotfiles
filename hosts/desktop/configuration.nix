@@ -21,7 +21,7 @@
 
   environment.systemPackages = with pkgs; [
     ollama-rocm
-    # infinite loading, never downloads, needs a different version of nixpkgs
+    # TODO: infinite loading, never downloads, needs stable nixpkgs
     # davinci-resolve
     # virtualbox
     distrobox
@@ -31,11 +31,15 @@
     immich-go
   ];
 
-  # immich stuff
+  # hosting immich
+  # https://search.nixos.org/options?channel=unstable&from=0&size=50&sort=relevance&type=packages&query=services.immich.
   services.immich = {
     enable = true;
     port = 2283;
+    host = "0.0.0.0";
+    openFirewall = true;
     accelerationDevices = null;
+    # settings.server.externalDomain = "https://immich.example.com";
   };
   users.users.immich.extraGroups = [
     "video"
@@ -50,17 +54,24 @@
         prefixLength = 24;
       }
     ];
+    interfaces.wlp9s0.ipv4.addresses = [
+      {
+        address = "192.168.7.143";
+        prefixLength = 24;
+      }
+    ];
   };
   boot.kernel.sysctl."net.ipv4.ip_forward" = true;
 
-  # hosting open-webui on localhost:8080
+  # hosting open-webui
   services.open-webui = {
-    package = pkgs.open-webui; # pkgs must be from stable, for example nixos-24.11
+    package = pkgs.open-webui; # TODO: pkgs must be from stable, for example nixos-24.11
     enable = true;
     environment = {
       ANONYMIZED_TELEMETRY = "False";
       DO_NOT_TRACK = "True";
       SCARF_NO_ANALYTICS = "True";
+      # TODO: make sure ollama also starts automatically
       OLLAMA_API_BASE_URL = "http://127.0.0.1:11434/api";
       OLLAMA_BASE_URL = "http://127.0.0.1:11434";
     };
