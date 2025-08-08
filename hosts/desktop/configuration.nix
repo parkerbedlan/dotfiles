@@ -28,6 +28,18 @@
     blender-hip
     rocmPackages.rocminfo
     rocmPackages.rocm-smi
+    immich-go
+  ];
+
+  # immich stuff
+  services.immich = {
+    enable = true;
+    port = 2283;
+    accelerationDevices = null;
+  };
+  users.users.immich.extraGroups = [
+    "video"
+    "render"
   ];
 
   # general hosting stuff
@@ -55,12 +67,14 @@
     host = "0.0.0.0";
     openFirewall = true;
   };
+
   # hosting on lan
   networking = {
+    nftables.enable = true; # Enables nftables for NAT
     nat = {
       enable = true;
       internalInterfaces = [ "lo" ]; # Loopback interface
-      externalInterface = "wlp9s0"; # Replace with your LAN interface name
+      externalInterface = "wlp9s0"; # LAN interface name
       forwardPorts = [
         {
           sourcePort = 8080;
@@ -68,10 +82,17 @@
           # destination = "0.0.0.0:8080"; # Replace with your LAN IP and port
           proto = "tcp";
         }
+        {
+          sourcePort = 2283;
+          destination = "192.168.7.143:2283";
+          proto = "tcp";
+        }
       ];
     };
-    nftables.enable = true; # Enables nftables for NAT
-    firewall.allowedTCPPorts = [ 8080 ];
+    firewall.allowedTCPPorts = [
+      8080
+      2283
+    ];
   };
 
 }
