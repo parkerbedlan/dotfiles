@@ -122,14 +122,14 @@ let
             luasnip
             friendly-snippets
             cmp_luasnip
-            cmp-buffer
             cmp-path
             cmp-nvim-lua
             cmp-nvim-lsp
-            cmp-cmdline
             cmp-nvim-lsp-signature-help
-            # cmp-cmdline-history
             lspkind-nvim
+            cmp-buffer
+            cmp-cmdline
+            cmp-cmdline-history
           ];
           treesitter = with pkgs.vimPlugins; [
             nvim-treesitter-textobjects

@@ -46,19 +46,30 @@
     "render"
   ];
 
-  # general hosting stuff
   networking = {
-    # interfaces.eth0.ipv4.addresses = [
-    #   {
-    #     address = "192.168.1.2";
-    #     prefixLength = 24;
-    #   }
-    # ];
-    interfaces.wlp9s0.ipv4.addresses = [
-      {
-        address = "192.168.7.143";
-        prefixLength = 24;
-      }
+    networkmanager.enable = false;
+    wireless = {
+      enable = true;
+      # actual wifi passwords in foo.nix
+      # networks = {
+      #   "<wifi-name-here>" = {
+      #     psk = "<wifi-password-here>";
+      #   };
+      # };
+    };
+    interfaces.wlp9s0 = {
+      useDHCP = false;
+      ipv4.addresses = [
+        {
+          address = "192.168.7.143";
+          prefixLength = 24;
+        }
+      ];
+    };
+    defaultGateway = "192.168.7.1";
+    nameservers = [
+      "192.168.7.1"
+      "8.8.8.8"
     ];
   };
   boot.kernel.sysctl."net.ipv4.ip_forward" = true;

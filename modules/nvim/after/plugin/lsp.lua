@@ -30,10 +30,11 @@ cmp.setup({
         { name = 'nvim_lsp' },
         { name = 'nvim_lua' },
         { name = 'luasnip',                keyword_length = 2 },
-        { name = 'buffer',                 keyword_length = 3 },
-        { name = 'cmdline' },
         { name = 'nvim_lsp_signature_help' },
-        { name = 'cmdline_history' },
+        -- could potentially comment out the below sources
+        -- { name = 'buffer',                 keyword_length = 5 },
+        -- { name = 'cmdline' },
+        -- { name = 'cmdline_history' },
     },
     formatting = lsp_zero.cmp_format(),
     mapping = cmp.mapping.preset.insert({

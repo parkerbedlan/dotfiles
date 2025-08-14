@@ -82,6 +82,7 @@ in
     # end of random rust stuff
     # TODO: doesn't work, needs stable nixpkgs
     # degit
+    tesseract
   ];
 
   programs.bash.blesh.enable = true;

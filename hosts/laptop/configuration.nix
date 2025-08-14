@@ -14,4 +14,6 @@
   environment.variables = {
     HOST = "laptop";
   };
+
+  networking.networkmanager.enable = true;
 }
