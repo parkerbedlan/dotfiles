@@ -24,8 +24,6 @@
     with pkgs;
     [
       ollama-rocm
-      # TODO: infinite loading, never downloads, needs stable nixpkgs
-      # davinci-resolve
       # virtualbox
       distrobox
       blender-hip
