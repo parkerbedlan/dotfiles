@@ -86,6 +86,7 @@ in
     # todo: try out espanso
     # end of random rust stuff
     tesseract
+    nodejs
   ]
   # ++ (with pkgs-stable; [
   # https://github.com/NixOS/nixpkgs/issues/391032

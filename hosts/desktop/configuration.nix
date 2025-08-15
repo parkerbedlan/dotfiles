@@ -82,7 +82,6 @@
 
   # hosting open-webui
   services.open-webui = {
-    # package = pkgs.open-webui; # TODO: pkgs must be from stable, for example nixos-24.11
     package = pkgs-stable.open-webui;
     enable = true;
     environment = {
