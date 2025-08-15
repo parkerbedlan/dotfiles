@@ -1,4 +1,9 @@
-{ pkgs, lib, ... }:
+{
+  pkgs,
+  pkgs-stable,
+  lib,
+  ...
+}:
 
 let
   myFlake = builtins.getFlake (toString /home/pk/nixos);
@@ -83,7 +88,11 @@ in
     # TODO: doesn't work, needs stable nixpkgs
     # degit
     tesseract
-  ];
+  ]
+  # ++ (with pkgs-stable; [
+  # degit
+  # ]);
+  ;
 
   programs.bash.blesh.enable = true;
   # try bash-completion if blesh ends up getting annoying

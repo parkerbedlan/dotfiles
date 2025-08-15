@@ -7,7 +7,6 @@
     ./keyboard.nix
     ./location.nix
     ./mouse.nix
-    ./networking.nix
     ./xfce.nix
   ];
 
