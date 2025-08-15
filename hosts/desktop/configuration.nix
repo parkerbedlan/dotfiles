@@ -20,17 +20,22 @@
 
   services.xserver.videoDrivers = [ "amdgpu" ];
 
-  environment.systemPackages = with pkgs; [
-    ollama-rocm
-    # TODO: infinite loading, never downloads, needs stable nixpkgs
-    # davinci-resolve
-    # virtualbox
-    distrobox
-    blender-hip
-    rocmPackages.rocminfo
-    rocmPackages.rocm-smi
-    immich-go
-  ];
+  environment.systemPackages =
+    with pkgs;
+    [
+      ollama-rocm
+      # TODO: infinite loading, never downloads, needs stable nixpkgs
+      # davinci-resolve
+      # virtualbox
+      distrobox
+      blender-hip
+      rocmPackages.rocminfo
+      rocmPackages.rocm-smi
+      immich-go
+    ]
+    ++ (with pkgs-stable; [
+      davinci-resolve
+    ]);
 
   # hosting immich
   # https://search.nixos.org/options?channel=unstable&from=0&size=50&sort=relevance&type=packages&query=services.immich.

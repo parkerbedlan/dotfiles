@@ -85,11 +85,10 @@ in
     kondo
     # todo: try out espanso
     # end of random rust stuff
-    # TODO: doesn't work, needs stable nixpkgs
-    # degit
     tesseract
   ]
   # ++ (with pkgs-stable; [
+  # https://github.com/NixOS/nixpkgs/issues/391032
   # degit
   # ]);
   ;
