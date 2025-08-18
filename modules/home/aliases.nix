@@ -34,5 +34,6 @@
     fixgit = "find .git/objects/ -type f -empty -delete";
     sr = ''f() { nix-shell -p steam-run --run "steam-run $*"; }; f'';
     wifi = "sudo grep -r '^psk=' /etc/NetworkManager/system-connections/";
+    claude = "npx @anthropic-ai/claude-code";
   };
 }

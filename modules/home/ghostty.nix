@@ -10,6 +10,7 @@
       # https://ghostty.org/docs/config/keybind/reference
       keybind = [
         "ctrl+v=paste_from_clipboard"
+        ''shift+enter=text:\n''
       ];
       maximize = true;
       title = "ghostty";
