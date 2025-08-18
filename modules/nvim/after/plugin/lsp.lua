@@ -13,11 +13,9 @@ lsp_zero.on_attach(function(_client, bufnr)
     vim.keymap.set("n", "<leader>vca", function() vim.lsp.buf.code_action() end, opts)
     vim.keymap.set("n", "<leader>vrr", function() vim.lsp.buf.references() end, opts)
     vim.keymap.set("n", "<leader>vrn", function() vim.lsp.buf.rename() end, opts)
-    -- originally this was for insert mode <C-h>, which was the reason I couldn't do <C-h> or <C-BS> to delete the previous word in insert mode
     vim.keymap.set("n", "<leader>vh", function() vim.lsp.buf.signature_help() end, opts)
 
     -- format on save https://github.com/VonHeikemen/lsp-zero.nvim/blob/v3.x/doc/md/lsp.md#always-use-the-active-servers
-    -- instead atm I'm explicitly setting with format_on_save at the bottom of the file (this is because I sometimes use these editor settings at work, and formatting on save messes up the version control of legacy codebases unless you can get everyone on board with using a code formatter that formats on save.
     lsp_zero.buffer_autoformat()
 end)
 
@@ -111,6 +109,7 @@ local prettierd = {
         '.prettierrc.cjs',
         '.prettierrc.toml',
         'prettier.config.js',
+        'package.json',
     },
 }
 
@@ -119,8 +118,9 @@ lspconfig.efm.setup({
         documentFormatting = true,
         documentRangeFormatting = true,
     },
+    filetypes = { "javascript", "typescript", "javascriptreact", "typescriptreact", "svelte", "css" },
     settings = {
-        rootMarkers = { '.git/' },
+        rootMarkers = { '.git/', 'package.json' },
         languages = {
             javascript = { prettierd },
             typescript = { prettierd },
@@ -142,7 +142,11 @@ local function organize_imports()
 end
 
 lspconfig.ts_ls.setup({
+    filetypes = { "javascript", "typescript", "javascriptreact", "typescriptreact" },
     on_attach = function(client)
+        -- Call the default on_attach function
+        lsp_zero.default_keymaps({ buffer = bufnr })
+
         -- disable ts_ls as a formatter
         client.server_capabilities.documentFormattingProvider = false
         client.server_capabilities.documentFormattingRangeProvider = false
@@ -175,26 +179,12 @@ lsp_zero.format_mapping('gq', {
     },
     servers = {
         ['efm'] = { 'javascript', 'typescript', 'javascriptreact', 'typescriptreact', 'svelte', 'css' },
-        ['ts_ls'] = { 'javascript', 'typescript', 'javascriptreact', 'typescriptreact', 'svelte' },
+        -- ['ts_ls'] = { 'javascript', 'typescript', 'javascriptreact', 'typescriptreact', 'svelte' },
         ['rust_analyzer'] = { 'rust' },
         ['lua_ls'] = { 'lua' },
         ['nixd'] = { 'nix' }
     },
 })
-
--- lsp_zero.format_on_save({
---     format_opts = {
---         async = false,
---         timeout_ms = 10000,
---     },
---     servers = {
---         ['efm'] = { 'javascript', 'typescript', 'javascriptreact', 'typescriptreact', 'svelte', 'css' },
---         ['rust_analyzer'] = { 'rust' },
---         ['lua_ls'] = { 'lua' },
---         ['nixd'] = { 'nix' }
---     }
--- })
-
 
 lsp_zero.set_server_config({
     capabilities = {
