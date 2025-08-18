@@ -1,7 +1,7 @@
 local lsp_zero = require('lsp-zero')
 local lspconfig = require('lspconfig')
 
-lsp_zero.on_attach(function(_client, bufnr)
+lsp_zero.on_attach(function(client, bufnr)
     local opts = { buffer = bufnr, remap = false }
 
     vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
@@ -17,6 +17,10 @@ lsp_zero.on_attach(function(_client, bufnr)
 
     -- format on save https://github.com/VonHeikemen/lsp-zero.nvim/blob/v3.x/doc/md/lsp.md#always-use-the-active-servers
     lsp_zero.buffer_autoformat()
+    -- format on save, but exclude ts_ls and tailwindcss
+    -- if client.name ~= "ts_ls" and client.name ~= "tailwindcss" then
+    --     lsp_zero.buffer_autoformat()
+    -- end
 end)
 
 local cmp = require('cmp')
@@ -29,7 +33,6 @@ cmp.setup({
         { name = 'nvim_lua' },
         { name = 'luasnip',                keyword_length = 2 },
         { name = 'nvim_lsp_signature_help' },
-        -- could potentially comment out the below sources
         -- { name = 'buffer',                 keyword_length = 5 },
         -- { name = 'cmdline' },
         -- { name = 'cmdline_history' },
@@ -144,9 +147,6 @@ end
 lspconfig.ts_ls.setup({
     filetypes = { "javascript", "typescript", "javascriptreact", "typescriptreact" },
     on_attach = function(client)
-        -- Call the default on_attach function
-        lsp_zero.default_keymaps({ buffer = bufnr })
-
         -- disable ts_ls as a formatter
         client.server_capabilities.documentFormattingProvider = false
         client.server_capabilities.documentFormattingRangeProvider = false
