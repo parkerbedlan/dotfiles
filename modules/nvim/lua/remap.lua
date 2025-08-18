@@ -7,6 +7,8 @@ vim.keymap.set("n", "S", ":OrganizeImports<CR>:w<CR>")
 
 -- <C-BS> actually outputs <C-h> when using a terminal, so this lets you use <C-BS> like a normal person! No more accidentally closing the tab in your browser when you've mistyped a word!
 vim.keymap.set("i", "<C-h>", "<C-w>")
+-- necessary because ghostty (and probably other modern terminals) are actually capable of sending <C-BS>, while tmux and classic terminals will conflate it with <C-h>
+vim.keymap.set("i", "<C-BS>", "<C-w>")
 vim.keymap.set("i", "<C-w>", "<nop>")
 
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
