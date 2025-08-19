@@ -87,6 +87,7 @@ in
     # end of random rust stuff
     tesseract
     nodejs
+    claude-code
   ]
   # ++ (with pkgs-stable; [
   # https://github.com/NixOS/nixpkgs/issues/391032
