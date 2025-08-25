@@ -14,6 +14,7 @@
     ./packages.nix
     ./docker.nix
     ./hosts_file.nix
+    ./redshift.nix
   ]
   ++ lib.optional (builtins.pathExists ./foo.nix) ./foo.nix;
 
