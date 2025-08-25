@@ -27,6 +27,6 @@
     };
     # https://mynixos.com/home-manager/option/programs.git.delta.enable
     # https://github.com/dandavison/delta
-    delta.enable = true;
+    # delta.enable = true;
   };
 }

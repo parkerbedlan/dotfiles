@@ -1,9 +1,8 @@
 vim.g.mapleader = " "
 
-vim.keymap.set("n", "s", ":w<CR>")
--- temporary, to break the habit of using :w manually
--- vim.keymap.set("n", ":", "<nop>")
-vim.keymap.set("n", "S", ":OrganizeImports<CR>:w<CR>")
+vim.keymap.set("n", "<C-s>", ":w<CR>")
+vim.keymap.set("n", "S", ":w<CR>")
+-- vim.keymap.set("n", "S", ":OrganizeImports<CR>:w<CR>")
 
 -- <C-BS> actually outputs <C-h> when using a terminal, so this lets you use <C-BS> like a normal person! No more accidentally closing the tab in your browser when you've mistyped a word!
 vim.keymap.set("i", "<C-h>", "<C-w>")

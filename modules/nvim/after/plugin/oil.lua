@@ -17,6 +17,7 @@ require("oil").setup({
         ["gx"] = "actions.open_external",
         ["g."] = "actions.toggle_hidden",
         ["g\\"] = "actions.toggle_trash",
+        ["<C-l>"] = false,
     },
     view_options = {
         show_hidden = true

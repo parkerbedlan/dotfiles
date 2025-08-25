@@ -107,6 +107,7 @@ let
             oil-nvim
             comment-nvim
             undotree
+            leap-nvim
             # obsidian-nvim
           ];
           themes = [
