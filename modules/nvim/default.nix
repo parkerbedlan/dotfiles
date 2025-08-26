@@ -90,6 +90,7 @@ let
           tailwindcss-language-server
           typescript-language-server
           vscode-json-languageserver
+          vscode-langservers-extracted
         ];
       };
 
