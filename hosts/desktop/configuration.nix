@@ -44,6 +44,7 @@
     openFirewall = true;
     accelerationDevices = null;
     # settings.server.externalDomain = "https://immich.example.com";
+    machine-learning.enable = true;
   };
   users.users.immich.extraGroups = [
     "video"
