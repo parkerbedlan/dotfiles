@@ -8,6 +8,7 @@
   imports = [
     ./hardware-configuration.nix
     ./networking.nix
+    # ../laptop/networking.nix
     ../../modules/steam.nix
     ../../modules/graphics.nix
   ];
