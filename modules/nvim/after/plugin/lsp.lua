@@ -56,6 +56,7 @@ lspconfig.marksman.setup {}
 lspconfig.lemminx.setup {}
 lspconfig.phpactor.setup {}
 lspconfig.jsonls.setup {}
+lspconfig.eslint.setup {}
 
 lspconfig.lua_ls.setup {
     on_init = function(client)
