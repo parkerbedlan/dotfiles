@@ -5,6 +5,7 @@
 {
   imports = [
     ./hardware-configuration.nix
+    ./networking.nix
     ../../modules/steam.nix
   ];
 
@@ -14,6 +15,4 @@
   environment.variables = {
     HOST = "laptop";
   };
-
-  networking.networkmanager.enable = true;
 }
