@@ -90,6 +90,7 @@ in
     claude-code
     # opencode
     crush
+    speedtest-cli
   ]
   # ++ (with pkgs-stable; [
   # https://github.com/NixOS/nixpkgs/issues/391032
