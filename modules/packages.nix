@@ -32,7 +32,6 @@ in
     # nixCats neovim config, aliased as vim
     myFlake.packages.x86_64-linux.default
     openvpn
-    whatsie
     just
     obs-studio
     spotify
@@ -48,8 +47,8 @@ in
     anki
     neofetch
     zoom-us
-    code-cursor
     httpie-desktop
+    httpie
     firefox
     google-chrome
     ffmpeg
@@ -88,8 +87,10 @@ in
     tesseract
     nodejs
     claude-code
+    code-cursor
     # opencode
     crush
+    cursor-cli
     speedtest-cli
   ]
   # ++ (with pkgs-stable; [

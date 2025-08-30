@@ -46,7 +46,6 @@
       "commands/custom/<Super><Alt>2" = "ghostty";
       "commands/custom/<Primary><Alt>t" = "ghostty";
       "commands/custom/<Super><Alt>3" = "discord";
-      "commands/custom/<Super><Alt><Shift>3" = "whatsie";
       "commands/custom/<Super><Alt>4" = "obsidian";
       "commands/custom/<Super><Alt>5" = "obs";
       "commands/custom/<Super><Alt>6" = "ghostty -e \"spotify_player\"";
