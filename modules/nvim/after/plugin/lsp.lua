@@ -1,5 +1,4 @@
 local lsp_zero = require('lsp-zero')
-local lspconfig = require('lspconfig')
 
 lsp_zero.on_attach(function(client, bufnr)
     local opts = { buffer = bufnr, remap = false }
@@ -15,12 +14,8 @@ lsp_zero.on_attach(function(client, bufnr)
     vim.keymap.set("n", "<leader>vrn", function() vim.lsp.buf.rename() end, opts)
     vim.keymap.set("n", "<leader>vh", function() vim.lsp.buf.signature_help() end, opts)
 
-    -- format on save https://github.com/VonHeikemen/lsp-zero.nvim/blob/v3.x/doc/md/lsp.md#always-use-the-active-servers
+    -- format on save via lsp-zero helper
     lsp_zero.buffer_autoformat()
-    -- format on save, but exclude ts_ls and tailwindcss
-    -- if client.name ~= "ts_ls" and client.name ~= "tailwindcss" then
-    --     lsp_zero.buffer_autoformat()
-    -- end
 end)
 
 local cmp = require('cmp')
@@ -33,9 +28,6 @@ cmp.setup({
         { name = 'nvim_lua' },
         { name = 'luasnip',                keyword_length = 2 },
         { name = 'nvim_lsp_signature_help' },
-        -- { name = 'buffer',                 keyword_length = 5 },
-        -- { name = 'cmdline' },
-        -- { name = 'cmdline_history' },
     },
     formatting = lsp_zero.cmp_format(),
     mapping = cmp.mapping.preset.insert({
@@ -46,19 +38,28 @@ cmp.setup({
     }),
 })
 
--- https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.txt
-lspconfig.rust_analyzer.setup {}
-lspconfig.svelte.setup {}
-lspconfig.nixd.setup {}
-lspconfig.htmx.setup {}
-lspconfig.dockerls.setup {}
-lspconfig.marksman.setup {}
-lspconfig.lemminx.setup {}
-lspconfig.phpactor.setup {}
-lspconfig.jsonls.setup {}
-lspconfig.eslint.setup {}
+-- --- Simple servers: enable the builtin configs from nvim-lspconfig/runtime
+local simple_servers = {
+    'rust_analyzer',
+    'svelte',
+    'nixd',
+    'htmx',
+    'dockerls',
+    'marksman',
+    'lemminx',
+    'phpactor',
+    'jsonls',
+    'eslint',
+}
 
-lspconfig.lua_ls.setup {
+for _, name in ipairs(simple_servers) do
+    -- enable will activate the server using the config that nvim-lspconfig provides on the runtimepath
+    pcall(vim.lsp.enable, name)
+end
+
+-- --- lua_ls: custom config + enable
+vim.lsp.config('lua_ls', {
+    -- on_init as you had it
     on_init = function(client)
         if client.workspace_folders then
             local path = client.workspace_folders[1].name
@@ -67,37 +68,28 @@ lspconfig.lua_ls.setup {
             end
         end
 
-        client.config.settings.Lua = vim.tbl_deep_extend('force', client.config.settings.Lua, {
-            runtime = {
-                -- Tell the language server which version of Lua you're using
-                -- (most likely LuaJIT in the case of Neovim)
-                version = 'LuaJIT'
+        client.config.settings = vim.tbl_deep_extend('force', client.config.settings or {}, {
+            Lua = {
+                runtime = { version = 'LuaJIT' },
+                workspace = {
+                    checkThirdParty = false,
+                    library = { vim.env.VIMRUNTIME },
+                },
             },
-            -- Make the server aware of Neovim runtime files
-            workspace = {
-                checkThirdParty = false,
-                library = {
-                    vim.env.VIMRUNTIME
-                    -- Depending on the usage, you might want to add additional paths here.
-                    -- "${3rd}/luv/library"
-                    -- "${3rd}/busted/library",
-                }
-                -- or pull in all of 'runtimepath'. NOTE: this is a lot slower and will cause issues when working on your own configuration (see https://github.com/neovim/nvim-lspconfig/issues/3189)
-                -- library = vim.api.nvim_get_runtime_file("", true)
-            }
         })
     end,
+
     settings = {
         Lua = {
             diagnostics = {
-                -- Get the language server to recognize the `vim` global
-                -- globals = { "vim" },
+                globals = { "vim" },
             },
-        }
-    }
-}
+        },
+    },
+})
+pcall(vim.lsp.enable, 'lua_ls')
 
--- https://github.com/VonHeikemen/lsp-zero.nvim/issues/337#issuecomment-1783798483
+-- --- prettierd/efm config (document formatting)
 local prettierd = {
     formatCommand = "prettierd '${INPUT}' ${--range-start=charStart} ${--range-end=charEnd}",
     formatCanRange = true,
@@ -117,7 +109,7 @@ local prettierd = {
     },
 }
 
-lspconfig.efm.setup({
+vim.lsp.config('efm', {
     init_options = {
         documentFormatting = true,
         documentRangeFormatting = true,
@@ -131,11 +123,13 @@ lspconfig.efm.setup({
             javascriptreact = { prettierd },
             typescriptreact = { prettierd },
             svelte = { prettierd },
-            css = { prettierd }
+            css = { prettierd },
         }
     }
 })
+pcall(vim.lsp.enable, 'efm')
 
+-- --- typescript server (ts_ls) with disable-formatting & OrganizeImports command
 local function organize_imports()
     local params = {
         command = "_typescript.organizeImports",
@@ -145,10 +139,10 @@ local function organize_imports()
     vim.lsp.buf.execute_command(params)
 end
 
-lspconfig.ts_ls.setup({
+vim.lsp.config('ts_ls', {
     filetypes = { "javascript", "typescript", "javascriptreact", "typescriptreact" },
-    on_attach = function(client)
-        -- disable ts_ls as a formatter
+    on_attach = function(client, bufnr)
+        -- disable ts_ls as a formatter (your previous logic)
         client.server_capabilities.documentFormattingProvider = false
         client.server_capabilities.documentFormattingRangeProvider = false
     end,
@@ -159,8 +153,10 @@ lspconfig.ts_ls.setup({
         }
     }
 })
+pcall(vim.lsp.enable, 'ts_ls')
 
-lspconfig.tailwindcss.setup {
+-- --- tailwindcss with experimental settings
+vim.lsp.config('tailwindcss', {
     filetypes = { "aspnetcorerazor", "astro", "astro-markdown", "blade", "clojure", "django-html", "htmldjango", "edge", "eelixir", "elixir", "ejs", "erb", "eruby", "gohtml", "gohtmltmpl", "haml", "handlebars", "hbs", "html", "html-eex", "heex", "jade", "leaf", "liquid", "markdown", "mdx", "mustache", "njk", "nunjucks", "php", "razor", "slim", "twig", "css", "less", "postcss", "sass", "scss", "stylus", "sugarss", "javascript", "javascriptreact", "reason", "rescript", "typescript", "typescriptreact", "vue", "svelte", "templ", "rust" },
     settings = {
         tailwindCSS = {
@@ -171,8 +167,10 @@ lspconfig.tailwindcss.setup {
             }
         }
     }
-}
+})
+pcall(vim.lsp.enable, 'tailwindcss')
 
+-- --- format mapping & server config via lsp-zero
 lsp_zero.format_mapping('gq', {
     format_opts = {
         async = false,
@@ -180,7 +178,6 @@ lsp_zero.format_mapping('gq', {
     },
     servers = {
         ['efm'] = { 'javascript', 'typescript', 'javascriptreact', 'typescriptreact', 'svelte', 'css' },
-        -- ['ts_ls'] = { 'javascript', 'typescript', 'javascriptreact', 'typescriptreact', 'svelte' },
         ['rust_analyzer'] = { 'rust' },
         ['lua_ls'] = { 'lua' },
         ['nixd'] = { 'nix' }
