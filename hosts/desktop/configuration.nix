@@ -31,6 +31,7 @@
     rocmPackages.rocm-smi
     immich-go
     shotcut
+    kdePackages.kdenlive
   ];
   # ++ (with pkgs-stable; [
   # doesn't seem to play nice with amd, idk. using an open source solution instead (shotcut or kdenlive)
