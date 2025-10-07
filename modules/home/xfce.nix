@@ -51,7 +51,9 @@
       "commands/custom/<Super><Alt>6" = "ghostty -e \"spotify_player\"";
       "commands/custom/<Super><Alt>7" = "cursor";
       "commands/custom/<Super><Alt>0" = "steam";
-      "commands/custom/<Super>F" = "xfce4-appfinder";
+      # "commands/custom/<Super>F" = "xfce4-appfinder";
+      "commands/custom/<Super>F" = "rofi -show drun";
+      "commands/custom/<Super>D" = "rofi -show drun";
       "xfwm4/custom/<Super>Up" = "maximize_window_key";
       "xfwm4/custom/<Shift><Super>Left" = "move_window_to_monitor_left_key";
       "xfwm4/custom/<Shift><Super>Down" = "move_window_to_monitor_down_key";
