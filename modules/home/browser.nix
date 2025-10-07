@@ -87,6 +87,7 @@
         "browser.search.defaultenginename" = "Startpage";
       };
 
+      # https://github.com/nix-community/nur-combined/blob/main/repos/rycee/pkgs/firefox-addons/generated-firefox-addons.nix
       extensions.packages = with inputs.firefox-addons.packages."x86_64-linux"; [
         ublock-origin
         darkreader
