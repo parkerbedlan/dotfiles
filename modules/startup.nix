@@ -3,7 +3,7 @@
 }:
 {
   services.xserver.displayManager.sessionCommands = ''
-    (sleep 2 && ((sleep 5 && wmctrl -r "LibreWolf" -t 0) & (sleep 2 && wmctrl -r "ghostty" -t 1) & (librewolf & wmctrl -s 3 && ghostty -e "bash -c 'just home; exec bash'"))) &
+    (sleep 2 && ((sleep 5 && wmctrl -r "LibreWolf" -t 0) & (sleep 2 && wmctrl -r "ghostty" -t 1) & (librewolf & wmctrl -s 3 && ghostty -e bash -c 'just home; exec bash'))) &
     #
     # # helper: wait up to ~10s for a window title/class to appear
     # wait_for_window() {
