@@ -93,6 +93,7 @@ in
     cursor-cli
     speedtest-cli
     rofi
+    calibre
   ]
   # ++ (with pkgs-stable; [
   # https://github.com/NixOS/nixpkgs/issues/391032
