@@ -94,6 +94,7 @@ in
     speedtest-cli
     rofi
     calibre
+    proton-authenticator
   ]
   # ++ (with pkgs-stable; [
   # https://github.com/NixOS/nixpkgs/issues/391032
