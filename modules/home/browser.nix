@@ -231,6 +231,14 @@
           ];
           definedAliases = [ "@e" ];
         };
+        "Dictionary" = {
+          urls = [
+            {
+              template = "https://www.merriam-webster.com/dictionary/{searchTerms}";
+            }
+          ];
+          definedAliases = [ "@d" ];
+        };
       };
       search.force = true;
       search.default = "Startpage";
