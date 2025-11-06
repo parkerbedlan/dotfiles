@@ -89,7 +89,8 @@
 
       # https://github.com/nix-community/nur-combined/blob/main/repos/rycee/pkgs/firefox-addons/generated-firefox-addons.nix
       extensions.packages = with inputs.firefox-addons.packages."x86_64-linux"; [
-        ublock-origin
+        # ublock-origin
+        adnauseam
         darkreader
         # lastpass-password-manager
         proton-pass
@@ -103,6 +104,19 @@
       ];
 
       search.engines = {
+        "Startpage" = {
+          urls = [
+            {
+              template = "https://www.startpage.com/do/dsearch";
+              params = [
+                {
+                  name = "q";
+                  value = "{searchTerms}";
+                }
+              ];
+            }
+          ];
+        };
         "Nix Packages" = {
           urls = [
             {
@@ -190,10 +204,10 @@
           ];
           definedAliases = [ "@p" ];
         };
-        "Startpage" = {
+        "Genius Lyrics" = {
           urls = [
             {
-              template = "https://www.startpage.com/do/dsearch";
+              template = "https://genius.com/search";
               params = [
                 {
                   name = "q";
@@ -202,6 +216,7 @@
               ];
             }
           ];
+          definedAliases = [ "@lyrics" ];
         };
         "Letterboxd" = {
           urls = [
