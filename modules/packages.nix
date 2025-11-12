@@ -96,6 +96,7 @@ in
     calibre
     proton-authenticator
     simple-http-server
+    python3
   ]
   # ++ (with pkgs-stable; [
   # https://github.com/NixOS/nixpkgs/issues/391032
