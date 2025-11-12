@@ -95,6 +95,7 @@ in
     rofi
     calibre
     proton-authenticator
+    simple-http-server
   ]
   # ++ (with pkgs-stable; [
   # https://github.com/NixOS/nixpkgs/issues/391032
