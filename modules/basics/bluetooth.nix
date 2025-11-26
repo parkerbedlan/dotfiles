@@ -41,4 +41,6 @@
     };
     enableAllFirmware = true;
   };
+
+  hardware.logitech.wireless.enable = true;
 }

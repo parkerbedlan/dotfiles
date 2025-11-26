@@ -24,7 +24,14 @@
         STOP_CHARGE_THRESH_BAT0 = 80; # 80 and above it stops charging
         # 95 for travelling
         # STOP_CHARGE_THRESH_BAT0 = 95;
+
+        # https://discourse.nixos.org/t/turn-off-autosuspend-for-usb/58933/2
+        # causes wireless keyboard/mouse to turn off intermittently if autosuspend is on
+        USB_AUTOSUSPEND = 0;
       };
     };
   };
+  # related to USB_AUTOSUSPEND
+  # boot.kernelParams = [ "usbcore.autosuspend=-1" ]; # or 120 to wait two minutes, etc
+  boot.kernelParams = [ "usbcore.autosuspend=120" ];
 }
