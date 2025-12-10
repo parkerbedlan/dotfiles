@@ -50,6 +50,7 @@ local simple_servers = {
     'phpactor',
     'jsonls',
     'eslint',
+    'ruby'
 }
 
 for _, name in ipairs(simple_servers) do
