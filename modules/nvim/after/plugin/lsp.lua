@@ -49,14 +49,25 @@ local simple_servers = {
     'lemminx',
     'phpactor',
     'jsonls',
-    'eslint',
-    'ruby'
+    'eslint'
 }
 
 for _, name in ipairs(simple_servers) do
     -- enable will activate the server using the config that nvim-lspconfig provides on the runtimepath
     pcall(vim.lsp.enable, name)
 end
+
+-- --- ruby_lsp: custom config + enable
+vim.lsp.config('ruby_lsp', {
+    init_options = {
+        addonSettings = {
+            ["Ruby LSP Rails"] = {
+                enablePendingMigrationsPrompt = false
+            }
+        }
+    }
+})
+pcall(vim.lsp.enable, 'ruby_lsp')
 
 -- --- lua_ls: custom config + enable
 vim.lsp.config('lua_ls', {
