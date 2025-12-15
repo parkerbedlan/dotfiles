@@ -25,18 +25,22 @@
   environment.systemPackages = with pkgs; [
     ollama-rocm
     # virtualbox
-    distrobox
     blender-hip
     rocmPackages.rocminfo
     rocmPackages.rocm-smi
     immich-go
     shotcut
     kdePackages.kdenlive
+    gnome-boxes
   ];
   # ++ (with pkgs-stable; [
   # doesn't seem to play nice with amd, idk. using an open source solution instead (shotcut or kdenlive)
   #   davinci-resolve
   # ]);
+
+  # for gnome-boxes VM stuff
+  virtualisation.libvirtd.enable = true;
+  programs.virt-manager.enable = true;
 
   # hosting immich
   # https://search.nixos.org/options?channel=unstable&from=0&size=50&sort=relevance&type=packages&query=services.immich.

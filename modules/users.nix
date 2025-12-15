@@ -9,6 +9,7 @@
       "wheel"
       "vboxusers"
       "docker"
+      "libvirtd"
     ];
     # packages = with pkgs; [
     # ];
