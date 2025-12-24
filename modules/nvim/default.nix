@@ -92,6 +92,10 @@ let
           vscode-json-languageserver
           vscode-langservers-extracted
         ];
+        ruby = with pkgs; [
+          ruby
+          rubyPackages.ruby-lsp
+        ];
       };
 
       startupPlugins = {
@@ -210,6 +214,7 @@ let
           general = true;
           format = true;
           lint = true;
+          ruby = true;
           example = {
             youCan = "add more than just booleans";
             toThisSet = [

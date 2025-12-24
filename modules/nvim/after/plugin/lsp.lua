@@ -40,25 +40,31 @@ cmp.setup({
 
 -- --- Simple servers: enable the builtin configs from nvim-lspconfig/runtime
 local simple_servers = {
+    'ruby_lsp',
     'rust_analyzer',
     'svelte',
     'nixd',
     'htmx',
-    'dockerls',
+    -- 'dockerls',
     'marksman',
     'lemminx',
     'phpactor',
     'jsonls',
-    'eslint'
+    'eslint',
 }
 
-for _, name in ipairs(simple_servers) do
-    -- enable will activate the server using the config that nvim-lspconfig provides on the runtimepath
-    pcall(vim.lsp.enable, name)
-end
 
--- --- ruby_lsp: custom config + enable
+
+
+
+-- In your LSP config, replace the ruby_lsp section with:
 vim.lsp.config('ruby_lsp', {
+    cmd = { 'bundle', 'exec', 'ruby-lsp' }, -- Use bundled version
+    filetypes = { 'ruby' },
+    root_dir = function(fname)
+        local util = require('lspconfig.util')
+        return util.root_pattern('Gemfile', '.git')(fname)
+    end,
     init_options = {
         addonSettings = {
             ["Ruby LSP Rails"] = {
@@ -67,7 +73,51 @@ vim.lsp.config('ruby_lsp', {
         }
     }
 })
-pcall(vim.lsp.enable, 'ruby_lsp')
+
+-- pcall(vim.lsp.enable, 'ruby_lsp')
+-- Try to enable and print any error
+-- local ok, err = pcall(vim.lsp.enable, 'ruby_lsp')
+-- if not ok then
+--     vim.notify("Failed to enable ruby_lsp: " .. tostring(err), vim.log.levels.ERROR)
+-- end
+-- vim.lsp.enable('ruby_lsp')
+-- If you're already in a ruby file when sourcing this, manually start it
+-- if vim.bo.filetype == 'ruby' then
+--     vim.schedule(function()
+--         vim.lsp.start({ name = 'ruby_lsp' })
+--     end)
+-- end
+
+
+
+
+for _, name in ipairs(simple_servers) do
+    -- enable will activate the server using the config that nvim-lspconfig provides on the runtimepath
+    pcall(vim.lsp.enable, name)
+end
+
+
+
+
+
+-- -- --- ruby_lsp: custom config + enable (only if nixCats category is enabled)
+-- vim.lsp.config('ruby_lsp', {
+--     cmd = { 'ruby-lsp' },
+--     filetypes = { 'ruby' },
+--     root_dir = function(fname)
+--         local util = require('lspconfig.util')
+--         return util.root_pattern('Gemfile', '.git')(fname)
+--     end,
+--     init_options = {
+--         addonSettings = {
+--             ["Ruby LSP Rails"] = {
+--                 enablePendingMigrationsPrompt = false
+--             }
+--         }
+--     }
+-- })
+-- pcall(vim.lsp.enable, 'ruby_lsp')
+
 
 -- --- lua_ls: custom config + enable
 vim.lsp.config('lua_ls', {
@@ -192,7 +242,8 @@ lsp_zero.format_mapping('gq', {
         ['efm'] = { 'javascript', 'typescript', 'javascriptreact', 'typescriptreact', 'svelte', 'css' },
         ['rust_analyzer'] = { 'rust' },
         ['lua_ls'] = { 'lua' },
-        ['nixd'] = { 'nix' }
+        ['nixd'] = { 'nix' },
+        ['ruby_lsp'] = { 'ruby' },
     },
 })
 
