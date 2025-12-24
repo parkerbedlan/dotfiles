@@ -40,7 +40,6 @@ cmp.setup({
 
 -- --- Simple servers: enable the builtin configs from nvim-lspconfig/runtime
 local simple_servers = {
-    'ruby_lsp',
     'rust_analyzer',
     'svelte',
     'nixd',
@@ -56,37 +55,75 @@ local simple_servers = {
 
 
 
+-- local bundle_path = vim.fn.exepath('bundle')
+-- print("Bundle path:", bundle_path)
+-- local ruby_lsp_cmd = { bundle_path, 'exec', 'ruby-lsp' }
+-- print("Ruby LSP cmd:", vim.inspect(ruby_lsp_cmd))
 
--- In your LSP config, replace the ruby_lsp section with:
-vim.lsp.config('ruby_lsp', {
-    cmd = { 'bundle', 'exec', 'ruby-lsp' }, -- Use bundled version
-    filetypes = { 'ruby' },
-    root_dir = function(fname)
-        local util = require('lspconfig.util')
-        return util.root_pattern('Gemfile', '.git')(fname)
-    end,
-    init_options = {
-        addonSettings = {
-            ["Ruby LSP Rails"] = {
-                enablePendingMigrationsPrompt = false
-            }
-        }
-    }
-})
+-- -- In your LSP config, replace the ruby_lsp section with:
+-- vim.lsp.config('ruby_lsp', {
+--     -- cmd = { 'bundle', 'exec', 'ruby-lsp' }, -- Use bundled version (doesn't seem to work)
+--     -- cmd = { vim.fn.getcwd() .. '/vendor/bundle/ruby/3.3.0/bin/ruby-lsp' }, -- (doesn't work?)
+--     -- cmd = { vim.fn.exepath('bundle'), 'exec', 'ruby-lsp' },
+--     cmd = ruby_lsp_cmd,
+--     filetypes = { 'ruby' },
+--     root_dir = function(fname)
+--         local util = require('lspconfig.util')
+--         return util.root_pattern('Gemfile', '.git')(fname)
+--     end,
+--     init_options = {
+--         addonSettings = {
+--             ["Ruby LSP Rails"] = {
+--                 enablePendingMigrationsPrompt = false
+--             }
+--         }
+--     }
+-- })
+-- vim.lsp.enable('ruby_lsp')
 
 -- pcall(vim.lsp.enable, 'ruby_lsp')
--- Try to enable and print any error
 -- local ok, err = pcall(vim.lsp.enable, 'ruby_lsp')
 -- if not ok then
---     vim.notify("Failed to enable ruby_lsp: " .. tostring(err), vim.log.levels.ERROR)
+--     -- vim.notify("Failed to enable ruby_lsp: " .. tostring(err), vim.log.levels.ERROR)
+--     print("Failed to enable ruby_lsp: " .. tostring(err), vim.log.levels.ERROR)
 -- end
--- vim.lsp.enable('ruby_lsp')
--- If you're already in a ruby file when sourcing this, manually start it
--- if vim.bo.filetype == 'ruby' then
---     vim.schedule(function()
---         vim.lsp.start({ name = 'ruby_lsp' })
---     end)
--- end
+
+-- -- Force attach to ruby buffers
+-- vim.api.nvim_create_autocmd("FileType", {
+--     pattern = "ruby",
+--     callback = function(args)
+--         vim.lsp.start({ name = 'ruby_lsp', bufnr = args.buf })
+--     end,
+-- })
+
+
+vim.api.nvim_create_autocmd('FileType', {
+    pattern = 'ruby',
+    callback = function(args)
+        local root_dir = vim.fs.dirname(vim.fs.find({ 'Gemfile', '.git' }, {
+            upward = true,
+            path = vim.api.nvim_buf_get_name(args.buf)
+        })[1])
+
+        if root_dir then
+            vim.lsp.start({
+                name = 'ruby_lsp',
+                cmd = { 'bundle', 'exec', 'ruby-lsp' },
+                root_dir = root_dir,
+                init_options = {
+                    addonSettings = {
+                        ["Ruby LSP Rails"] = {
+                            enablePendingMigrationsPrompt = false
+                        }
+                    }
+                }
+            })
+        end
+    end
+})
+
+
+
 
 
 
