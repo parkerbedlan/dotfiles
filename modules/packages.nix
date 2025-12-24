@@ -63,6 +63,7 @@ in
     ripgrep
     ripgrep-all
     eza
+    # curl alternative?
     xh
     # https://yazi-rs.github.io/docs/quick-start
     yazi
@@ -77,22 +78,29 @@ in
     # https://github.com/jhspetersson/fselect?tab=readme-ov-file#examples
     fselect
     delta
+    # count lines of code
     tokei
     wiki-tui
     mprocs
     presenterm
+    # deletes node_modules
     kondo
     # todo: try out espanso
     # end of random rust stuff
+    # ocr engine
     tesseract
     nodejs
     claude-code
     code-cursor
     # opencode
     crush
+    # `cursor-agent`
     cursor-cli
+    # internet speed test
     speedtest-cli
+    # window switcher
     rofi
+    # ebook reader, also has `ebook-convert`
     calibre
     proton-authenticator
     simple-http-server
