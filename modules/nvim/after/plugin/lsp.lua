@@ -119,10 +119,21 @@ vim.api.nvim_create_autocmd('FileType', {
                 }
             })
         end
+
+        -- Use rubyfmt for formatting since ruby_lsp doesn't provide it
+        vim.bo[args.buf].formatprg = 'rubyfmt'
     end
 })
 
-
+-- Format ruby files on save using rubyfmt
+vim.api.nvim_create_autocmd('BufWritePre', {
+    pattern = '*.rb',
+    callback = function()
+        local view = vim.fn.winsaveview()
+        vim.cmd('silent! %!rubyfmt')
+        vim.fn.winrestview(view)
+    end
+})
 
 
 
