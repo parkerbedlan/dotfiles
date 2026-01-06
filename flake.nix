@@ -63,5 +63,6 @@
       # todo: potentially use ${pkgs.system} for both instead of hard coding the system?
       packages.x86_64-linux.default = myNixCats.packages.x86_64-linux.nixCats;
       packages.aarch64-linux.default = myNixCats.packages.aarch64-linux.nixCats;
+      packages.aarch64-darwin.default = myNixCats.packages.aarch64-darwin.nixCats;
     };
 }
