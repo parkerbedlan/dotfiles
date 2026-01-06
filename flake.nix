@@ -110,8 +110,10 @@
       # todo: potentially use ${pkgs.system} for both instead of hard coding the system?
       packages.x86_64-linux.default = myNixCats.packages.x86_64-linux.nixCats;
       packages.aarch64-linux.default = myNixCats.packages.aarch64-linux.nixCats;
+      packages.aarch64-darwin.default = myNixCats.packages.aarch64-darwin.nixCats;
       
       devShells.x86_64-linux.default = mkDevShell "x86_64-linux";
       devShells.aarch64-linux.default = mkDevShell "aarch64-linux";
+      devShells.aarch64-darwin.default = mkDevShell "aarch64-darwin";
     };
 }
