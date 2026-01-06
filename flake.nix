@@ -51,7 +51,7 @@
           unbind C-b
           bind C-a send-prefix
           set -g base-index 1
-          set -g terminal "screen-256color"
+          set -g default-terminal "screen-256color"
           set -g status-bg "white"
           set-option -sa terminal-overrides ",xterm-256color:RGB"
           EOF
@@ -66,14 +66,6 @@
           
           # Set environment variables
           export EDITOR=nixCats
-          
-          echo "Development environment loaded with:"
-          echo "  - nixCats (neovim)"
-          echo "  - tmux (configured)"
-          echo "  - git (configured)"
-          echo "  - starship prompt"
-          echo "  - zoxide (use 'cd' command)"
-          echo "  - just"
         '';
       };
     in
