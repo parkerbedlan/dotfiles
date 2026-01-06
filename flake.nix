@@ -29,6 +29,53 @@
     { nixpkgs, nixpkgs-stable, ... }@inputs:
     let
       myNixCats = import ./modules/nvim { inherit inputs; };
+      
+      mkDevShell = system: let
+        pkgs = nixpkgs.legacyPackages.${system};
+      in pkgs.mkShell {
+        buildInputs = with pkgs; [
+          myNixCats.packages.${system}.nixCats
+          tmux
+          git
+          starship
+          zoxide
+          just
+        ];
+        
+        shellHook = ''
+          # Set up tmux config
+          mkdir -p ~/.config/tmux
+          cat > ~/.config/tmux/tmux.conf << 'EOF'
+          set -g escape-time 0
+          set -g prefix C-a
+          unbind C-b
+          bind C-a send-prefix
+          set -g base-index 1
+          set -g terminal "screen-256color"
+          set -g status-bg "white"
+          set-option -sa terminal-overrides ",xterm-256color:RGB"
+          EOF
+          
+          # Set up git config
+          git config --global init.defaultBranch main
+          git config --global core.editor nixCats
+          git config --global push.autoSetupRemote true
+          git config --global alias.acp '!f() { git add -A && git commit -m "$1" && git push; }; f'
+          git config --global alias.as '!f() { git add -A && git status; }; f'
+          git config --global alias.ds 'diff --staged'
+          
+          # Set environment variables
+          export EDITOR=nixCats
+          
+          echo "Development environment loaded with:"
+          echo "  - nixCats (neovim)"
+          echo "  - tmux (configured)"
+          echo "  - git (configured)"
+          echo "  - starship prompt"
+          echo "  - zoxide (use 'cd' command)"
+          echo "  - just"
+        '';
+      };
     in
     {
       nixosConfigurations.desktop = nixpkgs.lib.nixosSystem {
@@ -63,5 +110,8 @@
       # todo: potentially use ${pkgs.system} for both instead of hard coding the system?
       packages.x86_64-linux.default = myNixCats.packages.x86_64-linux.nixCats;
       packages.aarch64-linux.default = myNixCats.packages.aarch64-linux.nixCats;
+      
+      devShells.x86_64-linux.default = mkDevShell "x86_64-linux";
+      devShells.aarch64-linux.default = mkDevShell "aarch64-linux";
     };
 }
