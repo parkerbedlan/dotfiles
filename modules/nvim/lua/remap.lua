@@ -7,7 +7,8 @@ vim.keymap.set("n", "S", ":w<CR>")
 vim.keymap.set("i", "<C-h>", "<C-w>")
 -- necessary because ghostty (and probably other modern terminals) are actually capable of sending <C-BS>, while tmux and classic terminals will conflate it with <C-h>
 vim.keymap.set("i", "<C-BS>", "<C-w>")
-vim.keymap.set("i", "<C-w>", "<nop>")
+-- originally did this to break the habit of using C-w for backspace. that habit is long gone now and this is actually necessary because in ghosty I'm mapping <C-BS> to <C-w> for the terminal as well
+-- vim.keymap.set("i", "<C-w>", "<nop>")
 
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
