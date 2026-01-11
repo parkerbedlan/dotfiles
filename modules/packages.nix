@@ -107,7 +107,9 @@ in
     python3
     vscode
     xmodmap
-    # xdotool
+    xdotool
+    sxhkd
+    xbindkeys
   ]
   # ++ (with pkgs-stable; [
   # https://github.com/NixOS/nixpkgs/issues/391032

@@ -1,4 +1,5 @@
 {
+  pkgs,
   ...
 }:
 {
@@ -7,6 +8,12 @@
     xmodmap -e "keycode 64 = Control_L Control_L"
     xmodmap -e "remove mod1 = Control_L"
     xmodmap -e "add Control = Control_L"
+
+    # Start xbindkeys for keybindings
+    ${pkgs.xbindkeys}/bin/xbindkeys -f ${pkgs.writeText "xbindkeysrc" ''
+      "rofi -show drun -sorting-method fzf -drun-match-fields name"
+        Control + space
+    ''}
 
     (sleep 2 && ((sleep 5 && wmctrl -r "LibreWolf" -t 0) & (sleep 2 && wmctrl -r "ghostty" -t 1) & (librewolf & wmctrl -s 3 && ghostty -e bash -c 'just home; exec bash'))) &
 
