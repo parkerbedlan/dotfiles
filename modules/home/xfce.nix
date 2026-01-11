@@ -61,9 +61,9 @@
       "xfwm4/custom/<Shift><Super>Right" = "move_window_to_monitor_right_key";
       "xfwm4/custom/<Shift><Super>Up" = "move_window_to_monitor_up_key";
       "xfwm4/custom/<Primary>Up" = "cycle_windows_key";
+      "xfwm4/custom/<Super>Tab" = "cycle_windows_key";
       "xfwm4/custom/<Primary>F4" = "close_window_key";
       "xfwm4/custom/<Primary><Shift>Q" = "close_window_key";
-      # "commands/custom/<Super>BackSpace" = "xdotool key ctrl+BackSpace";
     };
     xfwm4 = {
       "general/workspace_count" = 10;
