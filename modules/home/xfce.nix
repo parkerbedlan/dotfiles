@@ -63,7 +63,7 @@
       "xfwm4/custom/<Primary>Up" = "cycle_windows_key";
       "xfwm4/custom/<Super>Tab" = "cycle_windows_key";
       "xfwm4/custom/<Primary>F4" = "close_window_key";
-      "xfwm4/custom/<Primary><Shift>Q" = "close_window_key";
+      "xfwm4/custom/<Primary><Super>Q" = "close_window_key";
     };
     xfwm4 = {
       "general/workspace_count" = 10;
