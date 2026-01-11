@@ -13,6 +13,13 @@
     ${pkgs.xbindkeys}/bin/xbindkeys -f ${pkgs.writeText "xbindkeysrc" ''
       "rofi -show drun -sorting-method fzf -drun-match-fields name"
         Control + space
+
+      "${pkgs.writeShellScript "super-backspace" ''
+        #!/bin/sh
+        ${pkgs.xdotool}/bin/xdotool keyup Super_L keyup BackSpace
+        ${pkgs.xdotool}/bin/xdotool keydown Control_L key BackSpace keyup Control_L
+      ''}"
+        Mod4 + BackSpace
     ''}
 
     (sleep 2 && ((sleep 5 && wmctrl -r "LibreWolf" -t 0) & (sleep 2 && wmctrl -r "ghostty" -t 1) & (librewolf & wmctrl -s 3 && ghostty -e bash -c 'just home; exec bash'))) &
@@ -26,4 +33,11 @@
     xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitoreDP-1/workspace0/backdrop-cycle-enable -t bool -s false -n
     xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitoreDP-1/workspace0/color-style -t int -s 0 -n
   '';
+  # "xdotool key Control_L+BackSpace"
+  # "xdotool key ctrl+BackSpace"
+  # Mod4
+  # "xdotool key ctrl+BackSpace"
+  #   Mod4 + BackSpace
+  # "xdotool key --clearmodifiers ctrl+BackSpace"
+  #   Mod4 + BackSpace
 }
