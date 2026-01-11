@@ -107,8 +107,6 @@ in
     python3
     vscode
     xmodmap
-    xdotool
-    sxhkd
     xbindkeys
   ]
   # ++ (with pkgs-stable; [
