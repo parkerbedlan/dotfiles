@@ -60,6 +60,10 @@
       "xfwm4/custom/<Shift><Super>Down" = "move_window_to_monitor_down_key";
       "xfwm4/custom/<Shift><Super>Right" = "move_window_to_monitor_right_key";
       "xfwm4/custom/<Shift><Super>Up" = "move_window_to_monitor_up_key";
+
+      # todo: alt+space for rofi
+      # todo: alt+f4 exception
+      # todo: ctrl+up to alt+tab
     };
     xfwm4 = {
       "general/workspace_count" = 10;
