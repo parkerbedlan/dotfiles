@@ -13,6 +13,7 @@
       settings = {
         main = {
           capslock = "esc";
+          esc = "capslock";
           leftalt = "leftcontrol";
         };
         meta = {
