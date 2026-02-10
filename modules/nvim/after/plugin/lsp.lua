@@ -15,7 +15,7 @@ lsp_zero.on_attach(function(client, bufnr)
     vim.keymap.set("n", "<leader>vh", function() vim.lsp.buf.signature_help() end, opts)
 
     -- format on save via lsp-zero helper
-    lsp_zero.buffer_autoformat()
+    -- lsp_zero.buffer_autoformat()
 end)
 
 local cmp = require('cmp')
