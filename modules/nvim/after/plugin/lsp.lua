@@ -128,12 +128,19 @@ vim.api.nvim_create_autocmd('BufWritePre', {
     pattern = '*.rb',
     callback = function()
         local bufnr = vim.api.nvim_get_current_buf()
+        local filename = vim.api.nvim_buf_get_name(bufnr)
         local lines = vim.api.nvim_buf_get_lines(bufnr, 0, -1, false)
         local content = table.concat(lines, '\n')
 
-        local output = vim.fn.systemlist('standardrb --fix --stdin', content)
+        local output = vim.fn.systemlist(
+            "standardrb --fix --stdin '" .. filename .. "'",
+            content
+        )
 
-        if vim.v.shell_error == 0 then
+        -- standardrb exits 1 when offenses found (even if corrected),
+        -- but outputs corrected source after a "====================" separator
+        if #output > 0 and output[1] == '====================' then
+            table.remove(output, 1)
             local view = vim.fn.winsaveview()
             vim.api.nvim_buf_set_lines(bufnr, 0, -1, false, output)
             vim.fn.winrestview(view)
