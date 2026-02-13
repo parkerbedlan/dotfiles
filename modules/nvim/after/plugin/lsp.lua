@@ -120,8 +120,24 @@ vim.api.nvim_create_autocmd('FileType', {
             })
         end
 
-        -- Use rubyfmt for formatting since ruby_lsp doesn't provide it
-        -- vim.bo[args.buf].formatprg = 'rubyfmt'
+    end
+})
+
+-- Format ruby files on save using standardrb
+vim.api.nvim_create_autocmd('BufWritePre', {
+    pattern = '*.rb',
+    callback = function()
+        local bufnr = vim.api.nvim_get_current_buf()
+        local lines = vim.api.nvim_buf_get_lines(bufnr, 0, -1, false)
+        local content = table.concat(lines, '\n')
+
+        local output = vim.fn.systemlist('standardrb --fix --stdin', content)
+
+        if vim.v.shell_error == 0 then
+            local view = vim.fn.winsaveview()
+            vim.api.nvim_buf_set_lines(bufnr, 0, -1, false, output)
+            vim.fn.winrestview(view)
+        end
     end
 })
 

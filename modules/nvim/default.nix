@@ -95,7 +95,7 @@ let
         ruby = with pkgs; [
           ruby
           rubyPackages.ruby-lsp
-          # rubyfmt
+          rubyPackages.standard
         ];
       };
 
