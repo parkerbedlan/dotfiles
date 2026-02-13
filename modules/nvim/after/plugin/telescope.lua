@@ -8,6 +8,7 @@ telescope.setup {
         find_files = {
             hidden = true,
             disable_devicons = true,
+            file_ignore_patterns = { "^%.git/" },
         },
         git_files = {
             disable_devicons = true,
