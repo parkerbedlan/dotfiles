@@ -98,7 +98,7 @@ local simple_servers = {
 
 
 vim.api.nvim_create_autocmd('FileType', {
-    pattern = 'ruby',
+    pattern = { 'ruby', 'eruby' },
     callback = function(args)
         local root_dir = vim.fs.dirname(vim.fs.find({ 'Gemfile', '.git' }, {
             upward = true,
@@ -108,9 +108,10 @@ vim.api.nvim_create_autocmd('FileType', {
         if root_dir then
             vim.lsp.start({
                 name = 'ruby_lsp',
-                cmd = { 'bundle', 'exec', 'ruby-lsp' },
+                cmd = { 'ruby-lsp' },
                 root_dir = root_dir,
                 init_options = {
+                    experimentalFeaturesEnabled = true,
                     addonSettings = {
                         ["Ruby LSP Rails"] = {
                             enablePendingMigrationsPrompt = false
