@@ -320,7 +320,8 @@ vim.lsp.config('tailwindcss', {
         tailwindCSS = {
             experimental = {
                 classRegex = {
-                    "class=\"(.*)\""
+                    "class=\"([^\"]*)\"",
+                    "class:\\s*\"([^\"]*)\""
                 }
             }
         }
