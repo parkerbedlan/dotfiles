@@ -96,6 +96,7 @@ let
           ruby
           rubyPackages.ruby-lsp
           rubyPackages.standard
+          rubyPackages.erb-formatter
         ];
       };
 
