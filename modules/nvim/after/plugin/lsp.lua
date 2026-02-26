@@ -315,7 +315,7 @@ pcall(vim.lsp.enable, 'ts_ls')
 
 -- --- tailwindcss with experimental settings
 vim.lsp.config('tailwindcss', {
-    filetypes = { "aspnetcorerazor", "astro", "astro-markdown", "blade", "clojure", "django-html", "htmldjango", "edge", "eelixir", "elixir", "ejs", "erb", "eruby", "gohtml", "gohtmltmpl", "haml", "handlebars", "hbs", "html", "html-eex", "heex", "jade", "leaf", "liquid", "markdown", "mdx", "mustache", "njk", "nunjucks", "php", "razor", "slim", "twig", "css", "less", "postcss", "sass", "scss", "stylus", "sugarss", "javascript", "javascriptreact", "reason", "rescript", "typescript", "typescriptreact", "vue", "svelte", "templ", "rust" },
+    filetypes = { "aspnetcorerazor", "astro", "astro-markdown", "blade", "clojure", "django-html", "htmldjango", "edge", "eelixir", "elixir", "ejs", "gohtml", "gohtmltmpl", "haml", "handlebars", "hbs", "html", "html-eex", "heex", "jade", "leaf", "liquid", "markdown", "mdx", "mustache", "njk", "nunjucks", "php", "razor", "slim", "twig", "css", "less", "postcss", "sass", "scss", "stylus", "sugarss", "javascript", "javascriptreact", "reason", "rescript", "typescript", "typescriptreact", "vue", "svelte", "templ", "rust" },
     settings = {
         tailwindCSS = {
             experimental = {
@@ -328,6 +328,26 @@ vim.lsp.config('tailwindcss', {
     }
 })
 pcall(vim.lsp.enable, 'tailwindcss')
+
+-- --- tailwindcss for eruby: match any quoted string for class completions
+vim.lsp.config('tailwindcss_eruby', {
+    cmd = { 'tailwindcss-language-server', '--stdio' },
+    filetypes = { 'eruby' },
+    root_dir = function(fname)
+        return vim.fs.dirname(vim.fs.find(
+            { 'tailwind.config.js', 'tailwind.config.ts', 'tailwind.config.cjs', 'Gemfile', '.git' },
+            { upward = true, path = fname }
+        )[1])
+    end,
+    settings = {
+        tailwindCSS = {
+            experimental = {
+                classRegex = { "\"([^\"]*)\"" }
+            }
+        }
+    }
+})
+pcall(vim.lsp.enable, 'tailwindcss_eruby')
 
 -- --- format mapping & server config via lsp-zero
 lsp_zero.format_mapping('gq', {
