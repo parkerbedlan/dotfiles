@@ -157,7 +157,7 @@ vim.api.nvim_create_user_command('HtmlFormat', function()
     local lines = vim.api.nvim_buf_get_lines(bufnr, 0, -1, false)
     local content = table.concat(lines, '\n')
 
-    local output = vim.fn.systemlist("prettierd '" .. fname .. "'", content)
+    local output = vim.fn.systemlist({ 'prettierd', fname }, content)
 
     if vim.v.shell_error == 0 and #output > 0 then
         local view = vim.fn.winsaveview()
