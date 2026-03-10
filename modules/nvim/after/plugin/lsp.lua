@@ -149,6 +149,25 @@ vim.api.nvim_create_autocmd('BufWritePre', {
     end
 })
 
+-- HTML formatter (manual only — no format-on-save)
+-- Usage: :HtmlFormat
+vim.api.nvim_create_user_command('HtmlFormat', function()
+    local bufnr = vim.api.nvim_get_current_buf()
+    local fname = vim.api.nvim_buf_get_name(bufnr)
+    local lines = vim.api.nvim_buf_get_lines(bufnr, 0, -1, false)
+    local content = table.concat(lines, '\n')
+
+    local output = vim.fn.systemlist("prettierd '" .. fname .. "'", content)
+
+    if vim.v.shell_error == 0 and #output > 0 then
+        local view = vim.fn.winsaveview()
+        vim.api.nvim_buf_set_lines(bufnr, 0, -1, false, output)
+        vim.fn.winrestview(view)
+    else
+        vim.notify('HtmlFormat failed', vim.log.levels.ERROR)
+    end
+end, {})
+
 -- ERB formatter (manual only — no format-on-save)
 -- Usage: :ErbFormat
 vim.api.nvim_create_user_command('ErbFormat', function()
@@ -272,11 +291,6 @@ vim.lsp.config('efm', {
         documentFormatting = true,
         documentRangeFormatting = true,
     },
-    root_dir = function(bufnr)
-        local fname = vim.api.nvim_buf_get_name(bufnr)
-        return vim.fs.dirname(vim.fs.find({ '.git', 'package.json' }, { upward = true, path = fname })[1])
-            or vim.fn.fnamemodify(fname, ':h')
-    end,
     filetypes = { "javascript", "typescript", "javascriptreact", "typescriptreact", "svelte", "css", "html" },
     settings = {
         rootMarkers = { '.git/', 'package.json' },
