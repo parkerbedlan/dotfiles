@@ -272,7 +272,7 @@ vim.lsp.config('efm', {
         documentFormatting = true,
         documentRangeFormatting = true,
     },
-    filetypes = { "javascript", "typescript", "javascriptreact", "typescriptreact", "svelte", "css" },
+    filetypes = { "javascript", "typescript", "javascriptreact", "typescriptreact", "svelte", "css", "html" },
     settings = {
         rootMarkers = { '.git/', 'package.json' },
         languages = {
@@ -282,6 +282,7 @@ vim.lsp.config('efm', {
             typescriptreact = { prettierd },
             svelte = { prettierd },
             css = { prettierd },
+            html = { prettierd },
         }
     }
 })
@@ -336,7 +337,7 @@ lsp_zero.format_mapping('gq', {
         timeout_ms = 10000,
     },
     servers = {
-        ['efm'] = { 'javascript', 'typescript', 'javascriptreact', 'typescriptreact', 'svelte', 'css' },
+        ['efm'] = { 'javascript', 'typescript', 'javascriptreact', 'typescriptreact', 'svelte', 'css', 'html' },
         ['rust_analyzer'] = { 'rust' },
         ['lua_ls'] = { 'lua' },
         ['nixd'] = { 'nix' },
