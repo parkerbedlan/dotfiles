@@ -272,6 +272,10 @@ vim.lsp.config('efm', {
         documentFormatting = true,
         documentRangeFormatting = true,
     },
+    root_dir = function(fname)
+        local util = require('lspconfig.util')
+        return util.root_pattern('.git', 'package.json')(fname) or vim.fn.fnamemodify(fname, ':h')
+    end,
     filetypes = { "javascript", "typescript", "javascriptreact", "typescriptreact", "svelte", "css", "html" },
     settings = {
         rootMarkers = { '.git/', 'package.json' },
