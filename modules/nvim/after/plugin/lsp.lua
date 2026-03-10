@@ -164,7 +164,7 @@ vim.api.nvim_create_user_command('HtmlFormat', function()
         vim.api.nvim_buf_set_lines(bufnr, 0, -1, false, output)
         vim.fn.winrestview(view)
     else
-        vim.notify('HtmlFormat failed', vim.log.levels.ERROR)
+        vim.notify('HtmlFormat failed (exit=' .. vim.v.shell_error .. '): ' .. table.concat(output, '\n'), vim.log.levels.ERROR)
     end
 end, {})
 
