@@ -272,9 +272,10 @@ vim.lsp.config('efm', {
         documentFormatting = true,
         documentRangeFormatting = true,
     },
-    root_dir = function(fname)
-        local util = require('lspconfig.util')
-        return util.root_pattern('.git', 'package.json')(fname) or vim.fn.fnamemodify(fname, ':h')
+    root_dir = function(bufnr)
+        local fname = vim.api.nvim_buf_get_name(bufnr)
+        return vim.fs.dirname(vim.fs.find({ '.git', 'package.json' }, { upward = true, path = fname })[1])
+            or vim.fn.fnamemodify(fname, ':h')
     end,
     filetypes = { "javascript", "typescript", "javascriptreact", "typescriptreact", "svelte", "css", "html" },
     settings = {
