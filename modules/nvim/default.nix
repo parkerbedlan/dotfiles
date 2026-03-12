@@ -117,6 +117,7 @@ let
             # leap-nvim
             flash-nvim
             # obsidian-nvim
+            pkgs.neovimPlugins."99"
           ];
           themes = [
             catppuccin-nvim

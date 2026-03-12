@@ -23,6 +23,11 @@
     # todo: according to the top of the comments in the template, it may want nixpkgs-unstable instead of nixos-unstable, so keep an eye on that
     # https://github.com/BirdeeHub/nixCats-nvim/blob/main/templates/nixExpressionFlakeOutputs/default.nix
     nixCats.url = "github:BirdeeHub/nixCats-nvim";
+
+    plugins-99 = {
+      url = "github:ThePrimeagen/99";
+      flake = false;
+    };
   };
 
   outputs =
