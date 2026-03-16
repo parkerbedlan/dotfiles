@@ -2,18 +2,18 @@
 {
   programs.git = {
     enable = true;
-    aliases = {
-      acp = "!f() { git add -A && git commit -m \"$1\" && git push; }; f";
-      prune-gone = "!git branch -vv | awk '/: gone]/{print $1}' | xargs git branch -d";
-      cane = "commit --amend --no-edit";
-      pfwl = "push --force-with-lease";
-      s = "status";
-      d = "diff";
-      as = "!f() { git add -A && git status; }; f";
-      ds = "diff --staged";
-      ad = "!f() { git add -A && git diff --staged; }; f";
-    };
-    extraConfig = {
+    settings = {
+      alias = {
+        acp = "!f() { git add -A && git commit -m \"$1\" && git push; }; f";
+        prune-gone = "!git branch -vv | awk '/: gone]/{print $1}' | xargs git branch -d";
+        cane = "commit --amend --no-edit";
+        pfwl = "push --force-with-lease";
+        s = "status";
+        d = "diff";
+        as = "!f() { git add -A && git status; }; f";
+        ds = "diff --staged";
+        ad = "!f() { git add -A && git diff --staged; }; f";
+      };
       init = {
         defaultBranch = "main";
       };

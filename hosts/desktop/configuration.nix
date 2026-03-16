@@ -25,7 +25,7 @@
   environment.systemPackages = with pkgs; [
     ollama-rocm
     # virtualbox
-    blender-hip
+    (blender.override { rocmSupport = true; })
     rocmPackages.rocminfo
     rocmPackages.rocm-smi
     immich-go

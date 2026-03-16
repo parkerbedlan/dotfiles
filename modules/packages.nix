@@ -45,7 +45,7 @@ in
     vlc
     audacity
     anki
-    neofetch
+    fastfetch
     zoom-us
     httpie-desktop
     httpie

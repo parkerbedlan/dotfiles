@@ -8,12 +8,12 @@
   # gamemoderun %command%
   # gamescope %command%
 
-  # `protonup` needs to be run in terminal imperitively to set up
+  # `protonup-ng` needs to be run in terminal imperitively to set up
   # https://youtu.be/qlfm3MEbqYA?si=fqoZRwJ4lS41xgdF&t=363
   # then select new proton version in Compatibility settings of any steam game
   # use protondb.com to see whether a game is compatible on linux
   environment.systemPackages = with pkgs; [
-    protonup
+    protonup-ng
   ];
   environment.sessionVariables = {
     STEAM_EXTRA_COMPAT_TOOLS_PATHS = "/home/pk/.steam/root/compatibilitytools.d";

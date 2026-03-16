@@ -10,9 +10,9 @@
     ./aliases.nix
     ./bash.nix
     ./browser.nix
+    ./clipman.nix
     ./git.nix
     ./obs.nix
-    ./parcellite.nix
     ./stylix.nix
     ./tmux.nix
     ./xfce.nix

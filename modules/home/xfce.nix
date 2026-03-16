@@ -97,9 +97,5 @@
       # don't use the bottom panel, only the top one
       "panels" = [ 1 ];
     };
-    # sadly this doesn't work for some reason, so I'm doing it through the cli in my startup script
-    # xfce4-panel = {
-    #   "/plugins/plugin-6/hidden-legacy-items" = [ "parcellite" ];
-    # };
   };
 }
