@@ -6,6 +6,19 @@
 {
   programs.librewolf = {
     enable = true;
+    policies = {
+      SearchEngines = {
+        Default = "Startpage";
+        PreventInstalls = false;
+        Add = [
+          {
+            Name = "Startpage";
+            URLTemplate = "https://www.startpage.com/do/dsearch?q={searchTerms}";
+            Method = "GET";
+          }
+        ];
+      };
+    };
     profiles.pk = {
       isDefault = true;
 
@@ -84,7 +97,6 @@
         "browser.urlbar.shortcuts.quickactions" = false;
         "browser.urlbar.suggest.quickactions" = false;
 
-        "browser.search.defaultenginename" = "Startpage";
       };
 
       # https://github.com/nix-community/nur-combined/blob/main/repos/rycee/pkgs/firefox-addons/generated-firefox-addons.nix
