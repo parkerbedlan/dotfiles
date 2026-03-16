@@ -11,7 +11,11 @@ in
 {
   nixpkgs.config.allowUnfree = true;
 
+  # needed so xdg-desktop-portal-xapp can find org.x.apps.portal gsettings schema
+  environment.pathsToLink = [ "/share/gsettings-schemas" ];
+
   environment.systemPackages = with pkgs; [
+    xapp
     wget
     neovim
     git

@@ -19,6 +19,8 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  programs.dconf.enable = true;
+
   # Enable CUPS to print documents.
   services.printing.enable = true;
 

@@ -97,5 +97,8 @@
       # don't use the bottom panel, only the top one
       "panels" = [ 1 ];
     };
+    xsettings = {
+      "Gtk/ApplicationPreferDarkTheme" = 1;
+    };
   };
 }
