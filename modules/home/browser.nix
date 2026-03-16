@@ -101,6 +101,7 @@
         # maybe look into this?: tournesol
         tab-reloader
         # tampermonkey
+        # consumer-rights-wiki
       ];
 
       search.engines = {
