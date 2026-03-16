@@ -64,7 +64,7 @@ let
 
       lspsAndRuntimeDeps = {
         format = with pkgs; [
-          nixfmt-rfc-style
+          nixfmt
           prettierd
         ];
         lint = with pkgs; [
