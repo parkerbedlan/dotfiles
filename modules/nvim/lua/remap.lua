@@ -52,3 +52,5 @@ vim.keymap.set("n", "Z", "ZZ")
 -- for some reason it's not working so I'm using tab for now, which also isn't quite working but it's working better so it'll do for now
 -- vim.keymap.set("n", "<C-w>", "<C-w><C-w>", {noremap = true, silent = true})
 vim.keymap.set("n", "<C-w>", "<C-w><C-w>", { nowait = true })
+
+vim.keymap.set("v", "<leader>m", [[:s/┃\|│\s*│//g | '<,'>s/\s*$//g<CR>]])
