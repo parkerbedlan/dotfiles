@@ -74,6 +74,7 @@ let
         general = with pkgs; [
           xclip
           ripgrep
+          imagemagick
           efm-langserver
           rust-analyzer
           rustfmt
@@ -117,6 +118,7 @@ let
             # leap-nvim
             flash-nvim
             # obsidian-nvim
+            snacks-nvim
           ];
           themes = [
             catppuccin-nvim
