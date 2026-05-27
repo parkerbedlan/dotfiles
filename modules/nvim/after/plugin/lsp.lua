@@ -48,7 +48,7 @@ local simple_servers = {
     'nixd',
     'htmx',
     -- 'dockerls',
-    'marksman',
+    -- 'marksman',
     'lemminx',
     'phpactor',
     'jsonls',
