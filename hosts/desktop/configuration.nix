@@ -7,8 +7,8 @@
 {
   imports = [
     ./hardware-configuration.nix
-    # ./networking.nix
-    ../laptop/networking.nix
+    ./networking.nix
+    # ../laptop/networking.nix
     ../../modules/steam.nix
     ../../modules/vr.nix
     ../../modules/graphics.nix

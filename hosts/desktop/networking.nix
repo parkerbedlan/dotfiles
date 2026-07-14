@@ -5,21 +5,12 @@
 {
   networking = {
     networkmanager.enable = false;
-    wireless = {
-      enable = true;
-      # actual wifi passwords in foo.nix
-      # networks = {
-      #   "<wifi-name-here>" = {
-      #     psk = "<wifi-password-here>";
-      #   };
-      # };
-    };
-    interfaces.wlp9s0 = {
+    interfaces.enp10s0 = {
       useDHCP = false;
       ipv4.addresses = [
         {
           address = "192.168.4.145";
-          prefixLength = 24;
+          prefixLength = 22;
         }
       ];
     };
@@ -37,7 +28,7 @@
     nat = {
       enable = true;
       internalInterfaces = [ "lo" ]; # Loopback interface
-      externalInterface = "wlp9s0"; # LAN interface name
+      externalInterface = "enp10s0"; # LAN interface name
       forwardPorts = [
         {
           sourcePort = 8080;
