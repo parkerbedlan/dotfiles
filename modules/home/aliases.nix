@@ -10,7 +10,7 @@
     bluetooth = "blueman-manager";
     # https://my.nordaccount.com/dashboard/nordvpn/manual-configuration/service-credentials/
     # https://support.nordvpn.com/hc/en-us/articles/19926132780689-Manual-OpenVPN-setup-on-Android
-    vpn = "tmux new-session -d -s vpn \"sudo openvpn --config /home/pk/nord/us11680.nordvpn.com.tcp.ovpn --auth-user-pass /home/pk/nord/nord-creds.txt\" \\; attach-session -t vpn";
+    vpn = "tmux new-session -d -s vpn \"sudo openvpn --config /home/pk/nord/us5341.nordvpn.com.tcp_2.6.ovpn --auth-user-pass /home/pk/nord/nord-creds.txt\" \\; attach-session -t vpn";
     vpn_uk = "tmux new-session -d -s vpn \"sudo openvpn --config /home/pk/nord/uk1784.nordvpn.com.tcp_2.6.ovpn --auth-user-pass /home/pk/nord/nord-creds.txt\" \\; attach-session -t vpn";
     nd = "nix develop";
     j = "just";
